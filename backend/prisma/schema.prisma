@@ -16,15 +16,16 @@ datasource db {
 
 enum Role {
   SUPER_ADMIN
-  KEPALA_SEKOLAH
-  ADMIN_HUMAS
+  CONTRIBUTOR
+  EDITOR
+  SUBSCRIBER
 }
 
 model User {
   id        String    @id
   name      String
   email     String    @unique
-  role      Role      @default(ADMIN_HUMAS)
+  role      Role      @default(SUBSCRIBER)
   isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
