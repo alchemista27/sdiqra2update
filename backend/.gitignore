@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables (JANGAN pernah commit file ini!)
+.env
+.env.local
+.env.production
+
+# Upload files (lokal saja, production pakai Cloudinary)
+src/uploads/
+uploads
+testsprite_tests/
+
+# Prisma generated client
+# (akan di-generate ulang saat npm install via postinstall)
+# node_modules/.prisma sudah tercakup di atas
+
+# Build artifacts
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+.vercel

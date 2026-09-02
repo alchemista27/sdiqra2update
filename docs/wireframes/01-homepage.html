@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iqra 2 - SD Islam Terpadu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #454545;
+      --color-secondary: #06bfa2;
+      --color-tertiary: #0f7f6d;
+      --color-neutral: #F7F8F8;
+      --color-surface: #FFFFFF;
+      --color-on-tertiary: #F7F8F8;
+      --color-border: #E3E8E7;
+
+      --font-h1: 'Roboto', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+
+      --rounded-sm: 4px;
+      --rounded-md: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-primary);
+      background-color: var(--color-neutral);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-h1);
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .label-caps {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+    }
+    
+    .icon {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      font-feature-settings: 'liga';
+      vertical-align: middle;
+    }
+
+    /* Topbar */
+    .topbar {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      padding: var(--spacing-sm) 0;
+      font-size: 0.875rem;
+    }
+
+    .topbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-contact span {
+      margin-right: var(--spacing-md);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .topbar-social {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .topbar-social span {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--color-surface);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .logo {
+      font-family: var(--font-h1);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-tertiary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: var(--spacing-lg);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-primary);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-secondary);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      border: none;
+      border-radius: var(--rounded-sm);
+      padding: 12px 20px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-tertiary);
+      border: 1px solid var(--color-tertiary);
+      border-radius: var(--rounded-sm);
+      padding: 12px 20px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+    }
+
+    /* Card */
+    .card {
+      background-color: var(--color-surface);
+      color: var(--color-primary);
+      border-radius: var(--rounded-md);
+      padding: 20px;
+      border: 1px solid var(--color-border);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920');
+      background-size: cover;
+      background-position: center;
+      color: var(--color-surface);
+      padding: 120px 0 160px;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(69, 69, 69, 0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      color: var(--color-surface);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-neutral);
+    }
+
+    /* Highlight Boxes */
+    .highlight-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: -80px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .highlight-card {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      background-color: var(--color-surface);
+    }
+    
+    .highlight-icon {
+      color: var(--color-secondary);
+      font-size: 32px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* About Section */
+    .about {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 80px var(--spacing-lg);
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text p {
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-primary);
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: var(--rounded-md);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: block;
+    }
+
+    /* Programs Section */
+    .programs {
+      padding: 60px var(--spacing-lg);
+      text-align: center;
+      background-color: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+      text-align: left;
+    }
+    
+    .program-grid .card {
+      box-shadow: none;
+    }
+    
+    .program-icon {
+      color: var(--color-tertiary);
+      font-size: 32px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-primary);
+      color: var(--color-neutral);
+      padding-top: 60px;
+    }
+
+    .footer h3 {
+      color: var(--color-surface);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-social {
+      margin-top: var(--spacing-md);
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .footer-social .icon {
+      cursor: pointer;
+      color: var(--color-neutral);
+      transition: color 0.2s;
+    }
+    
+    .footer-social .icon:hover {
+      color: var(--color-secondary);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-col ul a {
+      color: var(--color-border);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--color-secondary);
+    }
+
+    .footer-col p {
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-col p .icon {
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      background-color: #333333;
+      text-align: center;
+      padding: 20px;
+      color: var(--color-border);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .topbar-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-contact">
+        <span><i class="icon" style="font-size: 16px;">phone</i> +62 812 3456 7890</span>
+        <span><i class="icon" style="font-size: 16px;">email</i> info@iqra2.sch.id</span>
+      </div>
+      <div class="topbar-social">
+        <i class="icon">language</i>
+        <i class="icon">camera_alt</i>
+        <i class="icon">play_circle_filled</i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="#" class="logo">Iqra 2</a>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Akademik</a></li>
+        <li><a href="#">Berita</a></li>
+      </ul>
+      <button class="btn-primary">Daftar PPDB</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>SD Islam Terpadu Iqra 2</h1>
+      <p>Membentuk Generasi Qur'ani, Cerdas, dan Berakhlak Mulia. Bergabunglah bersama kami untuk pendidikan terbaik.</p>
+      <button class="btn-primary">Pelajari Lebih Lanjut</button>
+    </div>
+  </header>
+
+  <!-- Highlight Boxes -->
+  <section class="highlight-boxes container">
+    <div class="card highlight-card">
+      <i class="icon highlight-icon">menu_book</i>
+      <h3>Kurikulum Islami</h3>
+      <p>Mengintegrasikan kurikulum nasional dengan nilai-nilai Al-Qur'an dan As-Sunnah secara komprehensif.</p>
+    </div>
+    <div class="card highlight-card">
+      <i class="icon highlight-icon">apartment</i>
+      <h3>Fasilitas Lengkap</h3>
+      <p>Ruang kelas nyaman, laboratorium interaktif, perpustakaan memadai, dan area olahraga luas.</p>
+    </div>
+    <div class="card highlight-card">
+      <i class="icon highlight-icon">school</i>
+      <h3>Pengajar Profesional</h3>
+      <p>Dididik oleh guru-guru berpengalaman, berdedikasi tinggi, dan kompeten di bidangnya.</p>
+    </div>
+  </section>
+
+  <!-- Sekilas Info / About -->
+  <section class="about container">
+    <div class="about-text">
+      <h2>Sekilas Tentang Kami</h2>
+      <p>SD Islam Terpadu Iqra 2 hadir untuk menjawab tantangan pendidikan modern yang tidak hanya fokus pada akademis, tetapi juga penanaman karakter Islami yang kuat sejak dini.</p>
+      <p>Dengan lingkungan yang asri dan kondusif, kami berkomitmen untuk melahirkan generasi penerus bangsa yang cerdas secara intelektual, emosional, dan spiritual.</p>
+      <button class="btn-secondary">Discover more</button>
+    </div>
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" alt="Tentang SDIT Iqra 2">
+    </div>
+  </section>
+
+  <!-- Program / Fakultas -->
+  <section class="programs">
+    <div class="container">
+      <h2>Program Unggulan</h2>
+      <div class="program-grid">
+        <div class="card">
+          <i class="icon program-icon">auto_stories</i>
+          <h3>Tahfidz</h3>
+          <p>Program hafalan Al-Qur'an terstruktur dengan target capaian dan pendampingan khusus.</p>
+        </div>
+        <div class="card">
+          <i class="icon program-icon">science</i>
+          <h3>Sains</h3>
+          <p>Eksplorasi ilmu pengetahuan alam melalui eksperimen dan metode pembelajaran interaktif.</p>
+        </div>
+        <div class="card">
+          <i class="icon program-icon">sports_soccer</i>
+          <h3>Olahraga</h3>
+          <p>Pembinaan fisik dan mental melalui berbagai kegiatan olahraga ekstrakurikuler pilihan.</p>
+        </div>
+        <div class="card">
+          <i class="icon program-icon">palette</i>
+          <h3>Kesenian</h3>
+          <p>Penyaluran bakat seni dan kreativitas santri dengan tetap memperhatikan batasan syariat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <h3>Iqra 2</h3>
+        <p>Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.</p>
+        <div class="footer-social">
+          <i class="icon">language</i>
+          <i class="icon">camera_alt</i>
+          <i class="icon">play_circle_filled</i>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Pendaftaran PPDB</a></li>
+          <li><a href="#">Fasilitas Sekolah</a></li>
+          <li><a href="#">Berita & Artikel</a></li>
+          <li><a href="#">Kontak Kami</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <p><i class="icon">location_on</i> Jl. Pendidikan No. 123, Kota Bahagia</p>
+        <p><i class="icon">phone</i> +62 812 3456 7890</p>
+        <p><i class="icon">email</i> info@iqra2.sch.id</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SD Islam Terpadu Iqra 2. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

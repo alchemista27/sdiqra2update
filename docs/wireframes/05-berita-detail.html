@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Berita - SD IT Iqra 2 Kota Bengkulu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #454545;
+      --color-secondary: #06bfa2;
+      --color-tertiary: #0f7f6d;
+      --color-neutral: #F7F8F8;
+      --color-surface: #FFFFFF;
+      --color-on-tertiary: #F7F8F8;
+      --color-border: #E3E8E7;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-primary);
+      background-color: var(--color-neutral);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Topbar */
+    .topbar {
+      background-color: var(--color-primary);
+      color: var(--color-neutral);
+      font-size: 12px;
+      padding: var(--spacing-sm) 0;
+    }
+    .topbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    .topbar-left span {
+      font-size: 16px;
+    }
+    .topbar-right a {
+      color: var(--color-neutral);
+      margin-left: var(--spacing-md);
+    }
+    .topbar-right a:hover {
+      color: var(--color-secondary);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--spacing-md) var(--spacing-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .logo-placeholder {
+      width: 48px;
+      height: 48px;
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      border-radius: var(--radius-sm);
+    }
+    .school-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .school-name {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .school-subtitle {
+      font-size: 14px;
+      color: var(--color-tertiary);
+    }
+    .nav-menu {
+      display: flex;
+      gap: var(--spacing-lg);
+      align-items: center;
+    }
+    .nav-link {
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: var(--color-tertiary);
+    }
+    .dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      min-width: 200px;
+      flex-direction: column;
+    }
+    .dropdown:hover .dropdown-content {
+      display: flex;
+    }
+    .dropdown-content a {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+    .dropdown-content a:hover {
+      background-color: var(--color-neutral);
+    }
+    .btn-ppdb {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+
+    /* Breadcrumb & Main Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-lg);
+    }
+    .breadcrumb {
+      margin-bottom: var(--spacing-lg);
+      font-size: 14px;
+      color: var(--color-primary);
+    }
+    .breadcrumb a {
+      color: var(--color-tertiary);
+      font-weight: 500;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 8fr 4fr;
+      gap: calc(var(--spacing-lg) * 2);
+    }
+
+    /* Main Article */
+    .article-main {
+      background-color: var(--color-surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+    .article-cover {
+      width: 100%;
+      height: 400px;
+      background-color: var(--color-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+      overflow: hidden;
+    }
+    .article-meta {
+      display: flex;
+      gap: var(--spacing-md);
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: var(--spacing-md);
+      flex-wrap: wrap;
+      color: var(--color-primary);
+    }
+    .meta-badge {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      padding: 4px var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-item .material-symbols-outlined {
+      font-size: 18px;
+    }
+    .article-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-lg);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .article-body p {
+      margin-bottom: var(--spacing-md);
+      font-size: 1rem;
+    }
+    
+    /* Drop Cap for the first paragraph */
+    .article-body > p:first-of-type::first-letter {
+      float: left;
+      font-size: 4rem;
+      line-height: 0.8;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: var(--color-tertiary);
+      padding-right: var(--spacing-sm);
+      padding-top: var(--spacing-sm);
+      margin-bottom: -0.2em;
+    }
+
+    .article-body h2, .article-body h3 {
+      margin-top: calc(var(--spacing-lg) * 1.5);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Roboto', sans-serif;
+    }
+    
+    /* Blockquote */
+    .article-body blockquote {
+      border-left: 4px solid var(--color-secondary);
+      margin: calc(var(--spacing-lg) * 1.5) 0;
+      font-style: italic;
+      color: var(--color-primary);
+      background-color: var(--color-neutral);
+      padding: var(--spacing-lg);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+    .article-body ul {
+      margin-left: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+    }
+    .article-body li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+    .sidebar-widget {
+      background-color: var(--color-surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+    .widget-title {
+      font-size: 20px;
+      margin-bottom: var(--spacing-md);
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+    }
+    
+    /* Search Box */
+    .search-box {
+      display: flex;
+      margin-bottom: var(--spacing-sm);
+    }
+    .search-input {
+      flex-grow: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      background-color: var(--color-surface);
+      color: var(--color-primary);
+    }
+    .search-input:focus {
+      border-color: var(--color-tertiary);
+    }
+    .search-btn {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      border: none;
+      padding: 0 14px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.2s;
+    }
+    .search-btn:hover {
+      background-color: var(--color-secondary);
+    }
+
+    .related-news-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    .related-news-item {
+      display: flex;
+      gap: var(--spacing-md);
+      align-items: flex-start;
+    }
+    .related-thumb {
+      width: 80px;
+      height: 60px;
+      background-color: var(--color-border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .related-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .related-title {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.3;
+    }
+    .related-title:hover {
+      color: var(--color-tertiary);
+    }
+    .related-date {
+      font-size: 12px;
+      color: #777;
+    }
+    .category-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .category-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 14px;
+    }
+    .category-item:last-child {
+      border-bottom: none;
+    }
+    .category-item a:hover {
+      color: var(--color-tertiary);
+      font-weight: 500;
+    }
+    .category-count {
+      background-color: var(--color-neutral);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--color-primary);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+      padding: calc(var(--spacing-lg) * 2) var(--spacing-lg) var(--spacing-lg);
+      margin-top: calc(var(--spacing-lg) * 3);
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: calc(var(--spacing-lg) * 2);
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .footer-logo {
+      width: 48px;
+      height: 48px;
+      background-color: var(--color-surface);
+      color: var(--color-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      border-radius: var(--radius-sm);
+    }
+    .footer-socials {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+    .footer-col-title {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      margin-bottom: var(--spacing-md);
+      font-size: 18px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: calc(var(--spacing-lg) * 2) auto 0;
+      text-align: center;
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .article-cover {
+        height: 250px;
+      }
+      .topbar {
+        display: none; /* Hide topbar on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-contact">
+        <span><i class="icon" style="font-size: 16px;">phone</i> +62 812 3456 7890</span>
+        <span><i class="icon" style="font-size: 16px;">email</i> info@iqra2.sch.id</span>
+      </div>
+      <div class="topbar-social">
+        <i class="icon">language</i>
+        <i class="icon">camera_alt</i>
+        <i class="icon">play_circle_filled</i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="#" class="logo">Iqra 2</a>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Akademik</a></li>
+        <li><a href="#">Berita</a></li>
+      </ul>
+      <button class="btn-primary">Daftar PPDB</button>
+    </div>
+  </nav>
+
+  
+  <!-- Page Header -->
+  <header class="page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat; padding: calc(var(--spacing-lg) * 4) var(--spacing-lg); text-align: center; color: var(--color-surface); margin-bottom: var(--spacing-lg);">
+    <h1 style="font-size: 2.5rem; margin-bottom: var(--spacing-sm); color: var(--color-surface); font-family: 'Roboto', sans-serif;">Detail Berita</h1>
+    <div class="breadcrumb" style="font-size: 14px; opacity: 0.9; font-weight: 500; color: var(--color-surface); margin: 0;">
+      <a href="#" style="color: var(--color-surface);">Beranda</a> &gt; <a href="#" style="color: var(--color-surface);">Berita</a> &gt; <span>Prestasi Siswa</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <div class="grid-container">
+      
+      <!-- Article Column -->
+      <article class="article-main">
+        <div class="article-cover">
+          <span class="material-symbols-outlined" style="font-size: 64px; color: #ccc;">image</span>
+        </div>
+        
+        <div class="article-meta">
+          <span class="meta-badge">Prestasi</span>
+          <div class="meta-item">
+            <span class="material-symbols-outlined">person</span>
+            <span>Oleh Admin</span>
+          </div>
+          <div class="meta-item">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span>20 Agustus 2026</span>
+          </div>
+        </div>
+
+        <h1 class="article-title">Prestasi Siswa SD IT Iqra 2 di Ajang Olimpiade Nasional</h1>
+        
+        <div class="article-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies odio ut urna euismod, eget ullamcorper justo bibendum. Nulla facilisi. Sed non mi cursus, tempor magna vel, pretium elit. Nullam lacinia eros ut ante convallis, vel interdum nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+          
+          <p>Curabitur venenatis tellus at quam bibendum, at tristique ipsum vehicula. Sed elementum risus quis nisi dictum, vitae tincidunt metus eleifend. Morbi eget erat tincidunt, tincidunt elit ac, fermentum mauris.</p>
+
+          <h2>Persiapan yang Matang</h2>
+          <p>Phasellus auctor accumsan massa, ut lobortis nisi hendrerit id. Proin scelerisque urna at ex euismod, a venenatis nisl scelerisque. Aliquam id ex eget velit laoreet finibus vel in libero.</p>
+
+          <blockquote>
+            "Keberhasilan ini adalah buah dari kerja keras, disiplin, serta dukungan penuh dari para guru dan orang tua murid. Kami sangat bangga atas pencapaian ini." - Kepala Sekolah SD IT Iqra 2.
+          </blockquote>
+
+          <h3>Faktor-faktor Pendukung</h3>
+          <p>Beberapa hal yang menjadi kunci kesuksesan siswa-siswi kita antara lain:</p>
+          <ul>
+            <li>Program bimbingan belajar khusus olimpiade yang intensif.</li>
+            <li>Dukungan dan doa dari seluruh civitas akademika dan orang tua.</li>
+            <li>Kesehatan fisik dan mental yang terjaga selama masa persiapan.</li>
+            <li>Fasilitas belajar yang memadai di lingkungan sekolah.</li>
+          </ul>
+
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam interdum, lorem id consequat auctor, velit felis convallis nibh, eget hendrerit enim justo sed tellus. Quisque congue ligula non accumsan pellentesque.</p>
+        </div>
+      </article>
+
+      <!-- Sidebar Column -->
+      <aside class="sidebar">
+        
+        <!-- Search Widget -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Pencarian</h3>
+          <div class="search-box">
+            <input type="text" placeholder="Cari berita..." class="search-input">
+            <button class="search-btn"><span class="material-symbols-outlined">search</span></button>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Kategori</h3>
+          <ul class="category-list">
+            <li class="category-item"><a href="#">Akademik</a> <span class="category-count">12</span></li>
+            <li class="category-item"><a href="#">Prestasi</a> <span class="category-count">8</span></li>
+            <li class="category-item"><a href="#">Pengumuman</a> <span class="category-count">15</span></li>
+            <li class="category-item"><a href="#">Kegiatan Siswa</a> <span class="category-count">20</span></li>
+          </ul>
+        </div>
+
+        <!-- Related News Widget -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Berita Terkait</h3>
+          <div class="related-news-list">
+            <div class="related-news-item">
+              <div class="related-thumb"><span class="material-symbols-outlined" style="color: #ccc;">image</span></div>
+              <div class="related-content">
+                <a href="#" class="related-title">Kegiatan Ekstrakurikuler Memanah SD IT Iqra 2</a>
+                <span class="related-date">18 Agustus 2026</span>
+              </div>
+            </div>
+            <div class="related-news-item">
+              <div class="related-thumb"><span class="material-symbols-outlined" style="color: #ccc;">image</span></div>
+              <div class="related-content">
+                <a href="#" class="related-title">Kunjungan Edukatif ke Museum Negeri Bengkulu</a>
+                <span class="related-date">15 Agustus 2026</span>
+              </div>
+            </div>
+            <div class="related-news-item">
+              <div class="related-thumb"><span class="material-symbols-outlined" style="color: #ccc;">image</span></div>
+              <div class="related-content">
+                <a href="#" class="related-title">Penerimaan Peserta Didik Baru (PPDB) Tahun 2027/2028</a>
+                <span class="related-date">10 Agustus 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="footer-logo">I2</div>
+          <div>
+            <div style="font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 18px;">SD Islam Terpadu Iqra 2</div>
+            <div style="font-size: 14px;">Kota Bengkulu</div>
+          </div>
+        </div>
+        <p style="font-size: 14px; opacity: 0.9;">Membangun generasi cerdas, berakhlak mulia, dan berlandaskan nilai-nilai Islam.</p>
+        <div class="footer-socials">
+          <span class="material-symbols-outlined">share</span>
+          <span class="material-symbols-outlined">thumb_up</span>
+          <span class="material-symbols-outlined">play_circle</span>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Tautan Cepat</h4>
+        <div class="footer-links">
+          <a href="#">Beranda</a>
+          <a href="#">Tentang Sekolah</a>
+          <a href="#">Berita &amp; Pengumuman</a>
+          <a href="#">Kontak Kami</a>
+          <a href="#">Informasi PPDB</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Hubungi Kami</h4>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined">location_on</span>
+          <span>Jl. Contoh Alamat No. 123, Kota Bengkulu, Bengkulu</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined">phone</span>
+          <span>(0736) 123456</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="material-symbols-outlined">email</span>
+          <span>info@sdiqra2bengkulu.sch.id</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 SD IT Iqra 2 Kota Bengkulu. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
