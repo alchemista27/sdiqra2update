@@ -1,9 +1,0 @@
-NEXT_PUBLIC_API_URL = https://sditiqra2-backend.vercel.app/api
-DATABASE_URL = postgresql://neondb_owner:npg_Idk79pFniXxO@ep-bitter-breeze-a1xpfmjb-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
-FRONTEND_URL = https://sditiqra2.vercel.app
-NODE_ENV = development
-JWT_SECRET = 3634ef60be2cd658e16e88cf5ef87ab0408b7d0867335778e445321ea324ad11d1b2c4dd2a929852fe46dd5e39891a531c79d70dd9ea870af6d29695ae4f4df2
-JWT_EXPIRES_IN = 7d
-CLOUDINARY_CLOUD_NAME = druxoo5aw
-CLOUDINARY_API_KEY = 418614962939486
-CLOUDINARY_API_SECRET = 4Y_BNto_A3yYZWNImQaYauNuFZY
