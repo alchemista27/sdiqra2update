@@ -1,27 +1,33 @@
-# Product Backlog: Iqra2
+# Product Backlog: Iqra2 (CMS & Frontend)
 
-Berikut adalah daftar tugas terperinci (Backlog) yang harus diselesaikan untuk mencapai target *refactoring*.
+Berikut adalah daftar rincian tugas teknis berdasarkan fase-fase *Sprint Plan* yang baru.
 
-## High Priority (Critical Path)
-- [x] **Delete Mobile App:** Hapus folder `mobile` karena aplikasi React Native tidak lagi digunakan.
-- [x] **Setup pnpm Workspace:** Buat `pnpm-workspace.yaml` dan root `package.json` untuk menjalankan `frontend` dan `backend` secara bersamaan.
-- [x] **Clean Prisma Schema:** Hapus model `Parent`, `Registration`, `Employee`, `AttendanceLog`, dll dari `backend/prisma/schema.prisma`.
-- [x] **Clean Frontend Routes:** Hapus direktori routing terkait fitur lama di NextJS (contoh: `app/admin/ppdb`, `app/absen`, `app/admin/menu`).
+## 🟢 Selesai (Completed)
+- [x] **Monorepo Setup:** Pindahkan `.env` ke root, setup git tunggal, konfigurasi pnpm-workspace.
+- [x] **Database Cleanup:** Hapus skema PPDB dan Kehadiran. Sesuaikan dengan `DB-SCHEMA.md` yang baru.
+- [x] **MCP Integration:** Pasang *tools* Neon Postgres dan Browser Automation.
 
-## Medium Priority (Core Features)
-- [x] **NestJS Bootstrap:** Inisialisasi ulang folder `backend` menggunakan arsitektur NestJS.
-- [x] **Migrate Auth Service:** Pindahkan logika login dan verifikasi JWT dari Express ke NestJS AuthGuard.
-- [x] **Migrate CMS API:** Buat NestJS Controller dan Service untuk mengelola Berita (Posts) dan Pengaturan (Settings/Pages).
-- [x] **Hardcode Navigation:** Ubah `frontend/src/components/layout/Navbar.tsx` agar menampilkan link menu secara statis.
-- [ ] **Restrict Page Editor:** Sesuaikan CMS di NextJS agar admin hanya bisa mengedit konten dari halaman utama (Homepage, Tentang, Berita, Kontak) tanpa bisa menambah halaman baru.
+## 🟡 Sprint 6: Neon Auth & Roles
+- [ ] **Database Migration:** Update `enum Role` di `backend/prisma/schema.prisma` menjadi `SUPER_ADMIN, CONTRIBUTOR, EDITOR, SUBSCRIBER` lalu jalankan `db push`.
+- [ ] **Backend Auth Refactor:** Hapus paket `@nestjs/jwt` dan `bcryptjs`. Pasang `jwks-rsa`. Ubah `jwt.strategy.ts` untuk memverifikasi token eksternal. Hapus *endpoint* login lokal.
+- [ ] **Frontend Login Flow:** Integrasikan halaman login klien agar menerima token JWT dari *provider* Neon Auth dan menyimpannya di *cookies/local storage* untuk otorisasi API.
 
-## Low Priority (Enhancements)
-- [x] **PPDB Redirect:** Tambahkan aturan redirect di `next.config.ts` agar request ke `/ppdb` diarahkan ke `https://ppdbalfida.vercel.app`.
-- [ ] **Remove Galeri (Opsional):** Konfirmasi lebih lanjut apakah rute dan fitur Galeri perlu dihapus dari frontend.
+## 🟡 Sprint 7: UI & Responsiveness
+- [ ] **Wireframe to JSX:** Konversi `docs/wireframes/01-homepage.html` hingga `06-kontak.html` ke dalam format komponen NextJS.
+- [ ] **Mobile Layout:** Terapkan standar `antislop-layoutmobile`. Buat *hamburger menu* untuk Navbar, susun *Hero image* berskala dinamis, ubah grid 3-kolom menjadi 1-kolom di layar ponsel.
+- [ ] **Design Tokens:** Pastikan semua warna, font, dan bayangan mengacu pada variabel CSS yang ada di `DESIGN.md`. Jangan gunakan hex *hardcoded*.
 
-## Desain & UI
-- [x] **New UI Implementation:** Terapkan desain antarmuka baru berlandaskan `DESIGN.md` (menggunakan *design tokens* untuk *colors*, *typography*, & *components*) dengan prinsip *anti-slop*.
+## 🟡 Sprint 8: Full Dynamic Content (CMS)
+- [ ] **Dynamic Navigation:** Buat API *endpoint* untuk mengambil dan memperbarui `menu_items`. Sambungkan Navbar *frontend* agar *me-render* menu secara dinamis dari database.
+- [ ] **Site Settings API:** Bangun *endpoint* CRUD untuk `site_settings` (seperti nama sekolah, tautan sosial media, teks sambutan). Integrasikan dengan *footer* dan halaman profil.
+- [ ] **Admin Dashboard UI:** Buat antarmuka di NextJS bagi admin untuk:
+  - Mengatur Menu Dinamis.
+  - Memperbarui Konfigurasi Situs.
+  - Menulis dan Mengelola Artikel (Tabel `posts`).
+- [ ] **RBAC Guard:** Buat *Guard* di NestJS untuk mengecek peran (contoh: *Subscriber* dilarang mengedit tulisan, *Editor* bisa menyetujui artikel).
 
-## Technical Debt & DevOps
-- [x] **Monorepo Git Setup**: Gabungkan repo frontend dan backend ke root.
-- [x] **Centralized ENV**: Pindahkan `.env` ke root dan buat symlink.
+## 🟡 Sprint 9: Deployment
+- [ ] **E2E Testing:** Buat skrip *testing* sederhana menggunakan *Playwright* untuk memastikan fungsi dasar CMS (login, baca berita) berjalan sempurna.
+- [ ] **Production Build:** Pastikan `pnpm build` sukses tanpa galat tipe (*Type Errors*) di kedua *workspace*.
+- [ ] **Deploy Database:** Verifikasi koneksi Neon dan migrasi produksi akhir.
+- [ ] **Host Applications:** Unggah aplikasi ke platform Vercel/VPS dan atur variabel lingkungan (*Environment Variables*) produksi.

@@ -1,38 +1,35 @@
-# Sprint Plan: Iqra2 Refactoring & Monorepo Migration
+# Sprint Plan: Iqra2 Refactoring & Full CMS Development
 
-Dokumen ini merangkum rencana kerja (sprint) untuk migrasi project Iqra2 menjadi pnpm monorepo (NextJS & NestJS) serta penghapusan fitur-fitur lama.
+Dokumen ini merangkum rencana kerja (sprint) untuk menyempurnakan proyek Iqra2 hingga tahap peluncuran (*deployment*). Proyek ini merupakan pnpm monorepo (NextJS & NestJS) dengan sistem *Full Dynamic CMS* untuk situs SDIT Iqra 2.
 
-## Sprint 1: Initial Cleanup & Monorepo Setup
-**Goal:** Membersihkan codebase dari fitur yang tidak lagi digunakan dan mengatur struktur dasar monorepo.
-- [ ] Menghapus direktori `mobile` (React Native) sepenuhnya dari codebase.
-- [ ] Menginisialisasi `pnpm-workspace.yaml` untuk `frontend` dan `backend`.
-- [ ] Menambahkan `package.json` di root untuk menjalankan script monorepo.
-- [ ] Menghapus folder rute PPDB dan Absensi di `frontend` (`app/admin/ppdb`, `app/admin/attendance`, `app/absen`, dll).
+## Sprint 1 - 5: Foundation & Cleanups (Selesai)
+*Fase ini telah diselesaikan. Meliputi penghapusan fitur lama (PPDB, Absensi), penyatuan monorepo Git, pengaturan `.env` terpusat, dan penyederhanaan skema database menjadi 8 tabel inti CMS.*
 
-## Sprint 2: Backend Migration (Express to NestJS)
-**Goal:** Memigrasi backend dari Express ke NestJS dan merampingkan database.
-- [ ] Inisialisasi project NestJS di dalam folder `backend`.
-- [ ] Memperbarui `prisma/schema.prisma` (Hapus tabel terkait PPDB, Absensi, dan MenuItem).
-- [ ] Migrasi modul Autentikasi (Login, JWT) ke NestJS.
-- [ ] Migrasi modul CMS (Posts, Pages, Settings) ke NestJS.
-- [ ] Memastikan koneksi Prisma dan API berjalan lancar.
+---
 
-## Sprint 3: Frontend Routing & CMS Adjustment
-**Goal:** Mengunci rute halaman frontend dan menyesuaikan CMS Admin.
-- [ ] Membuat struktur rute statis di NextJS: Homepage (`/`), Tentang Sekolah (`/tentang-sekolah`), Sambutan (`/tentang-sekolah/sambutan`), Berita (`/berita`), dan Kontak (`/kontak`).
-- [ ] Memperbarui `Navbar.tsx` agar menggunakan navigasi statis (bukan dari database).
-- [ ] Memodifikasi panel Admin NextJS agar hanya bisa mengedit halaman-halaman statis tersebut (menghilangkan fitur "Tambah Halaman" dan "Edit Menu").
-- [ ] Menambahkan *redirect* permanen di `next.config.ts` untuk rute `/ppdb` ke `https://ppdbalfida.vercel.app`.
+## Sprint 6: Neon Auth & Role Management (Aktif)
+**Goal:** Mengimplementasikan autentikasi pihak ketiga yang didelegasikan ke Neon Auth dan memperbarui struktur peran pengguna.
+- [ ] Memperbarui `enum Role` di Prisma (`SUPER_ADMIN, CONTRIBUTOR, EDITOR, SUBSCRIBER`).
+- [ ] Menyesuaikan modul Auth NestJS untuk bertindak sebagai *Resource Server* (memverifikasi token via JWKS, menghapus `bcrypt`).
+- [ ] Mengintegrasikan alur masuk (*login flow*) di *frontend* dengan token JWT dari eksternal (Clerk/Auth0/Neon).
 
-## Sprint 4: UI/UX Implementation (Pending)
-**Goal:** Menerapkan desain tampilan baru yang akan diinfokan lebih lanjut.
-- [ ] Menerima dan meninjau aset desain di folder `docs/`.
-- [ ] Mengimplementasikan desain ke dalam komponen-komponen NextJS.
-- [ ] Penyesuaian responsivitas (*mobile-friendly*) untuk web.
+## Sprint 7: UI/UX Precision & Mobile Responsiveness
+**Goal:** Mengonversi desain *wireframe* menjadi komponen React/Next.js murni dengan standar `antislop` dan responsivitas seluler.
+- [ ] Menerjemahkan HTML dari `docs/wireframes/` menjadi struktur JSX.
+- [ ] Mengaplikasikan *design tokens* (CSS variables) dari `DESIGN.md`.
+- [ ] Menambahkan *Grid/Flexbox* responsif untuk memastikan semua komponen (Hero, Navbar, Konten) beradaptasi dengan layar *mobile*.
+- [ ] Melakukan uji lintas peramban (*cross-browser*) untuk memastikan Ikon dan Tipografi merender dengan baik.
 
-## Sprint 5: Monorepo Consolidation
-**Goal:** Menyatukan repositori Git dan konfigurasi `.env` secara terpusat.
-- [x] Menghapus `frontend/.git` dan `backend/.git`.
-- [x] Menginisialisasi repositori Git tunggal di *root* dan menambahkan `.gitignore`.
-- [x] Membuat `.env` sentral di *root*.
-- [x] Mengonfigurasi `frontend` dan `backend` agar membaca `.env` dari *root* (menggunakan *symlink*).
+## Sprint 8: Full Dynamic CMS Integration
+**Goal:** Memastikan 100% aspek visual di halaman publik dapat diedit via Dasbor Admin tanpa modifikasi kode.
+- [ ] Menghubungkan *Hero Section* dan *Footer* dengan data dari tabel `site_settings`.
+- [ ] Membuat sistem manajemen Menu Dinamis dari tabel `menu_items`.
+- [ ] Membangun antarmuka Editor (*Rich Text*) di Dasbor Admin untuk mengelola `pages`, `posts`, dan `gallery_items`.
+- [ ] Mengimplementasikan *Role-Based Access Control* (RBAC) (misal: *Contributor* hanya bisa menulis *draft*, *Editor* bisa *publish*).
+
+## Sprint 9: Testing & Deployment
+**Goal:** Verifikasi mutu aplikasi dan peluncuran ke lingkungan produksi.
+- [ ] Melakukan *end-to-end test* (menggunakan Playwright via MCP) pada alur CMS.
+- [ ] Membangun (build) NextJS (`frontend`) dan NestJS (`backend`) untuk lingkungan produksi.
+- [ ] *Deploy* basis data secara final di platform Neon.
+- [ ] *Deploy* aplikasi *frontend* dan *backend* (misal ke platform Vercel, Railway, atau VPS lokal).
