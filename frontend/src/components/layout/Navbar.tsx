@@ -60,7 +60,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="topbar">
+      <div className="topbar hidden md:block">
         <div className="container topbar-content">
           <div className="topbar-contact">
             <span><i className="icon" style={{ fontSize: 16 }}>phone</i> {phone}</span>
