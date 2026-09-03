@@ -177,7 +177,7 @@ export default function NewsTicker() {
         </div>
         
         {/* Right: Prayer Times */}
-        <div className="shrink-0 pl-4 pr-10 flex items-center justify-end gap-5">
+        <div className="shrink-0 pl-4 pr-12 lg:pr-16 flex items-center justify-end gap-5">
           <div className="flex items-center text-on-tertiary/90 shrink-0 pl-1">
             <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
             <span className="font-medium text-xs tracking-wide">{locationName}</span>
