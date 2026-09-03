@@ -625,7 +625,7 @@
 
         /* Highlight Boxes */
         .highlight-boxes {
-          margin-bottom: 80px;
+          
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: var(--spacing-lg);
@@ -647,13 +647,13 @@
 
         /* About Section */
         .about {
-          padding-top: 80px !important;
-          padding-bottom: 80px !important;
-          margin-bottom: 60px;
+          
+          
+          
           display: flex;
           align-items: center;
           gap: 40px;
-          padding: 80px var(--spacing-lg);
+          
           flex-wrap: wrap;
         }
 
@@ -681,10 +681,10 @@
 
         /* Programs Section */
         .programs {
-          padding-top: 80px !important;
-          padding-bottom: 80px !important;
-          margin-bottom: 60px;
-          padding: 60px var(--spacing-lg);
+          
+          
+          
+          
           text-align: center;
           background-color: var(--color-surface);
           border-top: 1px solid var(--color-border);
@@ -1141,7 +1141,7 @@
   }
   
   .highlight-boxes, .grid-cards {
-    margin-top: -40px !important; /* Only overlap for elements right below hero */
+    /* margin-top handled by tailwind on page.tsx */ /* Only overlap for elements right below hero */
   }
 
   .program-grid, .archive-grid, .post-grid, .contact-grid {
@@ -1155,7 +1155,7 @@
   .single-post-content {
     flex-direction: column !important;
     gap: 20px !important;
-    padding: 40px 16px !important;
+    
   }
   
   .about-text, .about-image, .sidebar, .article-main, .contact-info, .contact-form-container {

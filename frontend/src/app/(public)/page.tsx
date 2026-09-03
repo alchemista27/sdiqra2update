@@ -12,7 +12,7 @@ export default function HomePage() {
       </header>
 
       {/* Highlight Boxes */}
-      <section className="highlight-boxes container mb-16 md:mb-24">
+      <section className="highlight-boxes container -mt-10 md:-mt-20 mb-16 md:mb-24 relative z-10">
         <div className="card highlight-card">
           <i className="icon highlight-icon">menu_book</i>
           <h3>Kurikulum Islami</h3>
