@@ -625,6 +625,7 @@
 
         /* Highlight Boxes */
         .highlight-boxes {
+          margin-bottom: 80px;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: var(--spacing-lg);
@@ -646,6 +647,9 @@
 
         /* About Section */
         .about {
+          padding-top: 80px !important;
+          padding-bottom: 80px !important;
+          margin-bottom: 60px;
           display: flex;
           align-items: center;
           gap: 40px;
@@ -677,6 +681,9 @@
 
         /* Programs Section */
         .programs {
+          padding-top: 80px !important;
+          padding-bottom: 80px !important;
+          margin-bottom: 60px;
           padding: 60px var(--spacing-lg);
           text-align: center;
           background-color: var(--color-surface);
