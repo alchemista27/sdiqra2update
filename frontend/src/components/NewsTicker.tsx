@@ -168,9 +168,9 @@ export default function NewsTicker() {
       </div>
 
       {/* RIGHT SIDE: Prayer Times */}
-      <div className="px-4 py-2 md:py-0 md:h-10 flex flex-row items-center justify-center md:justify-start gap-4 md:gap-5 w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
+      <div className="px-4 pt-2 pb-4 md:py-0 md:h-10 flex flex-row items-center justify-start gap-3 md:gap-5 w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
         
-        <div className="flex items-center text-secondary shrink-0 opacity-90">
+        <div className="flex items-center text-secondary shrink-0 opacity-90 pl-1">
           <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
           <span className="font-medium text-xs tracking-wide">{locationName}</span>
         </div>
