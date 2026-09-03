@@ -1125,12 +1125,12 @@ textarea.input-field { resize: vertical; }
 }
 .animate-on-scroll.is-visible {
   opacity: 1;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
-.slide-up { transform: translateY(40px); }
-.slide-down { transform: translateY(-40px); }
-.slide-left { transform: translateX(40px); }
-.slide-right { transform: translateX(-40px); }
+.slide-up { transform: translateY(80px); }
+.slide-down { transform: translateY(-80px); }
+.slide-left { transform: translateX(80px); }
+.slide-right { transform: translateX(-80px); }
 
 /* ================================================
    NEW HOMEPAGE SECTIONS

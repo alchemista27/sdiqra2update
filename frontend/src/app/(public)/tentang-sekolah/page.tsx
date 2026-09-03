@@ -42,7 +42,7 @@ export default async function TentangSekolahPage() {
   return (
     <>
       {/* 1. Hero Section */}
-      <header className="page-header" style={{ backgroundImage: `linear-gradient(rgba(15, 127, 109, 0.8), rgba(15, 127, 109, 0.9)), url('${heroBg}')`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '100px 0', color: 'white', textAlign: 'center' }}>
+      <header className="page-header" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroBg}')`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '100px 0', color: 'white', textAlign: 'center' }}>
         <AnimatedSection className="container" animation="slide-up">
           <h1 style={{ color: 'white' }}>{s['about_hero_title'] || 'Tentang Sekolah'}</h1>
           <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>{s['about_hero_subtitle'] || 'Berkomitmen mencetak generasi Qur\'ani yang berwawasan global, berakhlak mulia, dan unggul dalam prestasi.'}</p>
