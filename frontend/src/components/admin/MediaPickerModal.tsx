@@ -84,12 +84,12 @@ export function MediaPickerModal({ isOpen, onClose, onSelect }: MediaPickerModal
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '1rem' }}>
               {media.map((m) => (
-                <div key={m.publicId} onClick={() => { onSelect(m.url); onClose(); }}
+                <div key={m.id} onClick={() => { onSelect(m.url); onClose(); }}
                   style={{
                     background: '#fff', border: '1px solid var(--color-border)', borderRadius: 8, overflow: 'hidden',
                     cursor: 'pointer', position: 'relative', aspectRatio: '1'
                   }}>
-                  <img src={m.url} alt={m.publicId} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={m.url} alt={m.id} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               ))}
             </div>

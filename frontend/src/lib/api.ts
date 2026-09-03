@@ -326,12 +326,12 @@ export const galleryApi = {
     fetcher(`/cms/gallery/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
 };
 export interface CloudinaryMedia {
-  publicId: string;
+  id: string;
   url: string;
-  format: string;
+  mimeType: string;
   width?: number;
   height?: number;
-  bytes: number;
+  size: number;
   createdAt: string;
   folder?: string;
   displayName?: string;
@@ -358,8 +358,8 @@ export const mediaApi = {
       body: fd,
     }).then(r => r.json());
   },
-  remove: (token: string, publicId: string) =>
-    fetcher(`/cms/media?id=${encodeURIComponent(publicId)}`, {
+  remove: (token: string, id: string) =>
+    fetcher(`/cms/media?id=${encodeURIComponent(id)}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     }),

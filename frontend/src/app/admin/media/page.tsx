@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 type ViewMode = 'grid' | 'list';
 
-function formatBytes(b: number) {
+function mimeTypeBytes(b: number) {
   if (b < 1024) return `${b} B`;
   if (b < 1024 * 1024) return `${(b / 1024).toFixed(1)} KB`;
   return `${(b / (1024 * 1024)).toFixed(1)} MB`;
@@ -53,9 +53,9 @@ export default function AdminMediaPage() {
   const handleDelete = async (item: CloudinaryMedia) => {
     if (!confirm(`Hapus "${item.displayName}"? Tindakan ini tidak dapat dibatalkan.`)) return;
     try {
-      await mediaApi.remove(getToken()!, item.publicId);
-      setMedia(prev => prev.filter(m => m.publicId !== item.publicId));
-      if (selected?.publicId === item.publicId) setSelected(null);
+      await mediaApi.remove(getToken()!, item.id);
+      setMedia(prev => prev.filter(m => m.id !== item.id));
+      if (selected?.id === item.id) setSelected(null);
     } catch { alert('Gagal menghapus.'); }
   };
 
@@ -115,9 +115,9 @@ export default function AdminMediaPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.875rem' }}>
               {media.map(item => (
                 <div
-                  key={item.publicId}
+                  key={item.id}
                   onClick={() => setSelected(item)}
-                  style={{ cursor: 'pointer', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: selected?.publicId === item.publicId ? '2.5px solid #1B6B44' : '2px solid transparent', background: 'var(--color-neutral)', position: 'relative', aspectRatio: '1', transition: 'border-color 0.15s, transform 0.15s' }}
+                  style={{ cursor: 'pointer', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: selected?.id === item.id ? '2.5px solid #1B6B44' : '2px solid transparent', background: 'var(--color-neutral)', position: 'relative', aspectRatio: '1', transition: 'border-color 0.15s, transform 0.15s' }}
                 >
                   <Image src={item.url} alt={item.displayName || ''} fill sizes="200px" style={{ objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', color: '#fff', fontSize: 11, padding: '1.25rem 0.5rem 0.4rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -138,15 +138,15 @@ export default function AdminMediaPage() {
                 </thead>
                 <tbody>
                   {media.map(item => (
-                    <tr key={item.publicId} onClick={() => setSelected(item)} style={{ borderBottom: '1px solid #F3F4F6', cursor: 'pointer', background: selected?.publicId === item.publicId ? '#F0FDF4' : 'transparent', transition: 'background 0.15s' }}>
+                    <tr key={item.id} onClick={() => setSelected(item)} style={{ borderBottom: '1px solid #F3F4F6', cursor: 'pointer', background: selected?.id === item.id ? '#F0FDF4' : 'transparent', transition: 'background 0.15s' }}>
                       <td style={{ padding: '0.5rem 1rem' }}>
                         <div style={{ position: 'relative', width: 48, height: 48, borderRadius: 'var(--radius-sm)', overflow: 'hidden', flexShrink: 0 }}>
                           <Image src={item.url} alt={item.displayName || ''} fill sizes="48px" style={{ objectFit: 'cover' }} />
                         </div>
                       </td>
                       <td style={{ padding: '0.5rem 1rem', fontSize: 13, fontWeight: 500, color: 'var(--color-primary)', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.displayName}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)' }}>{item.format?.toUpperCase()}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{formatBytes(item.bytes)}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)' }}>{item.mimeType?.toUpperCase()}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{mimeTypeBytes(item.size)}</td>
                       <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{item.width && item.height ? `${item.width}×${item.height}` : '—'}</td>
                       <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{new Date(item.createdAt).toLocaleDateString('id-ID')}</td>
                     </tr>
@@ -177,7 +177,7 @@ export default function AdminMediaPage() {
             </div>
             <div>
               <p style={{ fontWeight: 700, fontSize: 15, color: 'var(--color-primary)', wordBreak: 'break-all' }}>{selected.displayName}</p>
-              <p style={{ fontSize: 12, color: 'var(--color-primary)', marginTop: 4 }}>{selected.format?.toUpperCase()} · {formatBytes(selected.bytes)}</p>
+              <p style={{ fontSize: 12, color: 'var(--color-primary)', marginTop: 4 }}>{selected.mimeType?.toUpperCase()} · {mimeTypeBytes(selected.size)}</p>
               {selected.width && <p style={{ fontSize: 12, color: 'var(--color-primary)' }}>{selected.width} × {selected.height} px</p>}
               <p style={{ fontSize: 12, color: '#9CA3AF', marginTop: 4 }}>{new Date(selected.createdAt).toLocaleString('id-ID')}</p>
             </div>

@@ -153,7 +153,7 @@ export default function NewsTicker() {
             )}
         </div>
       </div>
-      <div className="px-4 pt-2 pb-4 md:py-0 md:h-10 flex flex-row items-center justify-start gap-3 md:gap-5 w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
+      <div className="px-4 pt-2 pb-4 md:py-0 md:h-10 flex flex-row items-center justify-start gap-3 md:gap-5 w-full max-w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
        
         <div className="flex items-center text-secondary shrink-0 opacity-90 pl-1">
           <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
@@ -184,8 +184,8 @@ export default function NewsTicker() {
 // Subcomponent for individual prayer times
 function PrayerTimeBlock({ name, time, isNext }: { name: string; time: string; isNext: boolean }) {
   return (
-    <div className={`flex items-center gap-1.5 shrink-0 transition-colors ${isNext ? 'text-secondary' : 'text-on-tertiary/70'}`}>
-      <span className={`text-[10px] uppercase font-bold tracking-wider ${isNext ? 'text-secondary' : 'text-on-tertiary/40'}`}>{name}</span>
+    <div className={`flex items-center gap-1.5 shrink-0 transition-colors ${isNext ? 'text-secondary' : 'text-on-tertiary'}`}>
+      <span className={`text-[10px] uppercase font-bold tracking-wider ${isNext ? 'text-secondary' : 'text-on-tertiary/80'}`}>{name}</span>
       <span className={`text-sm ${isNext ? 'font-bold' : 'font-medium'}`}>{time}</span>
       {isNext && <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse ml-0.5 shadow-sm" />}
     </div>
