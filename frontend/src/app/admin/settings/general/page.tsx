@@ -283,6 +283,7 @@ export default function AdminGeneralSettingsPage() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
           <InputField label="Email" value={s('contact_email')} onChange={set('contact_email')} placeholder="info@sekolah.sch.id" type="email" />
           <InputField label="No. Telepon" value={s('contact_phone')} onChange={set('contact_phone')} placeholder="(0736) 123456" />
+          <InputField label="Nomor WhatsApp CS" value={s('whatsapp_number')} onChange={set('whatsapp_number')} placeholder="628123456789" hint="Gunakan kode negara (62) tanpa spasi atau +." />
         </div>
         <InputField label="Alamat Lengkap" value={s('contact_address')} onChange={set('contact_address')} placeholder="Jl. Contoh No. 1, Kota Bengkulu" />
         <InputField label="Embed Google Maps (URL iframe src)" value={s('contact_maps_embed')} onChange={set('contact_maps_embed')}
