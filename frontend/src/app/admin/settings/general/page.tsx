@@ -255,6 +255,11 @@ export default function AdminGeneralSettingsPage() {
       <SectionCard title="Identitas Sekolah" icon="school">
         <InputField label="Nama Sekolah" value={s('site_name')} onChange={set('site_name')} placeholder="SD Islam Terpadu Iqra 2" />
       </SectionCard>
+      <SectionCard title="Tombol Navigasi Navbar" icon="smart_button">
+        <InputField label="Teks Tombol PPDB" value={s('header_ppdb_text')} onChange={set('header_ppdb_text')} placeholder="Daftar PPDB" />
+        <InputField label="Tautan Tombol PPDB" value={s('header_ppdb_url')} onChange={set('header_ppdb_url')} placeholder="https://ppdb.iqra2.sch.id" hint="Pastikan memakai awalan http:// atau https://" />
+      </SectionCard>
+      
       <SectionCard title="Footer" icon="flag">
         <InputField label="Teks Copyright" value={s('footer_copyright')} onChange={set('footer_copyright')} placeholder="Hak cipta dilindungi" hint="Teks di paling bawah footer" />
       </SectionCard>

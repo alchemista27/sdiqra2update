@@ -2,29 +2,22 @@
 import Link from 'next/link';
 import { formatUrl } from "@/lib/urlUtils";
 import { useState, useEffect } from 'react';
+import { useSiteSettings } from '@/components/SiteLogo';
 import { usePathname } from 'next/navigation';
 import { settingsApi, menuApi, MenuItem } from '@/lib/api';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [siteName, setSiteName] = useState('Iqra 2');
-  const [logoUrl, setLogoUrl] = useState('');
-  const [phone, setPhone] = useState('+62 812 3456 7890');
-  const [email, setEmail] = useState('info@iqra2.sch.id');
+  const { siteName, logoUrl, settings } = useSiteSettings();
+  const phone = settings.contact_phone || '+62 812 3456 7890';
+  const email = settings.contact_email || 'info@iqra2.sch.id';
+  const ppdbUrl = settings.header_ppdb_url || '/ppdb';
+  const ppdbText = settings.header_ppdb_text || 'Daftar PPDB';
+  
   const [menus, setMenus] = useState<MenuItem[]>([]);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    settingsApi.getAll().then((settingsRes) => {
-      const d = settingsRes.data;
-      if (d.site_name) setSiteName(d.site_name);
-      if (d.site_logo) setLogoUrl(d.site_logo);
-      if (d.contact_phone) setPhone(d.contact_phone);
-      if (d.contact_email) setEmail(d.contact_email);
-    }).catch(() => {
-      console.warn("Info: Tidak dapat mengambil pengaturan situs.");
-    });
-
     menuApi.getAll().then((res) => {
       if (res.data) setMenus(res.data);
     }).catch(() => console.warn("Info: Tidak dapat memuat menu."));
@@ -74,9 +67,9 @@ export default function Navbar() {
             <span><i className="icon" style={{ fontSize: 16 }}>email</i> {email}</span>
           </div>
           <div className="topbar-social">
-            <i className="icon">language</i>
-            <i className="icon">camera_alt</i>
-            <i className="icon">play_circle_filled</i>
+            {settings.social_facebook && <Link href={formatUrl(settings.social_facebook)} target="_blank"><i className="icon">facebook</i></Link>}
+            {settings.social_instagram && <Link href={formatUrl(settings.social_instagram)} target="_blank"><i className="icon">photo_camera</i></Link>}
+            {settings.social_youtube && <Link href={formatUrl(settings.social_youtube)} target="_blank"><i className="icon">play_circle_filled</i></Link>}
           </div>
         </div>
       </div>
@@ -102,12 +95,12 @@ export default function Navbar() {
             )}
 
             <li className="mobile-only">
-              <Link href="/ppdb" className="btn-primary" onClick={() => setOpen(false)}>Daftar PPDB</Link>
+              <Link href={formatUrl(ppdbUrl)} className="btn-primary" onClick={() => setOpen(false)}>{ppdbText}</Link>
             </li>
           </ul>
          
           <div className="desktop-only">
-            <Link href="/ppdb" className="btn-primary">Daftar PPDB</Link>
+            <Link href={formatUrl(ppdbUrl)} className="btn-primary">{ppdbText}</Link>
           </div>
         </div>
       </nav>

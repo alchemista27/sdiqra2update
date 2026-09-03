@@ -139,19 +139,19 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 10 }}>
                     {media.map(item => (
                       <div
-                        key={item.publicId}
+                        key={item.id}
                         onClick={() => setSelected(item)}
                         style={{
                           cursor: 'pointer', borderRadius: 12, overflow: 'hidden',
-                          border: selected?.publicId === item.publicId ? '3px solid #1B6B44' : '3px solid transparent',
+                          border: selected?.id === item.id ? '3px solid #1B6B44' : '3px solid transparent',
                           background: '#F3F4F6', position: 'relative', aspectRatio: '1',
                           transition: 'border-color 0.15s, transform 0.15s',
-                          transform: selected?.publicId === item.publicId ? 'scale(0.96)' : 'scale(1)',
+                          transform: selected?.id === item.id ? 'scale(0.96)' : 'scale(1)',
                         }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={item.url} alt={item.displayName || ''} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        {selected?.publicId === item.publicId && (
+                        {selected?.id === item.id && (
                           <div style={{
                             position: 'absolute', top: 6, right: 6, width: 24, height: 24,
                             background: '#1B6B44', borderRadius: '50%', display: 'flex',
@@ -178,7 +178,7 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
                   <div>
                     <p style={{ fontWeight: 700, fontSize: 13, color: '#111827', wordBreak: 'break-all' }}>{selected.displayName}</p>
                     <p style={{ fontSize: 11, color: '#6B7280', marginTop: 4 }}>
-                      {selected.format?.toUpperCase()} · {selected.width}×{selected.height}
+                      {selected.mimeType?.toUpperCase()} · {selected.width}×{selected.height}
                     </p>
                     <p style={{ fontSize: 11, color: '#9CA3AF', marginTop: 2 }}>
                       {new Date(selected.createdAt).toLocaleDateString('id-ID')}
