@@ -285,7 +285,7 @@ export default function Navbar() {
           display: none;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .topbar-content {
             flex-direction: column;
             gap: var(--spacing-sm);

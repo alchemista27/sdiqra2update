@@ -1,4 +1,33 @@
 
+/* UNIFIED HERO AND PAGE-HEADER */
+.hero, .page-header {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: var(--color-surface);
+  text-align: center;
+  padding: 120px 20px 160px;
+}
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920');
+}
+.page-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920');
+}
+.hero h1, .page-header h1 {
+  font-size: 3rem;
+  color: var(--color-surface);
+  margin-bottom: var(--spacing-sm);
+}
+.hero p, .page-header p {
+  font-size: 1.25rem;
+  color: var(--color-neutral);
+  margin-bottom: var(--spacing-lg);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* From frontend/src/app/(public)/berita/[slug]/page.tsx */
 
         
@@ -268,8 +297,8 @@
 /* From frontend/src/app/(public)/berita/page.tsx */
 
         /* Page Header */
-        .page-header { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat; padding: calc(var(--spacing-lg) * 4) var(--spacing-lg); text-align: center; color: var(--color-surface); }
-        .page-header h1 { font-size: 2.5rem; margin-bottom: var(--spacing-sm); color: var(--color-surface); }
+        
+        
         .breadcrumb { font-size: 14px; opacity: 0.9; font-weight: 500; color: var(--color-surface); }
 
         /* Container */
@@ -307,18 +336,9 @@
 /* From frontend/src/app/(public)/kontak/page.tsx */
 
         /* Page Header */
-        .page-header {
-          background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-          color: var(--color-on-tertiary);
-          padding: calc(var(--spacing-lg) * 4) var(--spacing-lg) calc(var(--spacing-lg) * 5);
-          text-align: center;
-        }
+        
 
-        .page-header h1 {
-          margin: 0;
-          font-size: 2.5rem;
-          color: var(--color-on-tertiary);
-        }
+        
 
         /* Contact Grid */
         .contact-grid {
@@ -463,9 +483,7 @@
             grid-template-columns: 1fr;
             margin-top: var(--spacing-lg);
           }
-          .page-header {
-            padding-bottom: calc(var(--spacing-lg) * 2);
-          }
+          
           .main-contact {
             grid-template-columns: 1fr;
           }
@@ -687,23 +705,9 @@
 /* From frontend/src/app/(public)/tentang-sekolah/page.tsx */
 
         /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-            padding: var(--spacing-2xl) 0 calc(var(--spacing-2xl) + 80px) 0;
-            text-align: center;
-            color: var(--color-surface);
-        }
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-surface);
-        }
-        .page-header p {
-            color: var(--color-surface);
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        
+        
+        
         .breadcrumb {
             margin-top: var(--spacing-lg);
             font-size: 14px;
@@ -846,9 +850,7 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .page-header {
-                padding-bottom: calc(var(--spacing-2xl) + 20px);
-            }
+            
             .grid-cards {
                 grid-template-columns: repeat(2, 1fr);
                 margin-top: -40px;
@@ -867,9 +869,7 @@
         }
 
         @media (max-width: 768px) {
-            .page-header {
-                padding-bottom: var(--spacing-2xl);
-            }
+            
             .grid-cards {
                 grid-template-columns: 1fr;
                 margin-top: var(--spacing-lg);
@@ -883,17 +883,8 @@
 /* From frontend/src/app/(public)/tentang-sekolah/sambutan/page.tsx */
 
         /* Page Header */
-        .page-header {
-          background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-          padding: calc(var(--spacing-xl) * 2) var(--spacing-lg);
-          text-align: center;
-          color: var(--color-surface);
-        }
-        .page-header h1 {
-          font-size: 3rem;
-          margin-bottom: var(--spacing-sm);
-          color: var(--color-surface);
-        }
+        
+        
         .breadcrumb a {
           color: var(--color-surface);
           opacity: 0.8;
@@ -1114,7 +1105,7 @@
 
         @media (max-width: 768px) {
           .staff-layout { grid-template-columns: 1fr; }
-          .page-header h1 { font-size: 2rem; }
+          
           .content-article { padding: var(--spacing-lg); }
         }
       
@@ -1128,7 +1119,7 @@
   h1 { font-size: 2rem !important; }
   h2 { font-size: 1.5rem !important; }
   .hero { padding: 80px 0 !important; }
-  .page-header { padding: 60px 0 100px !important; }
+  
   
   /* Reset Grids to 1 Column */
   .highlight-boxes, 
