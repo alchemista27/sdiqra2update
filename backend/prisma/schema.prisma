@@ -25,6 +25,7 @@ model User {
   id        String    @id
   name      String
   email     String    @unique
+  password  String?   // Ditambahkan untuk Auth
   role      Role      @default(SUBSCRIBER)
   isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
@@ -34,8 +35,20 @@ model User {
   posts          Post[]
   pages          Page[]
   uploadedMedia  Media[]
+  sessions       Session[]
 
   @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("sessions")
 }
 
 // ============================================================

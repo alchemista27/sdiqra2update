@@ -1,16 +1,12 @@
-import { Module } from '@nestjs/common';
-
-import { PassportModule } from '@nestjs/passport';
+import { Module, Global } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { AuthController } from './auth.controller.js';
-import { JwtStrategy } from './jwt.strategy.js';
+import { SessionAuthGuard } from './session-auth.guard.js';
 
+@Global()
 @Module({
-  imports: [
-    PassportModule,
-  ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
-  exports: [AuthService],
+  providers: [AuthService, SessionAuthGuard],
+  exports: [AuthService, SessionAuthGuard],
 })
 export class AuthModule {}

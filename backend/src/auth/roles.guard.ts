@@ -15,7 +15,7 @@ export class RolesGuard implements CanActivate {
       return true; // if no roles are required, allow access
     }
     const { user } = context.switchToHttp().getRequest();
-    // Assuming the user object is attached to the request by the JwtAuthGuard
+    // Assuming the user object is attached to the request by the SessionAuthGuard
     // and has a 'role' property (e.g. 'SUPER_ADMIN', 'EDITOR').
     if (!user || !user.role) {
       return false;

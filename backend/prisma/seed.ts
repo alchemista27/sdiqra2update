@@ -1,27 +1,34 @@
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcryptjs';
+import * as crypto from 'crypto';
 
 const prisma = new PrismaClient();
 
+function hashPassword(password: string): string {
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+  return `${salt}:${hash}`;
+}
+
 async function main() {
-  const hashedPassword = await bcrypt.hash('password123', 10);
+  const email = 'admin@sditiqra2kotabengkulu.sch.id';
+  const plainPassword = 'Iqra2Admin!123';
   
   await prisma.user.upsert({
-    where: { email: 'admin@iqra2.id' },
-    update: {},
+    where: { email },
+    update: { password: hashPassword(plainPassword), role: 'SUPER_ADMIN', isActive: true },
     create: {
-      email: 'admin@iqra2.id',
-      name: 'Super Admin',
-      password: hashedPassword,
+      id: 'cmn7ndrp20000ckysnblno9n2', // keep same id
+      name: 'Super Administrator',
+      email,
+      password: hashPassword(plainPassword),
       role: 'SUPER_ADMIN',
-    },
+      isActive: true,
+    }
   });
-
-  console.log('Seed completed: Admin user created (admin@iqra2.id / password123)');
 }
 
 main()
-  .catch((e) => {
+  .catch(e => {
     console.error(e);
     process.exit(1);
   })
