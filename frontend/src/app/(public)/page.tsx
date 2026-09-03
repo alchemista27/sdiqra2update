@@ -31,7 +31,7 @@ export default function HomePage() {
           <h2>Sekilas Tentang Kami</h2>
           <p>SD Islam Terpadu Iqra 2 hadir untuk menjawab tantangan pendidikan modern yang tidak hanya fokus pada akademis, tetapi juga penanaman karakter Islami yang kuat sejak dini.</p>
           <p>Dengan lingkungan yang asri dan kondusif, kami berkomitmen untuk melahirkan generasi penerus bangsa yang cerdas secara intelektual, emosional, dan spiritual.</p>
-          <button className="btn-secondary">Discover more</button>
+          <button className="btn-secondary">Selengkapnya</button>
         </div>
         <div className="about-image">
           <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" alt="Tentang SDIT Iqra 2" />
