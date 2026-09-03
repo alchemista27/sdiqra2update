@@ -147,7 +147,7 @@ export default function NewsTicker() {
     <div className={`fixed bottom-0 left-0 w-full z-[9999] bg-tertiary text-on-tertiary shadow-[0_-4px_20px_rgba(0,0,0,0.15)] transition-transform duration-300 ${showTicker ? 'translate-y-0' : 'translate-y-full'}`}>
       
       {/* DESKTOP LAYOUT */}
-      <div className="hidden md:flex h-10 w-full">
+      <div className="hidden md:flex h-10 w-full px-4 md:px-8 xl:px-12">
           {/* Left: News Marquee */}
           <div className="flex-1 flex items-center overflow-hidden border-r border-surface/10">
           <div className="bg-secondary text-primary px-4 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
@@ -177,7 +177,7 @@ export default function NewsTicker() {
         </div>
         
         {/* Right: Prayer Times */}
-        <div className="shrink-0 pl-4 pr-12 lg:pr-16 flex items-center justify-end gap-5">
+        <div className="shrink-0 px-4 lg:px-6 flex items-center justify-end gap-5">
           <div className="flex items-center text-on-tertiary/90 shrink-0 pl-1">
             <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
             <span className="font-medium text-xs tracking-wide">{locationName}</span>
