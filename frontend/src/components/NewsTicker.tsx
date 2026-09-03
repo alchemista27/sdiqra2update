@@ -150,9 +150,21 @@ export default function NewsTicker() {
       <div className="hidden md:flex h-10 w-full">
         {/* Left: News Marquee */}
         <div className="flex-1 flex items-center overflow-hidden border-r border-surface/10 h-10">
-          <div className="bg-secondary text-primary px-8 lg:px-12 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
-            <span className="material-symbols-outlined text-[20px] mr-3 lg:mr-4">campaign</span>
-            Info
+          <div className="bg-secondary text-primary h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
+            {/* Spacer Kiri */}
+            <div className="w-6 md:w-8 shrink-0 h-full"></div>
+            
+            {/* Ikon */}
+            <span className="material-symbols-outlined text-[20px]">campaign</span>
+            
+            {/* Spacer Tengah */}
+            <div className="w-3 md:w-4 shrink-0 h-full"></div>
+            
+            {/* Teks */}
+            <span>Info</span>
+            
+            {/* Spacer Kanan */}
+            <div className="w-6 md:w-8 shrink-0 h-full"></div>
           </div>
           <div className="flex-1 overflow-hidden relative h-full flex items-center pl-6">
               {newsList.length > 0 ? (
