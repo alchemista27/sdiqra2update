@@ -261,6 +261,7 @@ export default function AdminGeneralSettingsPage() {
       </SectionCard>
       
       <SectionCard title="Footer" icon="flag">
+        <InputField label="Deskripsi Singkat" value={s('footer_description')} onChange={set('footer_description')} placeholder="Membentuk generasi..." hint="Teks di bawah nama sekolah pada footer kiri" />
         <InputField label="Teks Copyright" value={s('footer_copyright')} onChange={set('footer_copyright')} placeholder="Hak cipta dilindungi" hint="Teks di paling bawah footer" />
       </SectionCard>
       <SectionCard title="Menu Cepat Footer" icon="link">

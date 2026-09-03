@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="container footer-content">
         <div className="footer-col">
           <h3>{siteName}</h3>
-          <p>{settings.footer_copyright || 'Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.'}</p>
+          <p>{settings.footer_description || 'Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.'}</p>
           <div className="footer-social">
             {settings.social_facebook && <Link href={formatUrl(settings.social_facebook)} target="_blank"><i className="icon">facebook</i></Link>}
             {settings.social_instagram && <Link href={formatUrl(settings.social_instagram)} target="_blank"><i className="icon">photo_camera</i></Link>}
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {currentYear} {siteName}. All rights reserved.</p>
+        <p>&copy; {currentYear} {siteName}. {settings.footer_copyright || 'All rights reserved.'}</p>
       </div>
     </footer>
   );
