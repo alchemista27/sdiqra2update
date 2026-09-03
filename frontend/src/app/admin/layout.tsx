@@ -9,7 +9,6 @@ import ProfileMenu from '@/components/profile/ProfileMenu';
 const navItems = [
   { href: '/admin', icon: 'home', label: 'Dasbor' },
   { href: '/admin/posts', icon: 'article', label: 'Berita & Artikel' },
-  { href: '/admin/pages', icon: 'description', label: 'Halaman Statis' },
   { href: '/admin/categories', icon: 'label', label: 'Kategori' },
   { href: '/admin/gallery', icon: 'photo_library', label: 'Galeri' },
   { href: '/admin/media', icon: 'perm_media', label: 'Media Library' },
