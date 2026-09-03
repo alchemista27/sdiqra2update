@@ -1115,3 +1115,160 @@ textarea.input-field { resize: vertical; }
 
   img { max-width: 100%; height: auto; }
 }
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) !important;
+}
+.slide-up { transform: translateY(40px); }
+.slide-down { transform: translateY(-40px); }
+.slide-left { transform: translateX(40px); }
+.slide-right { transform: translateX(-40px); }
+
+/* ================================================
+   NEW HOMEPAGE SECTIONS
+   ================================================ */
+.stats-section {
+  position: relative;
+  background-image: linear-gradient(rgba(15, 127, 109, 0.9), rgba(15, 127, 109, 0.9)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color-on-tertiary);
+  padding: 80px 0;
+  margin-bottom: var(--spacing-2xl);
+}
+.stats-section .stat-item h3 {
+  color: var(--color-on-tertiary);
+}
+.stats-section .stat-item p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.keunggulan {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-surface);
+  margin-bottom: var(--spacing-2xl);
+}
+.keunggulan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+.keunggulan-card {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--color-neutral);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s;
+}
+.keunggulan-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-tertiary);
+}
+.keunggulan-icon {
+  color: var(--color-tertiary);
+  font-size: 40px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mengapa-kami {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-neutral);
+  margin-bottom: var(--spacing-2xl);
+}
+.mengapa-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+.mengapa-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+.mengapa-item {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+  background: var(--color-surface);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.mengapa-item .icon-wrapper {
+  background-color: rgba(15, 127, 109, 0.1);
+  color: var(--color-tertiary);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mengapa-item-text h4 {
+  margin-bottom: 4px;
+}
+.mengapa-image img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.fasilitas {
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+}
+.fasilitas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+.fasilitas-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 250px;
+}
+.fasilitas-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.fasilitas-card:hover img {
+  transform: scale(1.1);
+}
+.fasilitas-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-lg);
+}
+.fasilitas-overlay h3 {
+  color: var(--color-surface);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .mengapa-content {
+    grid-template-columns: 1fr;
+  }
+  .mengapa-image {
+    order: -1;
+  }
+}
