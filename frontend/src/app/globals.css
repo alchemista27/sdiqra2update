@@ -18,6 +18,14 @@
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --rounded-sm: 4px;
+  --rounded-md: 8px;
+
+  --font-h1: 'Roboto', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 :root {
