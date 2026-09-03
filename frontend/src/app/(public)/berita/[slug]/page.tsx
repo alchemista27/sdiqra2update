@@ -8,7 +8,7 @@ export default function SinglePostPage() {
         color: "var(--color-surface)",
         marginBottom: "var(--spacing-lg)"
       }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "var(--spacing-sm)", color: "var(--color-surface)", fontFamily: "'Roboto', sans-serif" }}>Detail Berita</h1>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "var(--spacing-sm)", color: "var(--color-surface)" }}>Detail Berita</h1>
         <div className="breadcrumb" style={{ fontSize: "14px", opacity: 0.9, fontWeight: 500, color: "var(--color-surface)", margin: 0 }}>
           <a href="#" style={{ color: "var(--color-surface)" }}>Beranda</a> &gt; <a href="#" style={{ color: "var(--color-surface)" }}>Berita</a> &gt; <span>Prestasi Siswa</span>
         </div>

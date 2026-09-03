@@ -10,7 +10,7 @@ export default async function HomePage() {
     const res = await settingsApi.getAll();
     s = res.data || {};
   } catch (err) {
-    console.error("Failed to fetch settings for homepage", err);
+    console.warn("Info: Backend offline, using default homepage settings.");
   }
 
   // Parse JSON settings
