@@ -237,9 +237,9 @@ export default function NewsTicker() {
               
               return (
                 <div key={idx} className={`absolute inset-0 flex items-center justify-center gap-2 transition-all duration-500 ease-in-out ${transformClass}`}>
-                  <span className={`font-bold tracking-wide uppercase text-[10px] ${prayer.isNext ? 'text-secondary' : 'text-on-tertiary/80'}`}>{prayer.name}</span>
-                  <span className={`font-medium ${prayer.isNext ? 'text-white' : ''}`}>{prayer.time}</span>
-                  {prayer.isNext && <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse absolute right-2" />}
+                  <span className={`font-bold tracking-wide uppercase text-[10px] ${prayer.isNext ? 'text-[#FBBF24]' : 'text-on-tertiary/80'}`}>{prayer.name}</span>
+                  <span className={`font-medium ${prayer.isNext ? 'text-[#FBBF24]' : ''}`}>{prayer.time}</span>
+                  {prayer.isNext && <span className="w-1.5 h-1.5 rounded-full bg-[#FBBF24] animate-pulse absolute right-2" />}
                 </div>
               );
             })
@@ -254,10 +254,10 @@ export default function NewsTicker() {
 
 function PrayerTimeBlock({ name, time, isNext }: { name: string; time: string; isNext: boolean }) {
   return (
-    <div className={`flex items-center gap-1.5 shrink-0 transition-colors ${isNext ? 'text-secondary' : 'text-on-tertiary'}`}>
-      <span className={`text-[10px] uppercase font-bold tracking-wider ${isNext ? 'text-secondary' : 'text-on-tertiary/80'}`}>{name}</span>
+    <div className={`flex items-center gap-1.5 shrink-0 transition-colors ${isNext ? 'text-[#FBBF24]' : 'text-on-tertiary'}`}>
+      <span className={`text-[10px] uppercase font-bold tracking-wider ${isNext ? 'text-[#FBBF24]' : 'text-on-tertiary/80'}`}>{name}</span>
       <span className={`text-sm ${isNext ? 'font-bold' : 'font-medium'}`}>{time}</span>
-      {isNext && <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse ml-0.5 shadow-sm" />}
+      {isNext && <span className="w-1.5 h-1.5 rounded-full bg-[#FBBF24] animate-pulse ml-0.5 shadow-sm" />}
     </div>
   );
 }
