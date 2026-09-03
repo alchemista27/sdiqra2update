@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 const RichTextEditor = dynamic(() => import('@/components/cms/RichTextEditor'), {
   ssr: false,
   loading: () => (
-    <div style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, minHeight: 400, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9CA3AF', fontSize: 14 }}>
+    <div style={{ border: '1px solid var(--color-border)', borderRadius: 12, minHeight: 400, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9CA3AF', fontSize: 14 }}>
       Memuat editor...
     </div>
   ),
@@ -104,7 +104,7 @@ export default function PostEditor({ mode, postId }: Props) {
     }
   };
 
-  const inputStyle = { width: '100%', padding: '0.75rem 1rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 15, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' };
+  const inputStyle = { width: '100%', padding: '0.75rem 1rem', border: '1px solid var(--color-border)', borderRadius: 10, fontSize: 15, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' };
   const labelStyle = { display: 'block' as const, fontSize: 13, fontWeight: 600 as const, color: '#374151', marginBottom: '0.5rem' };
 
   if (loading) return <div style={{ padding: '3rem', textAlign: 'center', color: '#9CA3AF' }}>Memuat...</div>;
@@ -125,7 +125,7 @@ export default function PostEditor({ mode, postId }: Props) {
       <form onSubmit={handleSubmit}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '1.5rem', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem' }}>
+            <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 16, padding: '1.5rem' }}>
               <div style={{ marginBottom: '1rem' }}>
                 <label style={labelStyle}>Judul Berita *</label>
                 <input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
@@ -149,7 +149,7 @@ export default function PostEditor({ mode, postId }: Props) {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
+            <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Publikasi</h3>
               <div style={{ marginBottom: '1rem' }}>
                 <label style={labelStyle}>Status</label>
@@ -172,7 +172,7 @@ export default function PostEditor({ mode, postId }: Props) {
                 )}
               </div>
             </div>
-            <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
+            <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Kategori</h3>
               <select value={form.categoryId} onChange={e => setForm(f => ({ ...f, categoryId: e.target.value }))}
                 style={{ ...inputStyle, cursor: 'pointer' }}>
@@ -180,7 +180,7 @@ export default function PostEditor({ mode, postId }: Props) {
                 {categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
               </select>
             </div>
-            <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
+            <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Foto Sampul</h3>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {coverPreview && <img src={coverPreview} alt="Preview" style={{ width: '100%', height: 150, objectFit: 'cover', borderRadius: 10, marginBottom: '0.75rem' }} />}

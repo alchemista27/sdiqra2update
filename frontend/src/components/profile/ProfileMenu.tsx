@@ -37,17 +37,17 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
           onClick={() => setOpen(!open)}
           style={{
             display: 'flex', alignItems: 'center', gap: '0.5rem',
-            background: isDark ? 'rgba(255,255,255,0.1)' : '#F3F4F6',
-            border: isDark ? '1px solid rgba(255,255,255,0.15)' : '1px solid #E5E7EB',
-            borderRadius: 12, padding: '0.35rem 0.75rem 0.35rem 0.35rem',
+            background: isDark ? 'rgba(255,255,255,0.1)' : 'var(--color-neutral)',
+            border: isDark ? '1px solid rgba(255,255,255,0.15)' : '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-md)', padding: '0.35rem 0.75rem 0.35rem 0.35rem',
             cursor: 'pointer', transition: 'all 0.15s',
-            color: isDark ? '#fff' : '#374151',
+            color: isDark ? '#fff' : 'var(--color-primary)',
           }}
-          onMouseEnter={e => e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.18)' : '#E5E7EB'}
-          onMouseLeave={e => e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.1)' : '#F3F4F6'}
+          onMouseEnter={e => e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.18)' : 'var(--color-border)'}
+          onMouseLeave={e => e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.1)' : 'var(--color-neutral)'}
         >
           <div style={{
-            width: 32, height: 32, borderRadius: 10,
+            width: 32, height: 32, borderRadius: 'var(--radius-sm)',
             background: 'var(--color-primary)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontWeight: 800, fontSize: 12, color: '#fff',
@@ -65,14 +65,13 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
         {open && (
           <div className="dropdown-animate-in" style={{
             position: 'absolute', right: 0, top: 'calc(100% + 8px)',
-            background: '#fff', borderRadius: 14, minWidth: 240,
-            boxShadow: '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)',
+            background: '#fff', borderRadius: 'var(--radius-md)', minWidth: 240,
             zIndex: 100, overflow: 'hidden',
           }}>
             <div style={{ padding: '1rem 1rem 0.75rem', borderBottom: '1px solid #F3F4F6' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{
-                  width: 40, height: 40, borderRadius: 12,
+                  width: 40, height: 40, borderRadius: 'var(--radius-md)',
                   background: 'var(--color-primary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontWeight: 800, fontSize: 14, color: '#fff', flexShrink: 0,
@@ -80,16 +79,16 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                   {initials}
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: '#111827', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {user?.name || 'User'}
                   </div>
-                  <div style={{ fontSize: 12, color: '#6B7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <div style={{ fontSize: 12, color: 'var(--color-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {user?.email || ''}
                   </div>
                   {user?.role && (
                     <div style={{
                       display: 'inline-block', marginTop: 4,
-                      padding: '0.1rem 0.5rem', borderRadius: 6,
+                      padding: '0.1rem 0.5rem', borderRadius: 'var(--radius-sm)',
                       background: '#D1FAE5', color: '#065F46',
                       fontSize: 10, fontWeight: 700,
                     }}>
@@ -104,24 +103,24 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                 onClick={() => { setOpen(false); setEditPwOpen(true); }}
                 style={{
                   width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem',
-                  padding: '0.6rem 0.75rem', borderRadius: 10, border: 'none',
+                  padding: '0.6rem 0.75rem', borderRadius: 'var(--radius-sm)', border: 'none',
                   background: 'transparent', cursor: 'pointer', fontSize: 13,
-                  color: '#374151', fontWeight: 500, transition: 'background 0.1s',
+                  color: 'var(--color-primary)', fontWeight: 500, transition: 'background 0.1s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = '#F3F4F6'}
+                onMouseEnter={e => e.currentTarget.style.background = 'var(--color-neutral)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#6B7280' }}>lock</span>
+                <span className="material-symbols-outlined" style={{ fontSize: 18, color: 'var(--color-primary)' }}>lock</span>
                 Edit Password
               </button>
 
-              <div style={{ height: 1, background: '#F3F4F6', margin: '0.25rem 0.5rem' }} />
+              <div style={{ height: 1, background: 'var(--color-neutral)', margin: '0.25rem 0.5rem' }} />
 
               <button
                 onClick={() => { setOpen(false); onLogout(); }}
                 style={{
                   width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem',
-                  padding: '0.6rem 0.75rem', borderRadius: 10, border: 'none',
+                  padding: '0.6rem 0.75rem', borderRadius: 'var(--radius-sm)', border: 'none',
                   background: 'transparent', cursor: 'pointer', fontSize: 13,
                   color: '#DC2626', fontWeight: 500, transition: 'background 0.1s',
                 }}

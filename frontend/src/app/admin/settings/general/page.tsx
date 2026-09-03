@@ -10,10 +10,10 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 function SectionCard({ title, icon, children }: { title: string; icon: string; children: React.ReactNode }) {
   return (
-    <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem', marginBottom: '1.25rem' }}>
+    <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.5rem', marginBottom: '1.25rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem', paddingBottom: '0.875rem', borderBottom: '1px solid #F3F4F6' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#1B6B44' }}>{icon}</span>
-        <h2 style={{ fontSize: 16, fontWeight: 700, color: '#111827', margin: 0 }}>{title}</h2>
+        <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--color-tertiary)' }}>{icon}</span>
+        <h2 style={{ fontSize: 16, fontWeight: 700, color: 'var(--color-primary)', margin: 0 }}>{title}</h2>
       </div>
       {children}
     </div>
@@ -26,14 +26,14 @@ function InputField({ label, value, onChange, placeholder, type = 'text', hint }
 }) {
   const inputStyle = {
     width: '100%', padding: '0.75rem 1rem',
-    border: '1.5px solid #E5E7EB', borderRadius: 10,
+    border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)',
     fontSize: 14, fontFamily: 'inherit',
     boxSizing: 'border-box' as const,
     outline: 'none', transition: 'border-color 0.15s',
   };
   return (
     <div style={{ marginBottom: '1rem' }}>
-      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>{label}</label>
+      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>{label}</label>
       <input type={type} value={value} onChange={e => onChange(e.target.value)}
         placeholder={placeholder} style={inputStyle} />
       {hint && <div style={{ fontSize: 12, color: '#9CA3AF', marginTop: '0.25rem' }}>{hint}</div>}
@@ -47,9 +47,9 @@ function ImageUploadCard({ label, currentUrl, onUpload, hint }: {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <div style={{ marginBottom: '1rem' }}>
-      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>{label}</label>
+      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.5rem' }}>{label}</label>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-        <div style={{ width: 80, height: 80, border: '2px dashed #E5E7EB', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#F9FAFB', flexShrink: 0 }}>
+        <div style={{ width: 80, height: 80, border: '2px dashed var(--color-border)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: 'var(--color-neutral)', flexShrink: 0 }}>
           {currentUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={currentUrl.startsWith('/') ? `${API_URL.replace('/api','')}${currentUrl}` : currentUrl}
@@ -60,11 +60,11 @@ function ImageUploadCard({ label, currentUrl, onUpload, hint }: {
         </div>
         <div>
           <button type="button" onClick={() => ref.current?.click()}
-            style={{ padding: '0.55rem 1rem', background: '#F3F4F6', color: '#374151', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
+            style={{ padding: '0.55rem 1rem', background: 'var(--color-neutral)', color: 'var(--color-primary)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
             <span className="material-symbols-outlined" style={{ fontSize: 16 }}>upload</span> Pilih File
           </button>
           {hint && <div style={{ fontSize: 12, color: '#9CA3AF' }}>{hint}</div>}
-          {currentUrl && <div style={{ fontSize: 11, color: '#6B7280', marginTop: '0.2rem', fontFamily: 'monospace', wordBreak: 'break-all' }}>{currentUrl}</div>}
+          {currentUrl && <div style={{ fontSize: 11, color: 'var(--color-primary)', marginTop: '0.2rem', fontFamily: 'monospace', wordBreak: 'break-all' }}>{currentUrl}</div>}
           <input ref={ref} type="file" accept="image/*" style={{ display: 'none' }}
             onChange={e => { const f = e.target.files?.[0]; if (f) onUpload(f); }} />
         </div>
@@ -135,24 +135,24 @@ function FooterQuickLinksEditor({ value, onChange }: { value: string; onChange: 
       {links.length > 0 && (
         <div style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           {links.map((link, idx) => (
-            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 0.75rem', background: '#F9FAFB', borderRadius: 8, border: '1px solid #E5E7EB' }}>
+            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 0.75rem', background: 'var(--color-neutral)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-border)' }}>
               {editingIndex === idx ? (
                 <>
-                  <input value={editLabel} onChange={e => setEditLabel(e.target.value)} placeholder="Label" style={{ flex: 1, padding: '0.4rem 0.6rem', border: '1px solid #D1D5DB', borderRadius: 6, fontSize: 13 }} />
-                  <input value={editUrl} onChange={e => setEditUrl(e.target.value)} placeholder="/path" style={{ flex: 1, padding: '0.4rem 0.6rem', border: '1px solid #D1D5DB', borderRadius: 6, fontSize: 13 }} />
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', fontSize: 12, color: '#6B7280', whiteSpace: 'nowrap' }}>
-                    <input type="checkbox" checked={editExternal} onChange={e => setEditExternal(e.target.checked)} style={{ accentColor: '#1B6B44' }} />External
+                  <input value={editLabel} onChange={e => setEditLabel(e.target.value)} placeholder="Label" style={{ flex: 1, padding: '0.4rem 0.6rem', border: '1px solid #D1D5DB', borderRadius: 'var(--radius-sm)', fontSize: 13 }} />
+                  <input value={editUrl} onChange={e => setEditUrl(e.target.value)} placeholder="/path" style={{ flex: 1, padding: '0.4rem 0.6rem', border: '1px solid #D1D5DB', borderRadius: 'var(--radius-sm)', fontSize: 13 }} />
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>
+                    <input type="checkbox" checked={editExternal} onChange={e => setEditExternal(e.target.checked)} style={{ accentColor: 'var(--color-tertiary)' }} />External
                   </label>
-                  <button onClick={saveEdit} style={{ padding: '0.3rem 0.6rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 6, fontSize: 12, cursor: 'pointer' }}>✓</button>
-                  <button onClick={() => setEditingIndex(null)} style={{ padding: '0.3rem 0.6rem', background: '#F3F4F6', color: '#374151', border: 'none', borderRadius: 6, fontSize: 12, cursor: 'pointer' }}>✕</button>
+                  <button onClick={saveEdit} style={{ padding: '0.3rem 0.6rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 12, cursor: 'pointer' }}>✓</button>
+                  <button onClick={() => setEditingIndex(null)} style={{ padding: '0.3rem 0.6rem', background: 'var(--color-neutral)', color: 'var(--color-primary)', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 12, cursor: 'pointer' }}>✕</button>
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#1B6B44' }}>link</span>
-                  <span style={{ flex: 1, fontSize: 13, fontWeight: 600, color: '#111827' }}>{link.label}</span>
-                  <span style={{ flex: 1, fontSize: 12, color: '#6B7280', fontFamily: 'monospace' }}>{link.url}</span>
-                  {link.external && <span style={{ fontSize: 10, background: '#FEF3C7', color: '#92400E', padding: '0.1rem 0.4rem', borderRadius: 4 }}>External</span>}
-                  <button onClick={() => startEdit(idx)} style={{ padding: '0.25rem 0.5rem', background: 'none', border: 'none', cursor: 'pointer', color: '#6B7280' }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span></button>
+                  <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--color-tertiary)' }}>link</span>
+                  <span style={{ flex: 1, fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>{link.label}</span>
+                  <span style={{ flex: 1, fontSize: 12, color: 'var(--color-primary)', fontFamily: 'monospace' }}>{link.url}</span>
+                  {link.external && <span style={{ fontSize: 10, background: '#FEF3C7', color: '#92400E', padding: '0.1rem 0.4rem', borderRadius: 'var(--radius-sm)' }}>External</span>}
+                  <button onClick={() => startEdit(idx)} style={{ padding: '0.25rem 0.5rem', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-primary)' }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span></button>
                   <button onClick={() => handleDelete(idx)} style={{ padding: '0.25rem 0.5rem', background: 'none', border: 'none', cursor: 'pointer', color: '#DC2626' }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>delete</span></button>
                 </>
               )}
@@ -161,12 +161,12 @@ function FooterQuickLinksEditor({ value, onChange }: { value: string; onChange: 
         </div>
       )}
       <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-        <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Label menu" style={{ flex: '1 1 120px', padding: '0.6rem 0.8rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13 }} />
-        <input value={newUrl} onChange={e => setNewUrl(e.target.value)} placeholder="/path" style={{ flex: '1 1 100px', padding: '0.6rem 0.8rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13 }} />
-        <label style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: 12, color: '#6B7280', padding: '0.5rem' }}>
-          <input type="checkbox" checked={newExternal} onChange={e => setNewExternal(e.target.checked)} style={{ accentColor: '#1B6B44' }} />External
+        <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Label menu" style={{ flex: '1 1 120px', padding: '0.6rem 0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 13 }} />
+        <input value={newUrl} onChange={e => setNewUrl(e.target.value)} placeholder="/path" style={{ flex: '1 1 100px', padding: '0.6rem 0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 13 }} />
+        <label style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: 12, color: 'var(--color-primary)', padding: '0.5rem' }}>
+          <input type="checkbox" checked={newExternal} onChange={e => setNewExternal(e.target.checked)} style={{ accentColor: 'var(--color-tertiary)' }} />External
         </label>
-        <button onClick={handleAdd} disabled={!newLabel.trim() || !newUrl.trim()} style={{ padding: '0.6rem 1rem', background: newLabel.trim() && newUrl.trim() ? '#1B6B44' : '#E5E7EB', color: '#fff', border: 'none', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: newLabel.trim() && newUrl.trim() ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+        <button onClick={handleAdd} disabled={!newLabel.trim() || !newUrl.trim()} style={{ padding: '0.6rem 1rem', background: newLabel.trim() && newUrl.trim() ? 'var(--color-tertiary)' : 'var(--color-border)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 13, fontWeight: 600, cursor: newLabel.trim() && newUrl.trim() ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
           <span className="material-symbols-outlined" style={{ fontSize: 16 }}>add</span> Tambah
         </button>
       </div>
@@ -174,7 +174,7 @@ function FooterQuickLinksEditor({ value, onChange }: { value: string; onChange: 
         <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: '0.3rem' }}>Pintasan URL:</div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
           {quickUrls.map(u => (
-            <button key={u} type="button" onClick={() => setNewUrl(u)} style={{ padding: '0.2rem 0.5rem', background: newUrl === u ? '#1B6B44' : '#F3F4F6', color: newUrl === u ? '#fff' : '#374151', border: 'none', borderRadius: 4, fontSize: 11, cursor: 'pointer', fontFamily: 'monospace' }}>{u}</button>
+            <button key={u} type="button" onClick={() => setNewUrl(u)} style={{ padding: '0.2rem 0.5rem', background: newUrl === u ? 'var(--color-tertiary)' : 'var(--color-neutral)', color: newUrl === u ? '#fff' : 'var(--color-primary)', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 11, cursor: 'pointer', fontFamily: 'monospace' }}>{u}</button>
           ))}
         </div>
       </div>
@@ -237,17 +237,17 @@ export default function AdminGeneralSettingsPage() {
   return (
     <div style={{ maxWidth: 760 }}>
       {toast && (
-        <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? '#111827' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 12, fontSize: 14, zIndex: 999, boxShadow: '0 8px 32px rgba(0,0,0,0.2)', animation: 'fadeIn 0.2s ease' }}>
+        <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? 'var(--color-primary)' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 'var(--radius-md)', fontSize: 14, zIndex: 999, animation: 'fadeIn 0.2s ease' }}>
           {toast.msg}
         </div>
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
-          <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '0.25rem' }}>Pengaturan Umum</h1>
-          <p style={{ fontSize: 14, color: '#6B7280', margin: 0 }}>Konfigurasi identitas sekolah, logo, kontak, dan media sosial.</p>
+          <h1 style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>Pengaturan Umum</h1>
+          <p style={{ fontSize: 14, color: 'var(--color-primary)', margin: 0 }}>Konfigurasi identitas sekolah, logo, kontak, dan media sosial.</p>
         </div>
         <button onClick={handleSave} disabled={saving}
-          style={{ padding: '0.65rem 1.5rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: 14 }}>
+          style={{ padding: '0.65rem 1.5rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: 14 }}>
           <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{saving ? 'sync' : 'save'}</span>
           {saving ? 'Menyimpan...' : 'Simpan Semua'}
         </button>
@@ -275,7 +275,7 @@ export default function AdminGeneralSettingsPage() {
           onUpload={handleFaviconUpload}
           hint="Rekomendasi: ICO atau PNG, 32×32px atau 64×64px"
         />
-        <div style={{ background: '#F0FDF4', border: '1px solid #A7F3D0', borderRadius: 10, padding: '0.75rem 1rem', fontSize: 13, color: '#065F46' }}>
+        <div style={{ background: '#F0FDF4', border: '1px solid #A7F3D0', borderRadius: 'var(--radius-sm)', padding: '0.75rem 1rem', fontSize: 13, color: '#065F46' }}>
           <strong>Info:</strong> Setelah upload logo baru, klik &quot;Simpan Semua&quot; untuk memastikan URL tersimpan ke database.
         </div>
       </SectionCard>
@@ -303,7 +303,7 @@ export default function AdminGeneralSettingsPage() {
       </SectionCard>
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '0.5rem' }}>
         <button onClick={handleSave} disabled={saving}
-          style={{ padding: '0.75rem 2rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 15 }}>
+          style={{ padding: '0.75rem 2rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-md)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 15 }}>
           <span className="material-symbols-outlined" style={{ fontSize: 20 }}>{saving ? 'sync' : 'check_circle'}</span>
           {saving ? 'Menyimpan...' : 'Simpan Pengaturan'}
         </button>

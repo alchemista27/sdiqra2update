@@ -37,44 +37,44 @@ export default function AdminCategoriesPage() {
 
   return (
     <div>
-      <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '1.5rem' }}>Manajemen Kategori</h1>
+      <h1 style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)', marginBottom: '1.5rem' }}>Manajemen Kategori</h1>
 
       <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: '1.5rem', alignItems: 'start' }}>
-        <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem' }}>
-          <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: '1rem', color: '#111827' }}>Tambah Kategori Baru</h2>
-          {error && <div style={{ background: '#FEF2F2', color: '#DC2626', borderRadius: 10, padding: '0.6rem 1rem', marginBottom: '1rem', fontSize: 13 }}><span className="material-symbols-outlined">warning</span> {error}</div>}
+        <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
+          <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: '1rem', color: 'var(--color-primary)' }}>Tambah Kategori Baru</h2>
+          {error && <div style={{ background: '#FEF2F2', color: '#DC2626', borderRadius: 'var(--radius-sm)', padding: '0.6rem 1rem', marginBottom: '1rem', fontSize: 13 }}><span className="material-symbols-outlined">warning</span> {error}</div>}
           <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>Nama Kategori *</label>
+              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>Nama Kategori *</label>
               <input value={name} onChange={e => setName(e.target.value)} required placeholder="Misalnya: Pengumuman"
-                style={{ width: '100%', padding: '0.7rem 1rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, boxSizing: 'border-box', fontFamily: 'inherit' }} />
+                style={{ width: '100%', padding: '0.7rem 1rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, boxSizing: 'border-box', fontFamily: 'inherit' }} />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>Deskripsi (opsional)</label>
+              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>Deskripsi (opsional)</label>
               <input value={description} onChange={e => setDescription(e.target.value)} placeholder="Deskripsi singkat..."
-                style={{ width: '100%', padding: '0.7rem 1rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, boxSizing: 'border-box', fontFamily: 'inherit' }} />
+                style={{ width: '100%', padding: '0.7rem 1rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, boxSizing: 'border-box', fontFamily: 'inherit' }} />
             </div>
-            <button type="submit" disabled={saving} style={{ padding: '0.7rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 14, cursor: 'pointer', marginTop: '0.25rem' }}>
+            <button type="submit" disabled={saving} style={{ padding: '0.7rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontSize: 14, cursor: 'pointer', marginTop: '0.25rem' }}>
               {saving ? 'Menyimpan...' : '+ Tambah Kategori'}
             </button>
           </form>
         </div>
-        <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, overflow: 'hidden' }}>
+        <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
           {loading ? <div style={{ padding: '3rem', textAlign: 'center', color: '#9CA3AF' }}>Memuat...</div> : categories.length === 0 ? (
             <div style={{ padding: '3rem', textAlign: 'center', color: '#9CA3AF' }}>Belum ada kategori.</div>
           ) : (
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead><tr style={{ background: '#F9FAFB', borderBottom: '1px solid #E5E7EB' }}>
-                {['Nama', 'Slug', 'Jumlah Berita', 'Aksi'].map(h => <th key={h} style={{ padding: '0.875rem 1rem', textAlign: 'left', fontSize: 12, fontWeight: 700, color: '#6B7280', textTransform: 'uppercase' }}>{h}</th>)}
+              <thead><tr style={{ background: 'var(--color-neutral)', borderBottom: '1px solid var(--color-border)' }}>
+                {['Nama', 'Slug', 'Jumlah Berita', 'Aksi'].map(h => <th key={h} style={{ padding: '0.875rem 1rem', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase' }}>{h}</th>)}
               </tr></thead>
               <tbody>
                 {categories.map((cat: any) => (
                   <tr key={cat.id} style={{ borderBottom: '1px solid #F3F4F6' }}>
-                    <td style={{ padding: '1rem', fontSize: 14, fontWeight: 600, color: '#111827' }}>{cat.name}</td>
-                    <td style={{ padding: '1rem', fontSize: 13, color: '#6B7280', fontFamily: 'monospace' }}>{cat.slug}</td>
-                    <td style={{ padding: '1rem', fontSize: 13, color: '#6B7280' }}>{cat._count?.posts || 0} berita</td>
+                    <td style={{ padding: '1rem', fontSize: 14, fontWeight: 600, color: 'var(--color-primary)' }}>{cat.name}</td>
+                    <td style={{ padding: '1rem', fontSize: 13, color: 'var(--color-primary)', fontFamily: 'monospace' }}>{cat.slug}</td>
+                    <td style={{ padding: '1rem', fontSize: 13, color: 'var(--color-primary)' }}>{cat._count?.posts || 0} berita</td>
                     <td style={{ padding: '1rem' }}>
-                      <button onClick={() => handleDelete(cat.id)} style={{ padding: '0.35rem 0.85rem', background: '#FEE2E2', color: '#DC2626', borderRadius: 8, fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>Hapus</button>
+                      <button onClick={() => handleDelete(cat.id)} style={{ padding: '0.35rem 0.85rem', background: '#FEE2E2', color: '#DC2626', borderRadius: 'var(--radius-sm)', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>Hapus</button>
                     </td>
                   </tr>
                 ))}

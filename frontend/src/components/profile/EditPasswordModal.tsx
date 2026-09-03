@@ -102,34 +102,34 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
       <div
         className="modal-animate-in"
         style={{
-          background: '#fff', borderRadius: 16, width: '100%', maxWidth: 440,
-          margin: '0 1rem', boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+          background: '#fff', borderRadius: 'var(--radius-md)', width: '100%', maxWidth: 440,
+          margin: '0 1rem',
         }}
         onClick={e => e.stopPropagation()}
       >
         <div style={{
-          padding: '1.25rem 1.5rem', borderBottom: '1px solid #E5E7EB',
+          padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--color-border)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#1B6B44' }}>lock</span>
-            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#111827' }}>Ubah Password</h3>
+            <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--color-tertiary)' }}>lock</span>
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: 'var(--color-primary)' }}>Ubah Password</h3>
           </div>
           <button
             onClick={handleClose}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: 4, borderRadius: 8, display: 'flex',
+              padding: 4, borderRadius: 'var(--radius-sm)', display: 'flex',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#6B7280' }}>close</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--color-primary)' }}>close</span>
           </button>
         </div>
         <form onSubmit={handleSubmit} style={{ padding: '1.5rem' }}>
           {error && (
             <div style={{
               background: '#FEE2E2', color: '#991B1B', padding: '0.75rem 1rem',
-              borderRadius: 10, fontSize: 13, marginBottom: '1rem',
+              borderRadius: 'var(--radius-sm)', fontSize: 13, marginBottom: '1rem',
               display: 'flex', alignItems: 'center', gap: '0.5rem',
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>error</span>
@@ -140,7 +140,7 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
           {success && (
             <div style={{
               background: '#D1FAE5', color: '#065F46', padding: '0.75rem 1rem',
-              borderRadius: 10, fontSize: 13, marginBottom: '1rem',
+              borderRadius: 'var(--radius-sm)', fontSize: 13, marginBottom: '1rem',
               display: 'flex', alignItems: 'center', gap: '0.5rem',
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>check_circle</span>
@@ -148,7 +148,7 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
             </div>
           )}
           <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>
               Password Lama
             </label>
             <div style={{ position: 'relative' }}>
@@ -159,11 +159,11 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
                 placeholder="Masukkan password lama"
                 style={{
                   width: '100%', padding: '0.65rem 2.5rem 0.65rem 0.85rem',
-                  border: '1px solid #D1D5DB', borderRadius: 10, fontSize: 14,
+                  border: '1px solid #D1D5DB', borderRadius: 'var(--radius-sm)', fontSize: 14,
                   outline: 'none', boxSizing: 'border-box',
                   transition: 'border-color 0.15s',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = '#1B6B44'}
+                onFocus={e => e.currentTarget.style.borderColor = 'var(--color-tertiary)'}
                 onBlur={e => e.currentTarget.style.borderColor = '#D1D5DB'}
               />
               <button
@@ -181,7 +181,7 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
             </div>
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>
               Password Baru
             </label>
             <div style={{ position: 'relative' }}>
@@ -192,11 +192,11 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
                 placeholder="Masukkan password baru (min. 8 karakter)"
                 style={{
                   width: '100%', padding: '0.65rem 2.5rem 0.65rem 0.85rem',
-                  border: '1px solid #D1D5DB', borderRadius: 10, fontSize: 14,
+                  border: '1px solid #D1D5DB', borderRadius: 'var(--radius-sm)', fontSize: 14,
                   outline: 'none', boxSizing: 'border-box',
                   transition: 'border-color 0.15s',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = '#1B6B44'}
+                onFocus={e => e.currentTarget.style.borderColor = 'var(--color-tertiary)'}
                 onBlur={e => e.currentTarget.style.borderColor = '#D1D5DB'}
               />
               <button
@@ -214,7 +214,7 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
             </div>
           </div>
           <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>
               Konfirmasi Password Baru
             </label>
             <div style={{ position: 'relative' }}>
@@ -225,11 +225,11 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
                 placeholder="Ulangi password baru"
                 style={{
                   width: '100%', padding: '0.65rem 2.5rem 0.65rem 0.85rem',
-                  border: '1px solid #D1D5DB', borderRadius: 10, fontSize: 14,
+                  border: '1px solid #D1D5DB', borderRadius: 'var(--radius-sm)', fontSize: 14,
                   outline: 'none', boxSizing: 'border-box',
                   transition: 'border-color 0.15s',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = '#1B6B44'}
+                onFocus={e => e.currentTarget.style.borderColor = 'var(--color-tertiary)'}
                 onBlur={e => e.currentTarget.style.borderColor = '#D1D5DB'}
               />
               <button
@@ -252,8 +252,8 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               onClick={handleClose}
               disabled={loading}
               style={{
-                padding: '0.6rem 1.25rem', borderRadius: 10, border: '1px solid #D1D5DB',
-                background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600,
+                padding: '0.6rem 1.25rem', borderRadius: 'var(--radius-sm)', border: '1px solid #D1D5DB',
+                background: '#fff', color: 'var(--color-primary)', fontSize: 13, fontWeight: 600,
                 cursor: 'pointer',
               }}
             >
@@ -263,8 +263,8 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               type="submit"
               disabled={loading}
               style={{
-                padding: '0.6rem 1.25rem', borderRadius: 10, border: 'none',
-                background: loading ? '#9CA3AF' : '#1B6B44', color: '#fff',
+                padding: '0.6rem 1.25rem', borderRadius: 'var(--radius-sm)', border: 'none',
+                background: loading ? '#9CA3AF' : 'var(--color-tertiary)', color: '#fff',
                 fontSize: 13, fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer',
                 display: 'flex', alignItems: 'center', gap: '0.4rem',
               }}

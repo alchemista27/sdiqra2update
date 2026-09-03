@@ -55,7 +55,7 @@ export function MediaPickerModal({ isOpen, onClose, onSelect }: MediaPickerModal
         maxHeight: '85vh', display: 'flex', flexDirection: 'column', overflow: 'hidden'
       }}>
         {/* Header */}
-        <div style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #E5E7EB', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>Pilih Gambar dari Media Library</h2>
           <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
             <span className="material-symbols-outlined" style={{ color: '#6B7280' }}>close</span>
@@ -63,7 +63,7 @@ export function MediaPickerModal({ isOpen, onClose, onSelect }: MediaPickerModal
         </div>
 
         {/* Toolbar */}
-        <div style={{ padding: '1rem 1.5rem', background: '#F9FAFB', borderBottom: '1px solid #E5E7EB' }}>
+        <div style={{ padding: '1rem 1.5rem', background: '#F9FAFB', borderBottom: '1px solid var(--color-border)' }}>
           <button onClick={() => fileRef.current?.click()} disabled={uploading}
             style={{
               padding: '0.6rem 1.2rem', background: '#1B6B44', color: '#fff', border: 'none',
@@ -86,7 +86,7 @@ export function MediaPickerModal({ isOpen, onClose, onSelect }: MediaPickerModal
               {media.map((m) => (
                 <div key={m.publicId} onClick={() => { onSelect(m.url); onClose(); }}
                   style={{
-                    background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8, overflow: 'hidden',
+                    background: '#fff', border: '1px solid var(--color-border)', borderRadius: 8, overflow: 'hidden',
                     cursor: 'pointer', position: 'relative', aspectRatio: '1'
                   }}>
                   <img src={m.url} alt={m.publicId} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -126,7 +126,7 @@ export function ImageInput({ label, value, onChange }: { label: string; value: s
           <input
             value={value || ''} onChange={e => onChange(e.target.value)}
             placeholder="URL Gambar (atau klik tombol/preview untuk pilih)"
-            style={{ width: '100%', padding: '0.55rem 0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: '0.55rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: 8, fontSize: 13, boxSizing: 'border-box' }}
           />
           <button type="button" onClick={() => setIsOpen(true)}
             style={{

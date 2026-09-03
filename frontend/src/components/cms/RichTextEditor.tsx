@@ -58,7 +58,7 @@ function ToolbarButton({
 }
 
 function Divider() {
-  return <div style={{ width: 1, height: 22, background: '#E5E7EB', margin: '0 0.25rem' }} />;
+  return <div style={{ width: 1, height: 22, background: 'var(--color-border)', margin: '0 0.25rem' }} />;
 }
 export default function RichTextEditor({ content, onChange, placeholder }: Props) {
   const [bubblePos, setBubblePos] = useState<{ x: number; y: number } | null>(null);
@@ -142,11 +142,11 @@ export default function RichTextEditor({ content, onChange, placeholder }: Props
   if (!editor) return null;
 
   return (
-    <div ref={editorWrapRef} style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, overflow: 'hidden', background: '#fff', position: 'relative' }}>
+    <div ref={editorWrapRef} style={{ border: '1px solid var(--color-border)', borderRadius: 12, overflow: 'hidden', background: '#fff', position: 'relative' }}>
       <div style={{
         display: 'flex', flexWrap: 'wrap', alignItems: 'center',
         gap: '0.15rem', padding: '0.5rem 0.75rem',
-        background: '#F9FAFB', borderBottom: '1px solid #E5E7EB',
+        background: '#F9FAFB', borderBottom: '1px solid var(--color-border)',
       }}>
         <ToolbarButton title="Heading 1" active={editor.isActive('heading', { level: 1 })} onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}>H1</ToolbarButton>
         <ToolbarButton title="Heading 2" active={editor.isActive('heading', { level: 2 })} onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}>H2</ToolbarButton>
@@ -247,7 +247,7 @@ export default function RichTextEditor({ content, onChange, placeholder }: Props
           color: #adb5bd; content: attr(data-placeholder);
           float: left; height: 0; pointer-events: none;
         }
-        .tiptap-editor hr { border: none; border-top: 2px solid #E5E7EB; margin: 1.5em 0; }
+        .tiptap-editor hr { border: none; border-top: 2px solid var(--color-border); margin: 1.5em 0; }
        
         /* ─── Resizable Image Styles ─────────────────────── */
         .resizable-image-node {

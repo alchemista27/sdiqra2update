@@ -80,7 +80,7 @@ export default function AdminDashboard() {
                 <td style={{ padding: '1rem 1.5rem', color: 'var(--color-primary)', fontSize: 14, fontWeight: 500 }}>{post.title}</td>
                 <td style={{ padding: '1rem 1.5rem' }}>
                   <span style={{
-                    display: 'inline-block', padding: '4px 8px', borderRadius: 6, fontSize: 12, fontWeight: 600,
+                    display: 'inline-block', padding: '4px 8px', borderRadius: 'var(--radius-sm)', fontSize: 12, fontWeight: 600,
                     backgroundColor: post.status === 'PUBLISHED' ? '#D1FAE5' : 'var(--color-neutral)',
                     color: post.status === 'PUBLISHED' ? '#065F46' : 'var(--color-primary)'
                   }}>

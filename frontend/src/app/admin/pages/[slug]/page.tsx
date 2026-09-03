@@ -58,32 +58,32 @@ export default function EditPage() {
       <header style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <Link href="/admin/pages" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          width: 40, height: 40, borderRadius: '50%', background: '#F3F4F6', color: '#4B5563', textDecoration: 'none'
+          width: 40, height: 40, borderRadius: '50%', background: 'var(--color-neutral)', color: '#4B5563', textDecoration: 'none'
         }}>
           <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         </Link>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827' }}>Edit Halaman: {form.title}</h1>
-          <div style={{ fontSize: 13, color: '#6B7280', marginTop: 4 }}>Path: /{slug === 'homepage' ? '' : slug}</div>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>Edit Halaman: {form.title}</h1>
+          <div style={{ fontSize: 13, color: 'var(--color-primary)', marginTop: 4 }}>Path: /{slug === 'homepage' ? '' : slug}</div>
         </div>
       </header>
 
-      {error && <div style={{ background: '#FEE2E2', color: '#B91C1C', padding: '1rem', borderRadius: 8, marginBottom: '1.5rem' }}>{error}</div>}
+      {error && <div style={{ background: '#FEE2E2', color: '#B91C1C', padding: '1rem', borderRadius: 'var(--radius-sm)', marginBottom: '1.5rem' }}>{error}</div>}
 
-      <div style={{ background: '#fff', padding: '2rem', borderRadius: 12, border: '1px solid #E5E7EB' }}>
+      <div style={{ background: '#fff', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
         <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{ display: 'block', fontSize: 14, fontWeight: 600, color: '#374151', marginBottom: 8 }}>Judul Halaman</label>
+          <label style={{ display: 'block', fontSize: 14, fontWeight: 600, color: 'var(--color-primary)', marginBottom: 8 }}>Judul Halaman</label>
           <input
             type="text"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
-            style={{ width: '100%', padding: '12px 16px', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 15 }}
+            style={{ width: '100%', padding: '12px 16px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 15 }}
           />
         </div>
 
         <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{ display: 'block', fontSize: 14, fontWeight: 600, color: '#374151', marginBottom: 8 }}>Konten (HTML)</label>
-          <div style={{ border: '1.5px solid #E5E7EB', borderRadius: 10, overflow: 'hidden' }}>
+          <label style={{ display: 'block', fontSize: 14, fontWeight: 600, color: 'var(--color-primary)', marginBottom: 8 }}>Konten (HTML)</label>
+          <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
             <RichTextEditor
               content={form.content}
               onChange={(html: string) => setForm({ ...form, content: html })}
@@ -96,7 +96,7 @@ export default function EditPage() {
             onClick={handleSave}
             disabled={saving}
             style={{
-              padding: '12px 24px', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 8,
+              padding: '12px 24px', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)',
               fontSize: 15, fontWeight: 600, cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.7 : 1
             }}
           >

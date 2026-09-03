@@ -116,7 +116,7 @@ export default function AdminLoginPage() {
 
           <div style={{ width: '100%', textAlign: 'center', marginBottom: '1.5rem' }}>
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>Masuk ke Dashboard CMS</h2>
-            <p style={{ fontSize: '0.75rem', color: '#6B7280' }}>Masukkan email dan password akun Anda untuk melanjutkan.</p>
+            <p style={{ fontSize: '0.75rem', color: 'var(--color-primary)' }}>Masukkan email dan password akun Anda untuk melanjutkan.</p>
           </div>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>

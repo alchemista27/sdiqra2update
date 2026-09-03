@@ -14,9 +14,9 @@ const ROLES = [
 const ROLE_COLORS: Record<string, string> = {
   SUPER_ADMIN: '#7C3AED',
   KEPALA_SEKOLAH: '#DC2626',
-  ADMIN_HUMAS: '#1B6B44',
+  ADMIN_HUMAS: 'var(--color-tertiary)',
   ADMIN_PERSONALIA: '#2563EB',
-  KARYAWAN: '#6B7280',
+  KARYAWAN: 'var(--color-primary)',
 };
 
 function formatDate(dateStr: string) {
@@ -141,9 +141,9 @@ export default function AdminUsersPage() {
 
   if (!currentUser || currentUser.role !== 'SUPER_ADMIN') {
     return (
-      <div style={{ textAlign: 'center', padding: '4rem', color: '#6B7280' }}>
+      <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--color-primary)' }}>
         <span className="material-symbols-outlined" style={{ fontSize: 64, color: '#DC2626' }}>lock</span>
-        <h2 style={{ fontSize: 20, color: '#111827', marginTop: '1rem' }}>Akses Ditolak</h2>
+        <h2 style={{ fontSize: 20, color: 'var(--color-primary)', marginTop: '1rem' }}>Akses Ditolak</h2>
         <p>Halaman ini hanya dapat diakses oleh Super Admin.</p>
       </div>
     );
@@ -158,40 +158,40 @@ export default function AdminUsersPage() {
   return (
     <div>
       {toast && (
-        <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? '#111827' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 12, fontSize: 14, zIndex: 999 }}>
+        <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? 'var(--color-primary)' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 'var(--radius-md)', fontSize: 14, zIndex: 999 }}>
           {toast.msg}
         </div>
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
-          <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '0.25rem' }}>Kelola User</h1>
-          <p style={{ fontSize: 14, color: '#6B7280', margin: 0 }}>Kelola akun pengguna dan peran akses sistem.</p>
+          <h1 style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>Kelola User</h1>
+          <p style={{ fontSize: 14, color: 'var(--color-primary)', margin: 0 }}>Kelola akun pengguna dan peran akses sistem.</p>
         </div>
         <button onClick={() => { resetForm(); setShowForm(true); }}
-          style={{ padding: '0.65rem 1.25rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          style={{ padding: '0.65rem 1.25rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
           <span className="material-symbols-outlined" style={{ fontSize: 18 }}>person_add</span>
           Tambah User
         </button>
       </div>
-      <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, overflow: 'hidden' }}>
+      <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
-            <tr style={{ background: '#F9FAFB', borderBottom: '1px solid #E5E7EB' }}>
-              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Nama</th>
-              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Email</th>
-              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Role</th>
-              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Status</th>
-              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Dibuat</th>
-              <th style={{ padding: '1rem', textAlign: 'right', fontSize: 13, fontWeight: 600, color: '#6B7280' }}>Aksi</th>
+            <tr style={{ background: 'var(--color-neutral)', borderBottom: '1px solid var(--color-border)' }}>
+              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Nama</th>
+              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Email</th>
+              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Role</th>
+              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Status</th>
+              <th style={{ padding: '1rem', textAlign: 'left', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Dibuat</th>
+              <th style={{ padding: '1rem', textAlign: 'right', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)' }}>Aksi</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, i) => (
               <tr key={user.id} style={{ borderBottom: i < users.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <td style={{ padding: '1rem', fontSize: 14, fontWeight: 600, color: '#111827' }}>{user.name}</td>
-                <td style={{ padding: '1rem', fontSize: 14, color: '#6B7280' }}>{user.email}</td>
+                <td style={{ padding: '1rem', fontSize: 14, fontWeight: 600, color: 'var(--color-primary)' }}>{user.name}</td>
+                <td style={{ padding: '1rem', fontSize: 14, color: 'var(--color-primary)' }}>{user.email}</td>
                 <td style={{ padding: '1rem' }}>
-                  <span style={{ display: 'inline-block', padding: '0.25rem 0.75rem', borderRadius: 20, fontSize: 12, fontWeight: 600, background: `${ROLE_COLORS[user.role] || '#6B7280'}20`, color: ROLE_COLORS[user.role] || '#6B7280' }}>
+                  <span style={{ display: 'inline-block', padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-md)', fontSize: 12, fontWeight: 600, background: `${ROLE_COLORS[user.role] || 'var(--color-primary)'}20`, color: ROLE_COLORS[user.role] || 'var(--color-primary)' }}>
                     {user.role.replace('_', ' ')}
                   </span>
                 </td>
@@ -200,12 +200,12 @@ export default function AdminUsersPage() {
                     <span className="material-symbols-outlined" style={{ fontSize: 18, color: user.isActive ? '#22C55E' : '#9CA3AF' }}>
                       {user.isActive ? 'check_circle' : 'cancel'}
                     </span>
-                    <span style={{ fontSize: 13, color: user.isActive ? '#166534' : '#6B7280' }}>{user.isActive ? 'Aktif' : 'Nonaktif'}</span>
+                    <span style={{ fontSize: 13, color: user.isActive ? '#166534' : 'var(--color-primary)' }}>{user.isActive ? 'Aktif' : 'Nonaktif'}</span>
                   </button>
                 </td>
-                <td style={{ padding: '1rem', fontSize: 13, color: '#6B7280' }}>{formatDate(user.createdAt)}</td>
+                <td style={{ padding: '1rem', fontSize: 13, color: 'var(--color-primary)' }}>{formatDate(user.createdAt)}</td>
                 <td style={{ padding: '1rem', textAlign: 'right' }}>
-                  <button onClick={() => openEdit(user)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem', color: '#6B7280' }} title="Edit">
+                  <button onClick={() => openEdit(user)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem', color: 'var(--color-primary)' }} title="Edit">
                     <span className="material-symbols-outlined" style={{ fontSize: 18 }}>edit</span>
                   </button>
                   {user.id !== currentUser.id && (
@@ -221,38 +221,38 @@ export default function AdminUsersPage() {
       </div>
       {showForm && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div style={{ background: '#fff', borderRadius: 16, padding: '1.5rem', width: '100%', maxWidth: 480 }}>
-            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: '1.25rem', color: '#111827' }}>
+          <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', padding: '1.5rem', width: '100%', maxWidth: 480 }}>
+            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
               {editingUser ? 'Edit User' : 'Tambah User Baru'}
             </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.35rem' }}>Nama Lengkap</label>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>Nama Lengkap</label>
                 <input value={formName} onChange={e => setFormName(e.target.value)} placeholder="Contoh: Ahmad Fauzi"
-                  style={{ width: '100%', padding: '0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, boxSizing: 'border-box' }} />
+                  style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, boxSizing: 'border-box' }} />
               </div>
 
               {!editingUser && (
                 <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.35rem' }}>Email</label>
+                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>Email</label>
                   <input value={formEmail} onChange={e => setFormEmail(e.target.value)} placeholder="email@sekolah.sch.id" type="email"
-                    style={{ width: '100%', padding: '0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, boxSizing: 'border-box' }} />
+                    style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, boxSizing: 'border-box' }} />
                 </div>
               )}
 
               {!editingUser && (
                 <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.35rem' }}>Password</label>
+                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>Password</label>
                   <input value={formPassword} onChange={e => setFormPassword(e.target.value)} placeholder="Minimal 6 karakter" type="password"
-                    style={{ width: '100%', padding: '0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, boxSizing: 'border-box' }} />
+                    style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, boxSizing: 'border-box' }} />
                 </div>
               )}
 
               <div>
-                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.35rem' }}>Role / Peran</label>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>Role / Peran</label>
                 <select value={formRole} onChange={e => setFormRole(e.target.value)}
-                  style={{ width: '100%', padding: '0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 10, fontSize: 14, background: '#fff', boxSizing: 'border-box' }}>
+                  style={{ width: '100%', padding: '0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, background: '#fff', boxSizing: 'border-box' }}>
                   {ROLES.map(r => (
                     <option key={r.value} value={r.value}>{r.label}</option>
                   ))}
@@ -265,15 +265,15 @@ export default function AdminUsersPage() {
               {editingUser && (
                 <div>
                   {!showResetPw ? (
-                    <button onClick={() => setShowResetPw(true)} style={{ background: 'none', border: 'none', color: '#1B6B44', fontSize: 13, fontWeight: 600, cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <button onClick={() => setShowResetPw(true)} style={{ background: 'none', border: 'none', color: 'var(--color-tertiary)', fontSize: 13, fontWeight: 600, cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                       <span className="material-symbols-outlined" style={{ fontSize: 16 }}>lock_reset</span> Reset Password
                     </button>
                   ) : (
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                       <input value={newPassword} onChange={e => setNewPassword(e.target.value)} placeholder="Password baru" type="password"
-                        style={{ flex: 1, padding: '0.5rem 0.75rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13 }} />
-                      <button onClick={handleResetPassword} style={{ padding: '0.5rem 1rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>Reset</button>
-                      <button onClick={() => { setShowResetPw(false); setNewPassword(''); }} style={{ padding: '0.5rem', background: '#F3F4F6', border: 'none', borderRadius: 8, cursor: 'pointer' }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>close</span></button>
+                        style={{ flex: 1, padding: '0.5rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 13 }} />
+                      <button onClick={handleResetPassword} style={{ padding: '0.5rem 1rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>Reset</button>
+                      <button onClick={() => { setShowResetPw(false); setNewPassword(''); }} style={{ padding: '0.5rem', background: 'var(--color-neutral)', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>close</span></button>
                     </div>
                   )}
                 </div>
@@ -281,8 +281,8 @@ export default function AdminUsersPage() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem' }}>
-              <button onClick={resetForm} style={{ padding: '0.65rem 1.25rem', background: '#F3F4F6', color: '#374151', border: 'none', borderRadius: 10, fontWeight: 600, cursor: 'pointer' }}>Batal</button>
-              <button onClick={handleSave} disabled={saving} style={{ padding: '0.65rem 1.5rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <button onClick={resetForm} style={{ padding: '0.65rem 1.25rem', background: 'var(--color-neutral)', color: 'var(--color-primary)', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, cursor: 'pointer' }}>Batal</button>
+              <button onClick={handleSave} disabled={saving} style={{ padding: '0.65rem 1.5rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{saving ? 'sync' : 'save'}</span>
                 {saving ? 'Menyimpan...' : (editingUser ? 'Simpan' : 'Buat User')}
               </button>

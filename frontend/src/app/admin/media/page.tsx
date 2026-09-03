@@ -72,15 +72,15 @@ export default function AdminMediaPage() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: 12 }}>
           <div>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: '#111827' }}>Media Library</h1>
-            <p style={{ fontSize: 13, color: '#6B7280', marginTop: 2 }}>
+            <h1 style={{ fontSize: 22, fontWeight: 800, color: 'var(--color-primary)' }}>Media Library</h1>
+            <p style={{ fontSize: 13, color: 'var(--color-primary)', marginTop: 2 }}>
               {total} file · hanya dari Admin Humas &amp; Super Admin
             </p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ display: 'flex', background: '#F3F4F6', borderRadius: 10, padding: 3, gap: 2 }}>
+            <div style={{ display: 'flex', background: 'var(--color-neutral)', borderRadius: 'var(--radius-sm)', padding: 3, gap: 2 }}>
               {(['grid', 'list'] as ViewMode[]).map(v => (
-                <button key={v} onClick={() => setView(v)} style={{ padding: '0.4rem 0.65rem', borderRadius: 8, border: 'none', cursor: 'pointer', background: view === v ? '#fff' : 'transparent', color: view === v ? '#1B6B44' : '#6B7280', boxShadow: view === v ? '0 1px 4px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
+                <button key={v} onClick={() => setView(v)} style={{ padding: '0.4rem 0.65rem', borderRadius: 'var(--radius-sm)', border: 'none', cursor: 'pointer', background: view === v ? '#fff' : 'transparent', color: view === v ? 'var(--color-tertiary)' : 'var(--color-primary)', boxShadow: view === v ? '0 1px 4px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
                   <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{v === 'grid' ? 'grid_view' : 'view_list'}</span>
                 </button>
               ))}
@@ -88,7 +88,7 @@ export default function AdminMediaPage() {
             <button
               onClick={() => fileRef.current?.click()}
               disabled={uploading}
-              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0.6rem 1.25rem', background: 'linear-gradient(135deg, #1B6B44, #2D9164)', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0.6rem 1.25rem', background: 'linear-gradient(135deg, #1B6B44, #2D9164)', color: '#fff', border: 'none', borderRadius: 'var(--radius-md)', fontWeight: 700, fontSize: 14, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{uploading ? 'sync' : 'upload'}</span>
               {uploading ? 'Mengupload...' : 'Upload File'}
             </button>
@@ -106,9 +106,9 @@ export default function AdminMediaPage() {
               Memuat media...
             </div>
           ) : media.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem', background: '#F9FAFB', borderRadius: 16, border: '2px dashed #E5E7EB' }}>
+            <div style={{ textAlign: 'center', padding: '4rem', background: 'var(--color-neutral)', borderRadius: 'var(--radius-md)', border: '2px dashed var(--color-border)' }}>
               <span className="material-symbols-outlined" style={{ fontSize: 48, color: '#D1D5DB', display: 'block', marginBottom: 12 }}>photo_library</span>
-              <p style={{ fontWeight: 600, color: '#374151' }}>Belum ada media</p>
+              <p style={{ fontWeight: 600, color: 'var(--color-primary)' }}>Belum ada media</p>
               <p style={{ fontSize: 13, color: '#9CA3AF', marginTop: 4 }}>Upload file atau drag & drop di sini</p>
             </div>
           ) : view === 'grid' ? (
@@ -117,7 +117,7 @@ export default function AdminMediaPage() {
                 <div
                   key={item.publicId}
                   onClick={() => setSelected(item)}
-                  style={{ cursor: 'pointer', borderRadius: 12, overflow: 'hidden', border: selected?.publicId === item.publicId ? '2.5px solid #1B6B44' : '2px solid transparent', background: '#F3F4F6', position: 'relative', aspectRatio: '1', transition: 'border-color 0.15s, transform 0.15s' }}
+                  style={{ cursor: 'pointer', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: selected?.publicId === item.publicId ? '2.5px solid #1B6B44' : '2px solid transparent', background: 'var(--color-neutral)', position: 'relative', aspectRatio: '1', transition: 'border-color 0.15s, transform 0.15s' }}
                 >
                   <Image src={item.url} alt={item.displayName || ''} fill sizes="200px" style={{ objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', color: '#fff', fontSize: 11, padding: '1.25rem 0.5rem 0.4rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -127,12 +127,12 @@ export default function AdminMediaPage() {
               ))}
             </div>
           ) : (
-            <div style={{ background: '#fff', borderRadius: 14, border: '1px solid #E5E7EB', overflow: 'hidden' }}>
+            <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
-                  <tr style={{ background: '#F9FAFB', borderBottom: '1px solid #E5E7EB' }}>
+                  <tr style={{ background: 'var(--color-neutral)', borderBottom: '1px solid var(--color-border)' }}>
                     {['Preview', 'Nama', 'Tipe', 'Ukuran', 'Dimensi', 'Tanggal'].map(h => (
-                      <th key={h} style={{ padding: '0.75rem 1rem', textAlign: 'left', fontSize: 12, fontWeight: 700, color: '#6B7280', textTransform: 'uppercase' }}>{h}</th>
+                      <th key={h} style={{ padding: '0.75rem 1rem', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -140,15 +140,15 @@ export default function AdminMediaPage() {
                   {media.map(item => (
                     <tr key={item.publicId} onClick={() => setSelected(item)} style={{ borderBottom: '1px solid #F3F4F6', cursor: 'pointer', background: selected?.publicId === item.publicId ? '#F0FDF4' : 'transparent', transition: 'background 0.15s' }}>
                       <td style={{ padding: '0.5rem 1rem' }}>
-                        <div style={{ position: 'relative', width: 48, height: 48, borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
+                        <div style={{ position: 'relative', width: 48, height: 48, borderRadius: 'var(--radius-sm)', overflow: 'hidden', flexShrink: 0 }}>
                           <Image src={item.url} alt={item.displayName || ''} fill sizes="48px" style={{ objectFit: 'cover' }} />
                         </div>
                       </td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 13, fontWeight: 500, color: '#111827', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.displayName}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: '#6B7280' }}>{item.format?.toUpperCase()}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: '#6B7280', whiteSpace: 'nowrap' }}>{formatBytes(item.bytes)}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: '#6B7280', whiteSpace: 'nowrap' }}>{item.width && item.height ? `${item.width}×${item.height}` : '—'}</td>
-                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: '#6B7280', whiteSpace: 'nowrap' }}>{new Date(item.createdAt).toLocaleDateString('id-ID')}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 13, fontWeight: 500, color: 'var(--color-primary)', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.displayName}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)' }}>{item.format?.toUpperCase()}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{formatBytes(item.bytes)}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{item.width && item.height ? `${item.width}×${item.height}` : '—'}</td>
+                      <td style={{ padding: '0.5rem 1rem', fontSize: 12, color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>{new Date(item.createdAt).toLocaleDateString('id-ID')}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -157,45 +157,45 @@ export default function AdminMediaPage() {
           )}
           {totalPages > 1 && (
             <div style={{ textAlign: 'center', marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
-              <button onClick={() => fetchMedia(page - 1)} disabled={page <= 1 || loading} style={{ padding: '0.5rem 1rem', background: '#F3F4F6', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: page <= 1 ? 'not-allowed' : 'pointer', opacity: page <= 1 ? 0.4 : 1 }}>←</button>
-              <span style={{ padding: '0.5rem 1rem', fontSize: 13, color: '#374151' }}>Hal {page} / {totalPages}</span>
-              <button onClick={() => fetchMedia(page + 1)} disabled={page >= totalPages || loading} style={{ padding: '0.5rem 1rem', background: '#F3F4F6', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: page >= totalPages ? 'not-allowed' : 'pointer', opacity: page >= totalPages ? 0.4 : 1 }}>→</button>
+              <button onClick={() => fetchMedia(page - 1)} disabled={page <= 1 || loading} style={{ padding: '0.5rem 1rem', background: 'var(--color-neutral)', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: 13, cursor: page <= 1 ? 'not-allowed' : 'pointer', opacity: page <= 1 ? 0.4 : 1 }}>←</button>
+              <span style={{ padding: '0.5rem 1rem', fontSize: 13, color: 'var(--color-primary)' }}>Hal {page} / {totalPages}</span>
+              <button onClick={() => fetchMedia(page + 1)} disabled={page >= totalPages || loading} style={{ padding: '0.5rem 1rem', background: 'var(--color-neutral)', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: 13, cursor: page >= totalPages ? 'not-allowed' : 'pointer', opacity: page >= totalPages ? 0.4 : 1 }}>→</button>
             </div>
           )}
         </div>
       </div>
-      <div style={{ width: 280, flexShrink: 0, background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+      <div style={{ width: 280, flexShrink: 0, background: '#fff', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.5rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {!selected ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, textAlign: 'center', color: '#9CA3AF' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 48, marginBottom: 12, color: '#E5E7EB' }}>image_search</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 48, marginBottom: 12, color: 'var(--color-border)' }}>image_search</span>
             <p style={{ fontSize: 13 }}>Pilih sebuah gambar untuk melihat detailnya</p>
           </div>
         ) : (
           <>
-            <div style={{ borderRadius: 12, overflow: 'hidden', position: 'relative', aspectRatio: '1', background: '#F3F4F6' }}>
+            <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', position: 'relative', aspectRatio: '1', background: 'var(--color-neutral)' }}>
               <Image src={selected.url} alt={selected.displayName || ''} fill sizes="280px" style={{ objectFit: 'contain' }} />
             </div>
             <div>
-              <p style={{ fontWeight: 700, fontSize: 15, color: '#111827', wordBreak: 'break-all' }}>{selected.displayName}</p>
-              <p style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>{selected.format?.toUpperCase()} · {formatBytes(selected.bytes)}</p>
-              {selected.width && <p style={{ fontSize: 12, color: '#6B7280' }}>{selected.width} × {selected.height} px</p>}
+              <p style={{ fontWeight: 700, fontSize: 15, color: 'var(--color-primary)', wordBreak: 'break-all' }}>{selected.displayName}</p>
+              <p style={{ fontSize: 12, color: 'var(--color-primary)', marginTop: 4 }}>{selected.format?.toUpperCase()} · {formatBytes(selected.bytes)}</p>
+              {selected.width && <p style={{ fontSize: 12, color: 'var(--color-primary)' }}>{selected.width} × {selected.height} px</p>}
               <p style={{ fontSize: 12, color: '#9CA3AF', marginTop: 4 }}>{new Date(selected.createdAt).toLocaleString('id-ID')}</p>
             </div>
             <div>
-              <p style={{ fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 6 }}>URL Gambar</p>
+              <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--color-primary)', marginBottom: 6 }}>URL Gambar</p>
               <div style={{ display: 'flex', gap: 8 }}>
-                <input readOnly value={selected.url} style={{ flex: 1, padding: '0.5rem 0.75rem', border: '1px solid #E5E7EB', borderRadius: 8, fontSize: 11, color: '#6B7280', background: '#F9FAFB', minWidth: 0 }} />
-                <button onClick={() => copyUrl(selected.url)} title="Salin URL" style={{ padding: '0.5rem 0.75rem', background: copied ? '#D1FAE5' : '#F0FDF4', border: `1px solid ${copied ? '#86EFAC' : '#BBF7D0'}`, borderRadius: 8, cursor: 'pointer', color: '#1B6B44', flexShrink: 0 }}>
+                <input readOnly value={selected.url} style={{ flex: 1, padding: '0.5rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 11, color: 'var(--color-primary)', background: 'var(--color-neutral)', minWidth: 0 }} />
+                <button onClick={() => copyUrl(selected.url)} title="Salin URL" style={{ padding: '0.5rem 0.75rem', background: copied ? '#D1FAE5' : '#F0FDF4', border: `1px solid ${copied ? '#86EFAC' : '#BBF7D0'}`, borderRadius: 'var(--radius-sm)', cursor: 'pointer', color: 'var(--color-tertiary)', flexShrink: 0 }}>
                   <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{copied ? 'check' : 'content_copy'}</span>
                 </button>
               </div>
             </div>
 
-            <a href={selected.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '0.6rem', background: '#F0FDF4', color: '#1B6B44', border: '1px solid #86EFAC', borderRadius: 10, fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
+            <a href={selected.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '0.6rem', background: '#F0FDF4', color: 'var(--color-tertiary)', border: '1px solid #86EFAC', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
               <span className="material-symbols-outlined" style={{ fontSize: 16 }}>open_in_new</span> Buka Original
             </a>
 
-            <button onClick={() => handleDelete(selected)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '0.6rem', background: '#FEF2F2', color: '#DC2626', border: '1px solid #FCA5A5', borderRadius: 10, fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
+            <button onClick={() => handleDelete(selected)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '0.6rem', background: '#FEF2F2', color: '#DC2626', border: '1px solid #FCA5A5', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
               <span className="material-symbols-outlined" style={{ fontSize: 16 }}>delete</span> Hapus Permanen
             </button>
           </>

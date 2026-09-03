@@ -37,7 +37,7 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
     return (
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: '0.75rem' }}>
         {Array.from({ length: perPage }).map((_, i) => (
-          <div key={i} style={{ aspectRatio: '5/4', background: 'linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%)', borderRadius: 12, animation: 'shimmer 1.5s infinite' }} />
+          <div key={i} style={{ aspectRatio: '5/4', background: 'linear-gradient(90deg, #F3F4F6 25%, var(--color-border) 50%, #F3F4F6 75%)', borderRadius: 12, animation: 'shimmer 1.5s infinite' }} />
         ))}
         <style>{`@keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
       </div>
@@ -64,7 +64,7 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
               borderRadius: 12,
               overflow: 'hidden',
               cursor: 'pointer',
-              background: '#E5E7EB',
+              background: 'var(--color-border)',
               boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
             }}
             className="gallery-feed-item"
@@ -102,7 +102,7 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               width: 38, height: 38, borderRadius: 10,
-              border: '1.5px solid #E5E7EB',
+              border: '1px solid var(--color-border)',
               background: page === 0 ? '#F9FAFB' : '#fff',
               color: page === 0 ? '#D1D5DB' : '#1B6B44',
               cursor: page === 0 ? 'not-allowed' : 'pointer',
@@ -118,7 +118,7 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
               onClick={() => setPage(p)}
               style={{
                 width: 38, height: 38, borderRadius: 10,
-                border: p === page ? 'none' : '1.5px solid #E5E7EB',
+                border: p === page ? 'none' : '1px solid var(--color-border)',
                 background: p === page ? 'linear-gradient(135deg, #1B6B44, #2D9164)' : '#fff',
                 color: p === page ? '#fff' : '#374151',
                 fontWeight: p === page ? 700 : 500,
@@ -138,7 +138,7 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               width: 38, height: 38, borderRadius: 10,
-              border: '1.5px solid #E5E7EB',
+              border: '1px solid var(--color-border)',
               background: page === totalPages - 1 ? '#F9FAFB' : '#fff',
               color: page === totalPages - 1 ? '#D1D5DB' : '#1B6B44',
               cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',

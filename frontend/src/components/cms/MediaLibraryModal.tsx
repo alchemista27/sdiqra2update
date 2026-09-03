@@ -84,7 +84,7 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
       }}>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '1rem 1.5rem', borderBottom: '1px solid #E5E7EB', flexShrink: 0,
+          padding: '1rem 1.5rem', borderBottom: '1px solid var(--color-border)', flexShrink: 0,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: '#111827', margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -167,7 +167,7 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
               </div>
               {selected && (
                 <div style={{
-                  width: 220, flexShrink: 0, borderLeft: '1px solid #E5E7EB',
+                  width: 220, flexShrink: 0, borderLeft: '1px solid var(--color-border)',
                   padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem',
                   overflowY: 'auto', background: '#FAFAFA',
                 }}>
@@ -227,7 +227,7 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
         </div>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '1rem 1.5rem', borderTop: '1px solid #E5E7EB', flexShrink: 0,
+          padding: '1rem 1.5rem', borderTop: '1px solid var(--color-border)', flexShrink: 0,
           background: '#FAFAFA',
         }}>
           <p style={{ fontSize: 13, color: '#6B7280' }}>
@@ -245,7 +245,7 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
               disabled={!selected}
               style={{
                 padding: '0.6rem 1.5rem',
-                background: selected ? 'linear-gradient(135deg, #1B6B44, #2D9164)' : '#E5E7EB',
+                background: selected ? 'linear-gradient(135deg, #1B6B44, #2D9164)' : 'var(--color-border)',
                 color: selected ? '#fff' : '#9CA3AF',
                 border: 'none', borderRadius: 12, fontWeight: 700, fontSize: 14,
                 cursor: selected ? 'pointer' : 'not-allowed',
