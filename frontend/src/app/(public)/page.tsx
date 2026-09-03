@@ -12,7 +12,7 @@ export default function HomePage() {
       </header>
 
       {/* Highlight Boxes */}
-      <section className="highlight-boxes container">
+      <section className="highlight-boxes container mb-16 md:mb-24">
         <div className="card highlight-card">
           <i className="icon highlight-icon">menu_book</i>
           <h3>Kurikulum Islami</h3>
@@ -31,7 +31,7 @@ export default function HomePage() {
       </section>
 
       {/* Sekilas Info / About */}
-      <section className="about container">
+      <section className="about container py-16 md:py-24 mb-16">
         <div className="about-text">
           <h2>Sekilas Tentang Kami</h2>
           <p>SD Islam Terpadu Iqra 2 hadir untuk menjawab tantangan pendidikan modern yang tidak hanya fokus pada akademis, tetapi juga penanaman karakter Islami yang kuat sejak dini.</p>
@@ -44,10 +44,10 @@ export default function HomePage() {
       </section>
 
       {/* Program / Fakultas */}
-      <section className="programs">
+      <section className="programs py-16 md:py-24 mt-8">
         <div className="container">
           <h2>Program Unggulan</h2>
-          <div className="program-grid">
+          <div className="program-grid mt-10">
             <div className="card">
               <i className="icon program-icon">auto_stories</i>
               <h3>Tahfidz</h3>
