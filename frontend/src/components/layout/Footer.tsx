@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {currentYear} {siteName}. {settings.footer_copyright || 'All rights reserved.'}</p>
+        <p>{settings.footer_copyright ? settings.footer_copyright : <>&copy; {currentYear} {siteName}. All rights reserved.</>}</p>
       </div>
     </footer>
   );
