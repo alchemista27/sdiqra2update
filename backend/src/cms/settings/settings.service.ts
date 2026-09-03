@@ -6,11 +6,19 @@ export class SettingsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll() {
-    const settings = await this.prisma.siteSetting.findMany();
-    const result: Record<string, string> = {};
-    settings.forEach((s) => {
-      result[s.key] = s.value;
+    return this.prisma.siteSetting.findMany();
+  }
+
+  async getByKey(key: string) {
+    const setting = await this.prisma.siteSetting.findUnique({ where: { key } });
+    return setting ? setting.value : null;
+  }
+
+  async upsert(key: string, value: string) {
+    return this.prisma.siteSetting.upsert({
+      where: { key },
+      update: { value },
+      create: { key, value },
     });
-    return result;
   }
 }
