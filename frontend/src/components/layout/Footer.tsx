@@ -6,6 +6,22 @@ import { useSiteSettings } from '@/components/SiteLogo';
 export default function Footer() {
   const { siteName, settings } = useSiteSettings();
   const currentYear = new Date().getFullYear();
+  
+  let quickLinks = [];
+  try {
+    quickLinks = settings.footer_quick_links ? JSON.parse(settings.footer_quick_links) : [];
+  } catch (e) {
+    quickLinks = [];
+  }
+
+  if (quickLinks.length === 0) {
+    quickLinks = [
+      { label: 'Tentang Kami', url: '/tentang-sekolah', external: false },
+      { label: 'Pendaftaran PPDB', url: '/ppdb', external: false },
+      { label: 'Berita & Artikel', url: '/berita', external: false },
+      { label: 'Kontak Kami', url: '/kontak', external: false }
+    ];
+  }
 
   return (
     <footer className="footer">
@@ -14,18 +30,21 @@ export default function Footer() {
           <h3>{siteName}</h3>
           <p>{settings.footer_copyright || 'Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.'}</p>
           <div className="footer-social">
-            {settings.social_facebook && <Link href={formatUrl(settings.social_facebook)}><i className="icon">facebook</i></Link>}
-            {settings.social_instagram && <Link href={formatUrl(settings.social_instagram)}><i className="icon">photo_camera</i></Link>}
-            {settings.social_youtube && <Link href={formatUrl(settings.social_youtube)}><i className="icon">play_circle_filled</i></Link>}
+            {settings.social_facebook && <Link href={formatUrl(settings.social_facebook)} target="_blank"><i className="icon">facebook</i></Link>}
+            {settings.social_instagram && <Link href={formatUrl(settings.social_instagram)} target="_blank"><i className="icon">photo_camera</i></Link>}
+            {settings.social_youtube && <Link href={formatUrl(settings.social_youtube)} target="_blank"><i className="icon">play_circle_filled</i></Link>}
           </div>
         </div>
         <div className="footer-col">
           <h3>Quick Links</h3>
           <ul>
-            <li><Link href="/tentang-sekolah">Tentang Kami</Link></li>
-            <li><Link href="/ppdb">Pendaftaran PPDB</Link></li>
-            <li><Link href="/berita">Berita &amp; Artikel</Link></li>
-            <li><Link href="/kontak">Kontak Kami</Link></li>
+            {quickLinks.map((link: any, idx: number) => (
+              <li key={idx}>
+                <Link href={link.external ? formatUrl(link.url) : link.url} target={link.external ? '_blank' : undefined}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="footer-col">
