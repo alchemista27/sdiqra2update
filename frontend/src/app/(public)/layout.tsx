@@ -2,6 +2,7 @@
 import "../globals.css";
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import './public.css';
 import NewsTicker from "@/components/NewsTicker";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {

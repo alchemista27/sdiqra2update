@@ -29,7 +29,7 @@ export default function GaleriPage() {
               <div key={i} style={{ aspectRatio: '5/4', background: 'linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%)', borderRadius: 12, animation: 'shimmer 1.5s infinite' }} />
             ))}
           </div>
-          <style>{`@keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
+          
         </div>
       </div>
     );
