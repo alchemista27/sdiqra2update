@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { settingsApi } from '@/lib/api';
 import { getToken } from '@/lib/auth';
+import { ImageInput } from '@/components/admin/MediaPickerModal';
 
 interface GenericItem { icon?: string; title?: string; desc?: string; image?: string; value?: string; label?: string }
 type Settings = Record<string, string>
@@ -134,7 +135,7 @@ export default function AdminHomepageEditorPage() {
               </button>
             </div>
             {fields.includes('icon') && <IconPicker value={item.icon || ''} onChange={v => updateItem(i, 'icon', v)} />}
-            {fields.includes('image') && <TextInput label="URL Gambar" value={item.image || ''} onChange={v => updateItem(i, 'image', v)} placeholder="https://..." />}
+            {fields.includes('image') && <ImageInput label="Gambar Fasilitas" value={item.image || ''} onChange={v => updateItem(i, 'image', v)} />}
             {fields.includes('value') && <TextInput label="Angka/Nilai" value={item.value || ''} onChange={v => updateItem(i, 'value', v)} />}
             {fields.includes('label') && <TextInput label="Label" value={item.label || ''} onChange={v => updateItem(i, 'label', v)} />}
             {fields.includes('title') && <TextInput label="Judul" value={item.title || ''} onChange={v => updateItem(i, 'title', v)} />}
@@ -170,7 +171,7 @@ export default function AdminHomepageEditorPage() {
       </div>
 
       <SectionCard title="1. Hero Section" icon="image">
-        <TextInput label="URL Gambar Latar" value={s('hero_image')} onChange={set('hero_image')} placeholder="https://..." />
+        <ImageInput label="Gambar Latar Hero" value={s('hero_image')} onChange={set('hero_image')} />
         <TextInput label="Judul Hero" value={s('hero_title')} onChange={set('hero_title')} />
         <TextInput label="Subjudul / Deskripsi" value={s('hero_subtitle')} onChange={set('hero_subtitle')} textarea rows={3} />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
@@ -194,7 +195,7 @@ export default function AdminHomepageEditorPage() {
         <TextInput label="Judul" value={s('about_title')} onChange={set('about_title')} />
         <TextInput label="Paragraf 1" value={s('about_desc1')} onChange={set('about_desc1')} textarea rows={3} />
         <TextInput label="Paragraf 2" value={s('about_desc2')} onChange={set('about_desc2')} textarea rows={3} />
-        <TextInput label="URL Gambar" value={s('about_image')} onChange={set('about_image')} placeholder="https://..." />
+        <ImageInput label="Gambar About" value={s('about_image')} onChange={set('about_image')} />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
           <TextInput label="Teks Tombol" value={s('about_button_text')} onChange={set('about_button_text')} />
           <TextInput label="URL Tombol" value={s('about_button_url')} onChange={set('about_button_url')} />
@@ -206,7 +207,7 @@ export default function AdminHomepageEditorPage() {
       </SectionCard>
 
       <SectionCard title="4. School Stats" icon="bar_chart">
-        <TextInput label="URL Gambar Latar" value={s('stats_image')} onChange={set('stats_image')} placeholder="https://..." />
+        <ImageInput label="Gambar Latar Stats" value={s('stats_image')} onChange={set('stats_image')} />
         <button onClick={() => saveSection('stats_bg', { stats_image: s('stats_image') })} style={{ padding: '0.5rem 1rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13, marginBottom: '1rem' }}>Simpan Background</button>
         {renderListEditor(stats, setStats, ['value', 'label'], 'stats', 'homepage_stats')}
       </SectionCard>
@@ -226,7 +227,7 @@ export default function AdminHomepageEditorPage() {
       <SectionCard title="7. Mengapa Memilih Kami" icon="favorite">
         <TextInput label="Judul" value={s('why_title')} onChange={set('why_title')} />
         <TextInput label="Paragraf Pembuka" value={s('why_desc')} onChange={set('why_desc')} textarea rows={2} />
-        <TextInput label="URL Gambar Kiri" value={s('why_image')} onChange={set('why_image')} placeholder="https://..." />
+        <ImageInput label="Gambar Samping" value={s('why_image')} onChange={set('why_image')} />
         <button onClick={() => saveSection('why_intro', { why_title: s('why_title'), why_desc: s('why_desc'), why_image: s('why_image') })} style={{ padding: '0.5rem 1rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', fontSize: 13, marginBottom: '1rem' }}>Simpan Intro</button>
         {renderListEditor(whyus, setWhyus, ['icon', 'title', 'desc'], 'whyus', 'homepage_whyus')}
       </SectionCard>
