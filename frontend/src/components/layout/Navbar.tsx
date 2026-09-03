@@ -2,12 +2,15 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { settingsApi } from '@/lib/api';
+import { settingsApi, menuApi, MenuItem } from '@/lib/api';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [siteName, setSiteName] = useState('Iqra 2');
   const [logoUrl, setLogoUrl] = useState('');
+  const [phone, setPhone] = useState('+62 812 3456 7890');
+  const [email, setEmail] = useState('info@iqra2.sch.id');
+  const [menus, setMenus] = useState<MenuItem[]>([]);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -15,9 +18,15 @@ export default function Navbar() {
       const d = settingsRes.data;
       if (d.site_name) setSiteName(d.site_name);
       if (d.site_logo) setLogoUrl(d.site_logo);
+      if (d.contact_phone) setPhone(d.contact_phone);
+      if (d.contact_email) setEmail(d.contact_email);
     }).catch(() => {
-      console.warn("Info: Tidak dapat mengambil pengaturan situs (server mungkin offline).");
+      console.warn("Info: Tidak dapat mengambil pengaturan situs.");
     });
+
+    menuApi.getAll().then((res) => {
+      if (res.data) setMenus(res.data);
+    }).catch(() => console.warn("Info: Tidak dapat memuat menu."));
   }, []);
 
   const API_BASE = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
@@ -25,13 +34,43 @@ export default function Navbar() {
     ? (logoUrl.startsWith('http') ? logoUrl : `${API_BASE}${logoUrl}`)
     : null;
 
+  const renderNav = (items: MenuItem[]) => {
+    return items.filter(i => i.isActive).map(item => {
+      if (item.children && item.children.length > 0) {
+        return (
+          <li key={item.id} className="dropdown">
+            <Link href={item.url} target={item.openInNewTab ? '_blank' : undefined} className="dropdown-toggle" onClick={() => setOpen(false)}>
+              {item.label} <i className="icon dropdown-icon">arrow_drop_down</i>
+            </Link>
+            <ul className="dropdown-menu">
+              {item.children.filter(i => i.isActive).map(child => (
+                <li key={child.id}>
+                  <Link href={child.url} target={child.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
+                    {child.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      }
+      return (
+        <li key={item.id}>
+          <Link href={item.url} target={item.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
+            {item.label}
+          </Link>
+        </li>
+      );
+    });
+  };
+
   return (
     <>
       <div className="topbar">
         <div className="container topbar-content">
           <div className="topbar-contact">
-            <span><i className="icon" style={{ fontSize: 16 }}>phone</i> +62 812 3456 7890</span>
-            <span><i className="icon" style={{ fontSize: 16 }}>email</i> info@iqra2.sch.id</span>
+            <span><i className="icon" style={{ fontSize: 16 }}>phone</i> {phone}</span>
+            <span><i className="icon" style={{ fontSize: 16 }}>email</i> {email}</span>
           </div>
           <div className="topbar-social">
             <i className="icon">language</i>
@@ -57,20 +96,11 @@ export default function Navbar() {
           </button>
 
           <ul className={`nav-links ${open ? 'mobile-open' : ''}`}>
-            <li><Link href="/" onClick={() => setOpen(false)}>Beranda</Link></li>
-            
-            {/* Dropdown Menu */}
-            <li className="dropdown">
-              <Link href="/tentang-sekolah" className="dropdown-toggle" onClick={() => setOpen(false)}>
-                Tentang Sekolah <i className="icon dropdown-icon">arrow_drop_down</i>
-              </Link>
-              <ul className="dropdown-menu">
-                <li><Link href="/tentang-sekolah/sambutan" onClick={() => setOpen(false)}>Sambutan Kepala Sekolah</Link></li>
-              </ul>
-            </li>
+            {menus.length > 0 ? renderNav(menus) : (
+              // Fallback menu
+              <li><Link href="/" onClick={() => setOpen(false)}>Beranda</Link></li>
+            )}
 
-            <li><Link href="/berita" onClick={() => setOpen(false)}>Berita</Link></li>
-            <li><Link href="/kontak" onClick={() => setOpen(false)}>Kontak</Link></li>
             
             <li className="mobile-only">
               <Link href="/ppdb" className="btn-primary" onClick={() => setOpen(false)}>Daftar PPDB</Link>

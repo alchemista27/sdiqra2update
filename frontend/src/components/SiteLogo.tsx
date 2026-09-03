@@ -90,17 +90,19 @@ export default function SiteLogo({
 export function useSiteSettings() {
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [siteName, setSiteName] = useState('SD IT Iqra 2');
+  const [settings, setSettings] = useState<Record<string, string>>({});
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     settingsApi.getAll()
       .then(res => {
-        const settings = res.data;
-        if (settings.site_name) setSiteName(settings.site_name);
-        if (settings.site_logo) {
-          const url = settings.site_logo.startsWith('http') 
-            ? settings.site_logo 
-            : `${API_BASE}${settings.site_logo}`;
+        const s = res.data;
+        setSettings(s);
+        if (s.site_name) setSiteName(s.site_name);
+        if (s.site_logo) {
+          const url = s.site_logo.startsWith('http') 
+            ? s.site_logo 
+            : `${API_BASE}${s.site_logo}`;
           setLogoUrl(url);
         }
       })
@@ -108,5 +110,5 @@ export function useSiteSettings() {
       .finally(() => setLoaded(true));
   }, []);
 
-  return { logoUrl, siteName, loaded };
+  return { logoUrl, siteName, settings, loaded };
 }

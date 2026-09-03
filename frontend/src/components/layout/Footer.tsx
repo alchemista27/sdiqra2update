@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useSiteSettings } from '@/components/SiteLogo';
 
 export default function Footer() {
-  const { siteName } = useSiteSettings();
+  const { siteName, settings } = useSiteSettings();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -12,11 +12,11 @@ export default function Footer() {
         <div className="container footer-content">
           <div className="footer-col">
             <h3>{siteName}</h3>
-            <p>Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.</p>
+            <p>{settings.footer_copyright || 'Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.'}</p>
             <div className="footer-social">
-              <i className="icon">language</i>
-              <i className="icon">camera_alt</i>
-              <i className="icon">play_circle_filled</i>
+              {settings.social_facebook && <Link href={settings.social_facebook}><i className="icon">facebook</i></Link>}
+              {settings.social_instagram && <Link href={settings.social_instagram}><i className="icon">photo_camera</i></Link>}
+              {settings.social_youtube && <Link href={settings.social_youtube}><i className="icon">play_circle_filled</i></Link>}
             </div>
           </div>
           <div className="footer-col">
@@ -30,9 +30,9 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h3>Contact Info</h3>
-            <p><i className="icon">location_on</i> Jl. Pendidikan No. 123, Kota Bengkulu</p>
-            <p><i className="icon">phone</i> +62 812 3456 7890</p>
-            <p><i className="icon">email</i> info@iqra2.sch.id</p>
+            <p><i className="icon">location_on</i> {settings.contact_address || 'Jl. Pendidikan No. 123, Kota Bengkulu'}</p>
+            <p><i className="icon">phone</i> {settings.contact_phone || '+62 812 3456 7890'}</p>
+            <p><i className="icon">email</i> {settings.contact_email || 'info@iqra2.sch.id'}</p>
           </div>
         </div>
         <div className="footer-bottom">

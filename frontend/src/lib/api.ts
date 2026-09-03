@@ -286,7 +286,7 @@ export const settingsApi = {
   getAll: () => fetcher<{ data: Record<string, string> }>('/cms/settings'),
   getOne: (key: string) => fetcher<{ data: { key: string; value: string } }>(`/cms/settings/${key}`),
   updateMany: (token: string, body: Record<string, string>) =>
-    fetcher('/cms/settings', { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
+    fetcher('/cms/settings', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
   uploadLogo: (token: string, file: File) => {
     const fd = new FormData();
     fd.append('logo', file);
@@ -312,15 +312,15 @@ export interface MenuItem {
 }
 
 export const menuApi = {
-  getAll: () => fetcher<{ data: MenuItem[] }>('/cms/menu'),
+  getAll: () => fetcher<{ data: MenuItem[] }>('/cms/menus'),
   create: (token: string, body: Partial<MenuItem>) =>
-    fetcher<{ data: MenuItem }>('/cms/menu', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
+    fetcher<{ data: MenuItem }>('/cms/menus', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
   update: (token: string, id: string, body: Partial<MenuItem>) =>
-    fetcher<{ data: MenuItem }>(`/cms/menu/${id}`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
+    fetcher<{ data: MenuItem }>(`/cms/menus/${id}`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
   remove: (token: string, id: string) =>
-    fetcher(`/cms/menu/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
+    fetcher(`/cms/menus/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
   reorder: (token: string, items: { id: string; order: number }[]) =>
-    fetcher('/cms/menu/reorder', { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ items }) }),
+    fetcher('/cms/menus/reorder', { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ items }) }),
 };
 
 // ─── GALLERY ─────────────────────────────────────────────────
