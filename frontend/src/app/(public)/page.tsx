@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatUrl } from "@/lib/urlUtils";
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { settingsApi } from '@/lib/api';
 
