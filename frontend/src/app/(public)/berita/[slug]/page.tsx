@@ -1,7 +1,6 @@
 export default function SinglePostPage() {
   return (
     <>
-      {/* Page Header */}
       <header className="page-header" style={{
         background: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat",
         padding: "calc(var(--spacing-lg) * 4) var(--spacing-lg)",
@@ -14,17 +13,13 @@ export default function SinglePostPage() {
           <a href="#" style={{ color: "var(--color-surface)" }}>Beranda</a> &gt; <a href="#" style={{ color: "var(--color-surface)" }}>Berita</a> &gt; <span>Prestasi Siswa</span>
         </div>
       </header>
-
-      {/* Main Content */}
       <main className="container">
         <div className="grid-container">
-          
-          {/* Article Column */}
           <article className="article-main">
             <div className="article-cover">
               <span className="material-symbols-outlined" style={{ fontSize: "64px", color: "#ccc" }}>image</span>
             </div>
-            
+           
             <div className="article-meta">
               <span className="meta-badge">Prestasi</span>
               <div className="meta-item">
@@ -38,10 +33,10 @@ export default function SinglePostPage() {
             </div>
 
             <h1 className="article-title">Prestasi Siswa SD IT Iqra 2 di Ajang Olimpiade Nasional</h1>
-            
+           
             <div className="article-body">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies odio ut urna euismod, eget ullamcorper justo bibendum. Nulla facilisi. Sed non mi cursus, tempor magna vel, pretium elit. Nullam lacinia eros ut ante convallis, vel interdum nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-              
+             
               <p>Curabitur venenatis tellus at quam bibendum, at tristique ipsum vehicula. Sed elementum risus quis nisi dictum, vitae tincidunt metus eleifend. Morbi eget erat tincidunt, tincidunt elit ac, fermentum mauris.</p>
 
               <h2>Persiapan yang Matang</h2>
@@ -63,11 +58,7 @@ export default function SinglePostPage() {
               <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam interdum, lorem id consequat auctor, velit felis convallis nibh, eget hendrerit enim justo sed tellus. Quisque congue ligula non accumsan pellentesque.</p>
             </div>
           </article>
-
-          {/* Sidebar Column */}
           <aside className="sidebar">
-            
-            {/* Search Widget */}
             <div className="sidebar-widget">
               <h3 className="widget-title">Pencarian</h3>
               <div className="search-box">
@@ -75,8 +66,6 @@ export default function SinglePostPage() {
                 <button className="search-btn"><span className="material-symbols-outlined">search</span></button>
               </div>
             </div>
-
-            {/* Categories Widget */}
             <div className="sidebar-widget">
               <h3 className="widget-title">Kategori</h3>
               <ul className="category-list">
@@ -86,8 +75,6 @@ export default function SinglePostPage() {
                 <li className="category-item"><a href="#">Kegiatan Siswa</a> <span className="category-count">20</span></li>
               </ul>
             </div>
-
-            {/* Related News Widget */}
             <div className="sidebar-widget">
               <h3 className="widget-title">Berita Terkait</h3>
               <div className="related-news-list">
@@ -120,7 +107,7 @@ export default function SinglePostPage() {
         </div>
       </main>
 
-      
+     
     </>
   );
 }

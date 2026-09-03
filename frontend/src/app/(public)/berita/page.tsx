@@ -3,16 +3,13 @@ import Link from "next/link";
 export default function BeritaPage() {
   return (
     <>
-      {/* Page Header */}
       <header className="page-header">
         <h1>Berita &amp; Pengumuman</h1>
         <div className="breadcrumb">Beranda / Berita</div>
       </header>
 
       <main className="container">
-        {/* Grid */}
         <div className="news-grid">
-          {/* Card 1 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -26,8 +23,6 @@ export default function BeritaPage() {
               </div>
             </div>
           </Link>
-
-          {/* Card 2 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -41,8 +36,6 @@ export default function BeritaPage() {
               </div>
             </div>
           </Link>
-
-          {/* Card 3 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -56,8 +49,6 @@ export default function BeritaPage() {
               </div>
             </div>
           </Link>
-
-          {/* Card 4 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -71,8 +62,6 @@ export default function BeritaPage() {
               </div>
             </div>
           </Link>
-
-          {/* Card 5 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -86,8 +75,6 @@ export default function BeritaPage() {
               </div>
             </div>
           </Link>
-
-          {/* Card 6 */}
           <Link href="#" className="news-card">
             <div className="news-image-wrapper">
               <span className="material-symbols-outlined">image</span>
@@ -102,14 +89,12 @@ export default function BeritaPage() {
             </div>
           </Link>
         </div>
-
-        {/* Load More */}
         <div className="load-more-container">
           <button className="btn-load-more">Tampilkan Lebih Banyak</button>
         </div>
       </main>
 
-      
+     
     </>
   );
 }

@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/posts/page.tsx - Manajemen Berita
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { postsApi } from '@/lib/api';
@@ -98,8 +97,6 @@ export default function AdminPostsPage() {
             </tbody>
           </table>
         )}
-
-        {/* Pagination */}
         {pagination && pagination.totalPages > 1 && (
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', padding: '1rem 1.5rem', borderTop: '1px solid #F3F4F6' }}>
             {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(p => (

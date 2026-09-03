@@ -1,7 +1,6 @@
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
       <header className="hero">
         <div className="hero-overlay"></div>
         <div className="container hero-content">
@@ -10,8 +9,6 @@ export default function HomePage() {
           <button className="btn-primary">Pelajari Lebih Lanjut</button>
         </div>
       </header>
-
-      {/* Highlight Boxes */}
       <section className="highlight-boxes container -mt-10 md:-mt-20 mb-16 md:mb-24 relative z-10">
         <div className="card highlight-card">
           <i className="icon highlight-icon">menu_book</i>
@@ -29,8 +26,6 @@ export default function HomePage() {
           <p>Dididik oleh guru-guru berpengalaman, berdedikasi tinggi, dan kompeten di bidangnya.</p>
         </div>
       </section>
-
-      {/* Sekilas Info / About */}
       <section className="about container py-16 md:py-24 mb-16">
         <div className="about-text">
           <h2>Sekilas Tentang Kami</h2>
@@ -42,8 +37,6 @@ export default function HomePage() {
           <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" alt="Tentang SDIT Iqra 2" />
         </div>
       </section>
-
-      {/* Program / Fakultas */}
       <section className="programs py-16 md:py-24 mt-8">
         <div className="container">
           <h2>Program Unggulan</h2>
@@ -72,7 +65,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      
+     
     </>
   );
 }

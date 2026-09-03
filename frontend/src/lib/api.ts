@@ -1,4 +1,3 @@
-// src/lib/api.ts - API client helper
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 export class ApiError extends Error {
@@ -24,8 +23,6 @@ async function fetcher<T>(path: string, options?: RequestInit): Promise<T> {
   if (!res.ok) throw new ApiError(data.message || 'Terjadi kesalahan.', res.status);
   return data;
 }
-
-// ─── AUTH ─────────────────────────────────────────────────────
 export const authApi = {
   login: (email: string, password: string) =>
     fetcher<{ data: { token: string; user: Record<string, unknown> } }>('/auth/login', {
@@ -41,8 +38,6 @@ export const authApi = {
       body: JSON.stringify({ oldPassword, newPassword }),
     }),
 };
-
-// ─── CMS Posts ────────────────────────────────────────────────
 export const postsApi = {
   getAll: (params?: Record<string, string>) => {
     const query = params ? '?' + new URLSearchParams(params).toString() : '';
@@ -65,8 +60,6 @@ export const postsApi = {
   remove: (token: string, id: string) =>
     fetcher(`/cms/posts/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── PPDB TAHUN AJARAN ────────────────────────────────────────
 export const academicYearsApi = {
   getActive: () => fetcher<{ data: any }>('/ppdb/academic-years/active'),
   getAll: (token: string) => fetcher<{ data: any[] }>('/ppdb/academic-years', { headers: { Authorization: `Bearer ${token}` } }),
@@ -76,8 +69,6 @@ export const academicYearsApi = {
   delete: (token: string, id: string) => fetcher(`/ppdb/academic-years/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
   purge: (token: string, id: string) => fetcher(`/ppdb/academic-years/${id}/purge`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── PPDB PORTAL ORANG TUA ────────────────────────────────────
 export const ppdbParentApi = {
   register: (data: { name: string; email: string; phone: string; password: string }) =>
     fetcher<{ data: { token: string; user: any } }>('/auth/register-parent', {
@@ -135,8 +126,6 @@ export const ppdbParentApi = {
   bookSlot: (token: string, slotId: string) =>
     fetcher('/ppdb/observation-slots/book', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ slotId }) }),
 };
-
-// ─── PPDB ADMIN ───────────────────────────────────────────────
 export const ppdbAdminApi = {
   getStats: (token: string) =>
     fetcher<{ data: any }>('/ppdb/admin/stats', { headers: { Authorization: `Bearer ${token}` } }),
@@ -189,16 +178,12 @@ export const ppdbAdminApi = {
   updatePpdbSettings: (token: string, data: Record<string, string>) =>
     fetcher<{ data: Record<string, string> }>('/ppdb/admin/settings', { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(data) }),
 };
-
-// ─── CMS Pages ────────────────────────────────────────────────
 export const pagesApi = {
   getAll: () => fetcher<{ data: any[] }>('/cms/pages'),
   getBySlug: (slug: string) => fetcher<{ data: any }>(`/cms/pages/${slug}`),
   updateBySlug: (token: string, slug: string, body: object) =>
     fetcher(`/cms/pages/${slug}`, { method: 'PATCH', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body) }),
 };
-
-// ─── CMS Categories ──────────────────────────────────────────
 export const categoriesApi = {
   getAll: () => fetcher<{ data: any[] }>('/cms/categories'),
   create: (token: string, body: object) =>
@@ -206,8 +191,6 @@ export const categoriesApi = {
   remove: (token: string, id: string) =>
     fetcher(`/cms/categories/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── KEHADIRAN (Attendance) — Enhanced GPS ───────────────────
 export const attendanceApi = {
   // Config
   getConfig: (token: string) => fetcher<{ data: any }>('/attendance/config', { headers: { Authorization: `Bearer ${token}` } }),
@@ -242,8 +225,6 @@ export const attendanceApi = {
   },
   getAllEmployees: (token: string) => fetcher<{ data: unknown[] }>('/attendance/employees', { headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── HARI LIBUR ──────────────────────────────────────────────
 export const holidayApi = {
   getAll: (token: string, params?: Record<string, string>) => {
     const q = params ? '?' + new URLSearchParams(params).toString() : '';
@@ -255,8 +236,6 @@ export const holidayApi = {
   checkDate: (token: string, date: string) => fetcher<{ data: any }>(`/holidays/check/${date}`, { headers: { Authorization: `Bearer ${token}` } }),
   seedNational: (token: string, year: string) => fetcher(`/holidays/seed-national/${year}`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── PENGAJUAN IZIN ──────────────────────────────────────────
 export const leaveApi = {
   create: (token: string, data: any) => fetcher('/leaves', { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(data) }),
   getMyRequests: (token: string, params?: Record<string, string>) => {
@@ -271,8 +250,6 @@ export const leaveApi = {
   approve: (token: string, id: string, note?: string) => fetcher(`/leaves/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ approverNote: note }) }),
   reject: (token: string, id: string, note?: string) => fetcher(`/leaves/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ approverNote: note }) }),
 };
-
-// ─── LAPORAN ─────────────────────────────────────────────────
 const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 export const reportApi = {
   getSummary: (token: string, month: number, year: number) =>
@@ -280,8 +257,6 @@ export const reportApi = {
   downloadExcelUrl: (month: number, year: number) =>
     `${API_URL_BASE}/reports/attendance/excel?month=${month}&year=${year}`,
 };
-
-// ─── SITE SETTINGS ───────────────────────────────────────────
 export const settingsApi = {
   getAll: () => fetcher<{ data: Record<string, string> }>('/cms/settings'),
   getOne: (key: string) => fetcher<{ data: { key: string; value: string } }>(`/cms/settings/${key}`),
@@ -298,8 +273,6 @@ export const settingsApi = {
     return fetch(`${API_URL}/cms/settings/upload-favicon`, { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: fd }).then(r => r.json());
   },
 };
-
-// ─── MENU NAVIGASI ───────────────────────────────────────────
 export interface MenuItem {
   id: string;
   label: string;
@@ -322,8 +295,6 @@ export const menuApi = {
   reorder: (token: string, items: { id: string; order: number }[]) =>
     fetcher('/cms/menus/reorder', { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ items }) }),
 };
-
-// ─── GALLERY ─────────────────────────────────────────────────
 export interface GalleryItem {
   id: string;
   title: string;
@@ -354,8 +325,6 @@ export const galleryApi = {
   remove: (token: string, id: string) =>
     fetcher(`/cms/gallery/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }),
 };
-
-// ─── MEDIA LIBRARY (Cloudinary) ──────────────────────────────
 export interface CloudinaryMedia {
   publicId: string;
   url: string;
@@ -395,8 +364,6 @@ export const mediaApi = {
       headers: { Authorization: `Bearer ${token}` },
     }),
 };
-
-// ─── INSTAGRAM AUTO-POST (Make.com) ────────────────────────────
 export const instagramApi = {
   testConnection: (token: string) =>
     fetcher<{ data: { connected: boolean } }>('/cms/settings/instagram/test', {
@@ -404,8 +371,6 @@ export const instagramApi = {
       headers: { Authorization: `Bearer ${token}` },
     }),
 };
-
-// ─── USER MANAGEMENT (Super Admin) ─────────────────────────────
 export interface UserItem {
   id: string;
   name: string;

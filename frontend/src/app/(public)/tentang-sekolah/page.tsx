@@ -45,7 +45,7 @@ export default function TentangSekolahPage() {
             <h2>Sejarah dan Perjalanan SD IT Iqra 2</h2>
             <p>SD Islam Terpadu Iqra 2 Kota Bengkulu didirikan sebagai respons atas tingginya harapan masyarakat terhadap pendidikan dasar yang tidak hanya mengedepankan aspek kognitif, tetapi juga pembentukan karakter Islami anak-anak mereka. Di bawah naungan Yayasan Alfida, sekolah ini mulai merintis langkahnya untuk menjadi lembaga pendidikan yang terpercaya.</p>
             <p>Dengan pengalaman lebih dari satu dekade, Yayasan Alfida terus berinovasi dan mengembangkan fasilitas serta kurikulum yang adaptif terhadap perkembangan zaman tanpa meninggalkan akar tradisi Islam.</p>
-            
+           
             <ul>
               <li>
                 <span className="material-symbols-outlined">check_circle</span>
@@ -90,7 +90,7 @@ export default function TentangSekolahPage() {
         </div>
       </section>
 
-      
+     
     </>
   );
 }

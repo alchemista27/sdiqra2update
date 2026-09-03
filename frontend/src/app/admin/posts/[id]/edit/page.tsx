@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/posts/[id]/edit/page.tsx - Edit Berita
 import PostEditor from '@/components/cms/PostEditor';
 import { useParams } from 'next/navigation';
 

@@ -1,12 +1,8 @@
 'use client';
-// src/components/cms/ResizableImage.tsx
-// Custom Tiptap extension untuk image dengan resize capability menggunakan drag handles
 
 import { useRef, useState, useCallback, useEffect } from 'react';
 import Image from '@tiptap/extension-image';
 import { NodeViewWrapper, NodeViewProps, ReactNodeViewRenderer } from '@tiptap/react';
-
-// ─── Resizable Image Component ────────────────────────────────────────────────
 function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -32,12 +28,12 @@ function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewP
 
       const startX = e.clientX;
       const startY = e.clientY;
-      
+     
       // Get current dimensions
       const currentWidth = node.attrs.width || imgRef.current?.offsetWidth || naturalSize.width;
       const currentHeight = node.attrs.height || imgRef.current?.offsetHeight || naturalSize.height;
       const aspectRatio = currentWidth / currentHeight;
-      
+     
       // Get container max width
       const containerWidth = wrapperRef.current?.parentElement?.offsetWidth || 800;
 
@@ -80,7 +76,7 @@ function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewP
       // Set cursor and prevent text selection during resize
       document.body.style.cursor = `${handle}-resize`;
       document.body.style.userSelect = 'none';
-      
+     
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
     },
@@ -96,7 +92,7 @@ function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewP
 
       const touch = e.touches[0];
       const startX = touch.clientX;
-      
+     
       const currentWidth = node.attrs.width || imgRef.current?.offsetWidth || naturalSize.width;
       const currentHeight = node.attrs.height || imgRef.current?.offsetHeight || naturalSize.height;
       const aspectRatio = currentWidth / currentHeight;
@@ -171,8 +167,6 @@ function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewP
           }}
           draggable={false}
         />
-
-        {/* Resize Handles - only show when selected */}
         {selected && (
           <>
             <div
@@ -201,8 +195,6 @@ function ResizableImageComponent({ node, updateAttributes, selected }: NodeViewP
     </NodeViewWrapper>
   );
 }
-
-// ─── Resizable Image Extension ────────────────────────────────────────────────
 export const ResizableImage = Image.extend({
   name: 'resizableImage',
 

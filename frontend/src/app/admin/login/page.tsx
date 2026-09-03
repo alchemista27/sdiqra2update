@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/login/page.tsx - Halaman Login Admin
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authApi } from '@/lib/api';
@@ -75,36 +74,36 @@ export default function AdminLoginPage() {
               {error}
             </div>
           )}
-          
+         
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: 6 }}>Email / Username</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@iqra2.sch.id"
-              style={{ width: '100%', padding: '12px 14px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, backgroundColor: 'var(--color-surface)', color: 'var(--color-primary)', outline: 'none' }} 
+              style={{ width: '100%', padding: '12px 14px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, backgroundColor: 'var(--color-surface)', color: 'var(--color-primary)', outline: 'none' }}
             />
           </div>
-          
+         
           <div style={{ marginBottom: '2rem' }}>
             <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--color-primary)', marginBottom: 6 }}>Password</label>
-            <input 
-              type="password" 
+            <input
+              type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              style={{ width: '100%', padding: '12px 14px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, backgroundColor: 'var(--color-surface)', color: 'var(--color-primary)', outline: 'none' }} 
+              style={{ width: '100%', padding: '12px 14px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', fontSize: 14, backgroundColor: 'var(--color-surface)', color: 'var(--color-primary)', outline: 'none' }}
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
-            style={{ 
-              width: '100%', padding: '12px', backgroundColor: 'var(--color-tertiary)', color: 'var(--color-on-tertiary)', 
+            style={{
+              width: '100%', padding: '12px', backgroundColor: 'var(--color-tertiary)', color: 'var(--color-on-tertiary)',
               border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer',
               opacity: loading ? 0.8 : 1, transition: 'all 0.2s'
             }}>

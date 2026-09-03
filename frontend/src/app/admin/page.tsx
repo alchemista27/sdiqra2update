@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/page.tsx - Dashboard Overview
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { postsApi, pagesApi, categoriesApi } from '@/lib/api';
@@ -80,10 +79,10 @@ export default function AdminDashboard() {
               <tr key={post.id} style={{ borderBottom: i < recentPosts.length - 1 ? '1px solid var(--color-border)' : 'none' }}>
                 <td style={{ padding: '1rem 1.5rem', color: 'var(--color-primary)', fontSize: 14, fontWeight: 500 }}>{post.title}</td>
                 <td style={{ padding: '1rem 1.5rem' }}>
-                  <span style={{ 
+                  <span style={{
                     display: 'inline-block', padding: '4px 8px', borderRadius: 6, fontSize: 12, fontWeight: 600,
-                    backgroundColor: post.status === 'PUBLISHED' ? '#D1FAE5' : 'var(--color-neutral)', 
-                    color: post.status === 'PUBLISHED' ? '#065F46' : 'var(--color-primary)' 
+                    backgroundColor: post.status === 'PUBLISHED' ? '#D1FAE5' : 'var(--color-neutral)',
+                    color: post.status === 'PUBLISHED' ? '#065F46' : 'var(--color-primary)'
                   }}>
                     {post.status}
                   </span>

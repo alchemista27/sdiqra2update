@@ -1,6 +1,4 @@
 'use client';
-// src/components/profile/ProfileMenu.tsx
-// Dropdown menu profil yang menampilkan info user, opsi Edit Password, dan Keluar
 import { useState, useRef, useEffect } from 'react';
 import EditPasswordModal from './EditPasswordModal';
 
@@ -35,7 +33,6 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
   return (
     <>
       <div ref={menuRef} style={{ position: 'relative' }}>
-        {/* Avatar trigger */}
         <button
           onClick={() => setOpen(!open)}
           style={{
@@ -65,8 +62,6 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
             transform: open ? 'rotate(180deg)' : 'rotate(0)',
           }}>expand_more</span>
         </button>
-
-        {/* Dropdown */}
         {open && (
           <div className="dropdown-animate-in" style={{
             position: 'absolute', right: 0, top: 'calc(100% + 8px)',
@@ -74,7 +69,6 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
             boxShadow: '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)',
             zIndex: 100, overflow: 'hidden',
           }}>
-            {/* User info */}
             <div style={{ padding: '1rem 1rem 0.75rem', borderBottom: '1px solid #F3F4F6' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{
@@ -105,8 +99,6 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                 </div>
               </div>
             </div>
-
-            {/* Menu items */}
             <div style={{ padding: '0.4rem' }}>
               <button
                 onClick={() => { setOpen(false); setEditPwOpen(true); }}
@@ -143,8 +135,6 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
           </div>
         )}
       </div>
-
-      {/* Edit Password Modal */}
       <EditPasswordModal open={editPwOpen} onClose={() => setEditPwOpen(false)} />
     </>
   );

@@ -90,23 +90,22 @@ export default function Navbar() {
               siteName
             )}
           </Link>
-          
+         
           <button className="mobile-toggle" onClick={() => setOpen(!open)}>
             <i className="icon">{open ? 'close' : 'menu'}</i>
           </button>
 
           <ul className={`nav-links ${open ? 'mobile-open' : ''}`}>
             {menus.length > 0 ? renderNav(menus) : (
-              // Fallback menu
               <li><Link href="/" onClick={() => setOpen(false)}>Beranda</Link></li>
             )}
 
-            
+           
             <li className="mobile-only">
               <Link href="/ppdb" className="btn-primary" onClick={() => setOpen(false)}>Daftar PPDB</Link>
             </li>
           </ul>
-          
+         
           <div className="desktop-only">
             <Link href="/ppdb" className="btn-primary">Daftar PPDB</Link>
           </div>
@@ -145,7 +144,7 @@ export default function Navbar() {
           align-items: center;
           gap: var(--spacing-sm);
         }
-        
+       
         .topbar-social i.icon {
           cursor: pointer;
           font-size: 18px;
@@ -203,7 +202,7 @@ export default function Navbar() {
         .dropdown {
           position: relative;
         }
-        
+       
         .dropdown-icon {
           font-size: 20px;
           margin-left: -2px;
@@ -234,7 +233,7 @@ export default function Navbar() {
           visibility: visible;
           transform: translateY(0);
         }
-        
+       
         .dropdown:hover .dropdown-icon {
           transform: rotate(180deg);
         }
@@ -316,7 +315,7 @@ export default function Navbar() {
           .nav-links.mobile-open {
             display: flex;
           }
-          
+         
           /* Mobile Dropdown */
           .dropdown-menu {
             position: static;

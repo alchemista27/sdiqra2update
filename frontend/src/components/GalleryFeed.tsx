@@ -1,5 +1,4 @@
 'use client';
-// src/components/GalleryFeed.tsx
 // Galeri bergaya feed Instagram — grid rasio 5:4 dengan pagination & lightbox
 
 import React, { useState, useEffect } from 'react';
@@ -49,7 +48,6 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
 
   return (
     <div>
-      {/* ─── GRID ─────────────────────────────────────────── */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
@@ -79,7 +77,6 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
               style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
               unoptimized={img.imageUrl.startsWith('https://res.cloudinary.com')}
             />
-            {/* Hover overlay */}
             <div className="gallery-feed-overlay" style={{
               position: 'absolute', inset: 0,
               background: 'rgba(15,61,36,0.55)',
@@ -97,8 +94,6 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
           </div>
         ))}
       </div>
-
-      {/* ─── PAGINATION ───────────────────────────────────── */}
       {totalPages > 1 && (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
           <button
@@ -157,8 +152,6 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
           </span>
         </div>
       )}
-
-      {/* ─── LIGHTBOX ─────────────────────────────────────── */}
       <Lightbox
         index={lightboxIndex - pageOffset}
         open={lightboxIndex >= 0}
@@ -167,8 +160,6 @@ export default function GalleryFeed({ cols = 3, rows = 2 }: Props) {
         plugins={[Zoom]}
         controller={{ closeOnBackdropClick: true }}
       />
-
-      {/* ─── CSS ──────────────────────────────────────────── */}
       <style>{`
         .gallery-feed-item:hover .gallery-feed-overlay { opacity: 1 !important; }
         .gallery-feed-item:hover img { transform: scale(1.05); }

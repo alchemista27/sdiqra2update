@@ -1,5 +1,4 @@
 'use client';
-// src/components/cms/PostEditor.tsx - Form editor untuk buat/edit berita
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { postsApi, categoriesApi } from '@/lib/api';
@@ -125,7 +124,6 @@ export default function PostEditor({ mode, postId }: Props) {
 
       <form onSubmit={handleSubmit}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '1.5rem', alignItems: 'start' }}>
-          {/* Main Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem' }}>
               <div style={{ marginBottom: '1rem' }}>
@@ -150,10 +148,7 @@ export default function PostEditor({ mode, postId }: Props) {
               </div>
             </div>
           </div>
-
-          {/* Sidebar */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {/* Publish Actions */}
             <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Publikasi</h3>
               <div style={{ marginBottom: '1rem' }}>
@@ -177,8 +172,6 @@ export default function PostEditor({ mode, postId }: Props) {
                 )}
               </div>
             </div>
-
-            {/* Category */}
             <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Kategori</h3>
               <select value={form.categoryId} onChange={e => setForm(f => ({ ...f, categoryId: e.target.value }))}
@@ -187,8 +180,6 @@ export default function PostEditor({ mode, postId }: Props) {
                 {categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
               </select>
             </div>
-
-            {/* Cover Image */}
             <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.25rem' }}>
               <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: '1rem' }}>Foto Sampul</h3>
               {/* eslint-disable-next-line @next/next/no-img-element */}

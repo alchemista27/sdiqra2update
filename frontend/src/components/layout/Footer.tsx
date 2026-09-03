@@ -76,7 +76,7 @@ export default function Footer() {
           color: var(--color-neutral);
           transition: color 0.2s;
         }
-        
+       
         .footer-social .icon:hover {
           color: var(--color-secondary);
         }
@@ -108,7 +108,7 @@ export default function Footer() {
           align-items: center;
           gap: 8px;
         }
-        
+       
         .footer-col p .icon {
           font-size: 18px;
         }

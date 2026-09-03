@@ -1,5 +1,4 @@
 'use client';
-// src/components/SiteLogo.tsx - Reusable logo component that fetches from settings
 import { useState, useEffect } from 'react';
 import { settingsApi } from '@/lib/api';
 
@@ -14,9 +13,9 @@ interface SiteLogoProps {
   className?: string;
 }
 
-export default function SiteLogo({ 
-  size = 40, 
-  borderRadius = 10, 
+export default function SiteLogo({
+  size = 40,
+  borderRadius = 10,
   showText = true,
   textColor = '#fff',
   subTextColor = 'rgba(255,255,255,0.6)',
@@ -31,8 +30,8 @@ export default function SiteLogo({
         const settings = res.data;
         if (settings.site_name) setSiteName(settings.site_name);
         if (settings.site_logo) {
-          const url = settings.site_logo.startsWith('http') 
-            ? settings.site_logo 
+          const url = settings.site_logo.startsWith('http')
+            ? settings.site_logo
             : `${API_BASE}${settings.site_logo}`;
           setLogoUrl(url);
         }
@@ -44,17 +43,17 @@ export default function SiteLogo({
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }} className={className}>
       {logoUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img 
-          src={logoUrl} 
-          alt={siteName} 
-          style={{ 
-            width: size, 
-            height: size, 
-            borderRadius, 
+        <img
+          src={logoUrl}
+          alt={siteName}
+          style={{
+            width: size,
+            height: size,
+            borderRadius,
             objectFit: 'contain',
             background: '#fff',
             padding: 2,
-          }} 
+          }}
         />
       ) : (
         <div style={{
@@ -86,7 +85,6 @@ export default function SiteLogo({
   );
 }
 
-// Hook untuk mendapatkan logo URL dan site name
 export function useSiteSettings() {
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [siteName, setSiteName] = useState('SD IT Iqra 2');
@@ -100,8 +98,8 @@ export function useSiteSettings() {
         setSettings(s);
         if (s.site_name) setSiteName(s.site_name);
         if (s.site_logo) {
-          const url = s.site_logo.startsWith('http') 
-            ? s.site_logo 
+          const url = s.site_logo.startsWith('http')
+            ? s.site_logo
             : `${API_BASE}${s.site_logo}`;
           setLogoUrl(url);
         }

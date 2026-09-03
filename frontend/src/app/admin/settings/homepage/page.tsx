@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/settings/homepage/page.tsx
 // Editor konten section-section Homepage: Hero, Statistik, Feature Cards
 import { useEffect, useState } from 'react';
 import { settingsApi } from '@/lib/api';
@@ -162,7 +161,6 @@ export default function AdminHomepageEditorPage() {
 
   return (
     <div style={{ maxWidth: 800 }}>
-      {/* Toast */}
       {toast && (
         <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? '#111827' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 12, fontSize: 14, zIndex: 999, boxShadow: '0 8px 32px rgba(0,0,0,0.2)', animation: 'fadeIn 0.2s ease' }}>
           {toast.msg}
@@ -173,10 +171,7 @@ export default function AdminHomepageEditorPage() {
         <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '0.25rem' }}>Editor Homepage</h1>
         <p style={{ fontSize: 14, color: '#6B7280', margin: 0 }}>Edit konten hero section, kartu statistik, dan fitur unggulan yang tampil di halaman utama.</p>
       </div>
-
-      {/* ─── HERO SECTION ──────────────────────────────── */}
       <SectionCard title="Hero Section" icon="hero" badge="Tampil Pertama">
-        {/* Live Preview */}
         <div style={{ background: 'linear-gradient(135deg, #0F3D24 0%, #1B6B44 50%, #0F3D24 100%)', borderRadius: 12, padding: '2rem 1.5rem', marginBottom: '1.25rem', color: '#fff', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 50%, rgba(201,168,76,0.1) 0%, transparent 60%)' }} />
           <div style={{ position: 'relative' }}>
@@ -208,10 +203,7 @@ export default function AdminHomepageEditorPage() {
           </button>
         </div>
       </SectionCard>
-
-      {/* ─── STATISTIK ─────────────────────────────────── */}
       <SectionCard title="Kartu Statistik" icon="bar_chart" badge={`${stats.length} item`}>
-        {/* Preview */}
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(stats.length, 4)}, 1fr)`, gap: '0.5rem', marginBottom: '1.25rem' }}>
           {stats.map((stat, i) => (
             <div key={i} style={{ background: 'linear-gradient(135deg, #0F3D24, #1B6B44)', color: '#fff', borderRadius: 10, padding: '1rem', textAlign: 'center' }}>
@@ -221,8 +213,6 @@ export default function AdminHomepageEditorPage() {
             </div>
           ))}
         </div>
-
-        {/* Stats Editor */}
         {stats.map((stat, i) => (
           <div key={i} style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 12, padding: '1rem', marginBottom: '0.75rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
@@ -259,10 +249,7 @@ export default function AdminHomepageEditorPage() {
           </button>
         </div>
       </SectionCard>
-
-      {/* ─── FEATURE CARDS ─────────────────────────────── */}
       <SectionCard title="Feature Cards (Keunggulan)" icon="auto_awesome" badge={`${features.length} item`}>
-        {/* Preview */}
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(features.length, 2)}, 1fr)`, gap: '0.5rem', marginBottom: '1.25rem' }}>
           {features.map((f, i) => (
             <div key={i} style={{ background: '#F0FDF4', border: '1px solid #A7F3D0', borderRadius: 10, padding: '1rem' }}>
@@ -272,8 +259,6 @@ export default function AdminHomepageEditorPage() {
             </div>
           ))}
         </div>
-
-        {/* Features Editor */}
         {features.map((feat, i) => (
           <div key={i} style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 12, padding: '1rem', marginBottom: '0.75rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
@@ -309,13 +294,10 @@ export default function AdminHomepageEditorPage() {
           </button>
         </div>
       </SectionCard>
-
-      {/* ─── GALLERY SETTINGS ──────────────────────────── */}
       <SectionCard title="Pengaturan Galeri Homepage" icon="photo_library" badge="Grid Feed">
         <p style={{ fontSize: 13, color: '#6B7280', marginBottom: '1.25rem', lineHeight: 1.6 }}>
           Atur jumlah kolom dan baris yang tampil di galeri homepage. Total gambar per halaman = Kolom × Baris.
         </p>
-        {/* Preview Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(parseInt(galleryCols) || 3, 6)}, 1fr)`, gap: '0.35rem', marginBottom: '1.25rem' }}>
           {Array.from({ length: (parseInt(galleryCols) || 3) * Math.min(parseInt(galleryRows) || 2, 3) }).map((_, i) => (
             <div key={i} style={{ background: i % 3 === 0 ? '#A7F3D0' : i % 3 === 1 ? '#D1FAE5' : '#ECFDF5', borderRadius: 6, aspectRatio: '5/4' }} />

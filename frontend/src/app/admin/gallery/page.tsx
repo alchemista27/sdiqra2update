@@ -1,4 +1,3 @@
-// src/app/admin/gallery/page.tsx — Manajemen Galeri Website
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -80,7 +79,7 @@ export default function AdminGalleryPage() {
       fd.append('description', form.description);
       fd.append('order', form.order);
       fd.append('isActive', String(form.isActive));
-      
+     
       // Only append imageUrl if it's a new image (from media library)
       // For updates without changing image, don't append anything
       if (form.imageUrl && !editItem?.id) {
@@ -175,8 +174,6 @@ export default function AdminGalleryPage() {
           ))}
         </div>
       )}
-
-      {/* Modal Form */}
       {showModal && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <div style={{ background: '#fff', borderRadius: 20, width: '100%', maxWidth: 540, padding: '2rem', boxShadow: '0 24px 60px rgba(0,0,0,0.2)', overflowY: 'auto', maxHeight: '90vh' }}>
@@ -188,7 +185,6 @@ export default function AdminGalleryPage() {
             {error && <div style={{ background: '#FEF2F2', border: '1px solid #FCA5A5', color: '#DC2626', padding: '0.75rem 1rem', borderRadius: 10, marginBottom: '1rem', fontSize: 13 }}>{error}</div>}
 
             <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {/* Image picker button */}
               {preview ? (
                 <div style={{ borderRadius: 12, overflow: 'hidden', background: '#F9FAFB', aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                   <Image src={preview} alt="preview" fill sizes="500px" style={{ objectFit: 'cover' }} />
@@ -252,8 +248,6 @@ export default function AdminGalleryPage() {
           </div>
         </div>
       )}
-
-      {/* Media Library Modal */}
       <MediaLibraryModal
         open={showMediaModal}
         onClose={() => setShowMediaModal(false)}

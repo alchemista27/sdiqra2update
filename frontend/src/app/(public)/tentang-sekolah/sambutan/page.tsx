@@ -3,21 +3,17 @@ import Link from "next/link";
 export default function SambutanPage() {
   return (
     <>
-      {/* Page Header */}
       <header className="page-header">
         <h1>Sambutan Kepala Sekolah</h1>
         <div className="breadcrumb">
-          <Link href="/">Beranda</Link> &nbsp; / &nbsp; 
-          <Link href="/tentang-sekolah">Tentang Sekolah</Link> &nbsp; / &nbsp; 
+          <Link href="/">Beranda</Link> &nbsp; / &nbsp;
+          <Link href="/tentang-sekolah">Tentang Sekolah</Link> &nbsp; / &nbsp;
           <span>Sambutan</span>
         </div>
       </header>
-
-      {/* Main Content */}
       <main className="container">
-        
+       
         <div className="staff-layout">
-          {/* Left Column: Profile */}
           <aside className="profile-sidebar">
             <div className="profile-photo">
               <span className="material-symbols-outlined">person</span>
@@ -25,7 +21,7 @@ export default function SambutanPage() {
             </div>
             <h2 className="profile-name">Ustadz H. Ahmad, M.Pd</h2>
             <div className="profile-title">Kepala SD IT Iqra 2</div>
-            
+           
             <div className="profile-contact">
               <div className="contact-item">
                 <span className="material-symbols-outlined">mail</span>
@@ -41,8 +37,6 @@ export default function SambutanPage() {
               </div>
             </div>
           </aside>
-
-          {/* Right Column: Content */}
           <article className="content-article">
             <div className="skoola-blockquote">
               <p>"Pendidikan yang paripurna memadukan keunggulan akademik dengan penanaman akhlakul karimah demi mewujudkan generasi rabbani yang cerdas."</p>
@@ -70,9 +64,8 @@ export default function SambutanPage() {
           <div className="team-header">
             <h2>Tenaga Pendidik &amp; Kependidikan</h2>
           </div>
-          
+         
           <div className="team-grid">
-            {/* Card 1 */}
             <div className="team-card">
               <div className="team-photo-wrap">
                 <span className="material-symbols-outlined">person_3</span>
@@ -84,8 +77,6 @@ export default function SambutanPage() {
               <h3 className="team-name">Ustadzah Siti Aminah</h3>
               <div className="team-role">Waka Kurikulum</div>
             </div>
-
-            {/* Card 2 */}
             <div className="team-card">
               <div className="team-photo-wrap">
                 <span className="material-symbols-outlined">person</span>
@@ -97,8 +88,6 @@ export default function SambutanPage() {
               <h3 className="team-name">Ustadz Budi Santoso</h3>
               <div className="team-role">Waka Kesiswaan</div>
             </div>
-
-            {/* Card 3 */}
             <div className="team-card">
               <div className="team-photo-wrap">
                 <span className="material-symbols-outlined">person_4</span>
@@ -110,8 +99,6 @@ export default function SambutanPage() {
               <h3 className="team-name">Ustadzah Nurul Huda</h3>
               <div className="team-role">Koordinator Tahfidz</div>
             </div>
-
-            {/* Card 4 */}
             <div className="team-card">
               <div className="team-photo-wrap">
                 <span className="material-symbols-outlined">person</span>
@@ -128,7 +115,7 @@ export default function SambutanPage() {
 
       </main>
 
-      
+     
     </>
   );
 }

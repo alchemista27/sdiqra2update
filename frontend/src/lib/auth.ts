@@ -1,4 +1,3 @@
-// src/lib/auth.ts - Auth helper (client-side)
 
 export const TOKEN_KEY = 'sditiqra2_token';
 

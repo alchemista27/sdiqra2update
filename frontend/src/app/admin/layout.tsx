@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/layout.tsx - Admin Dashboard Layout
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -59,7 +58,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--color-neutral)' }}>
-      {/* Sidebar */}
       <aside style={{
         width: 256, backgroundColor: 'var(--color-primary)', color: 'var(--color-surface)',
         display: 'flex', flexDirection: 'column', position: 'fixed',
@@ -67,8 +65,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         transition: 'transform 0.3s ease',
         transform: sidebarOpen ? 'translateX(0)' : undefined,
       }} className="admin-sidebar">
-        
-        {/* Logo */}
         <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -81,8 +77,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)' }}>Admin Panel</div>
           </div>
         </div>
-
-        {/* Menu Items */}
         <nav style={{ flex: 1, padding: '1rem 0.75rem', overflow: 'auto' }}>
           {showCMS && (
             <div style={{ marginBottom: '1.5rem' }}>
@@ -130,8 +124,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
           )}
         </nav>
-
-        {/* User profile & Logout */}
         <div style={{ padding: '1rem 0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
           <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-sm)', padding: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ fontSize: 13, fontWeight: 600 }}>{user?.name}</div>
@@ -142,14 +134,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
         </div>
       </aside>
-
-      {/* Main Content */}
       <div style={{ flex: 1, marginLeft: 256, display: 'flex', flexDirection: 'column' }} className="admin-content">
-        {/* Topbar */}
         <div style={{ backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)', padding: '0.875rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 40 }}>
           <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 15 }}>
             {
-              [...navItems, ...settingsItems].find(n => pathname === n.href || (n.href !== '/admin' && pathname.startsWith(n.href)))?.label 
+              [...navItems, ...settingsItems].find(n => pathname === n.href || (n.href !== '/admin' && pathname.startsWith(n.href)))?.label
               || 'Dashboard'
             }
           </div>

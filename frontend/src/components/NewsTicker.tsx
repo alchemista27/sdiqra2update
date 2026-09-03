@@ -18,12 +18,10 @@ export default function NewsTicker() {
   const [locationName, setLocationName] = useState<string>("Bengkulu"); // Default location
   const [loadingPrayer, setLoadingPrayer] = useState<boolean>(true);
   const [showTicker, setShowTicker] = useState<boolean>(true);
-
-  // 3. Hide News Ticker when Footer is visible (Intersection Observer)
   useEffect(() => {
     const footer = document.querySelector('footer');
     if (!footer) return;
-    
+   
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Hide ticker when footer is visible (top of footer enters viewport)
@@ -31,12 +29,10 @@ export default function NewsTicker() {
       },
       { threshold: 0.1 }
     );
-    
+   
     observer.observe(footer);
     return () => observer.disconnect();
   }, []);
-
-  // 1. Fetch Latest News
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -48,11 +44,9 @@ export default function NewsTicker() {
     };
     fetchNews();
   }, []);
-
-  // 2. Fetch Geolocation and Prayer Times
   useEffect(() => {
     // Parameter default Bengkulu Coordinates (SDIT Iqra 2) if geolocation fails/denied
-    const defaultLat = -3.8004; 
+    const defaultLat = -3.8004;
     const defaultLng = 102.2562;
 
     const fetchPrayerTimes = async (lat: number, lng: number) => {
@@ -61,10 +55,10 @@ export default function NewsTicker() {
         // Using Aladhan API for accurate Muslim prayer times
         const date = new Date();
         const apiStr = `https://api.aladhan.com/v1/timings/${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}?latitude=${lat}&longitude=${lng}&method=11`; // Method 11 is Majlis Ugama Islam Singapura, close enough to Muhammadiyah/Kemenag
-        
+       
         const response = await fetch(apiStr);
         const data = await response.json();
-        
+       
         if (data && data.data && data.data.timings) {
           setPrayerTimes({
             Fajr: data.data.timings.Fajr,
@@ -102,8 +96,6 @@ export default function NewsTicker() {
       fetchPrayerTimes(defaultLat, defaultLng);
     }
   }, []);
-
-  // Getting next prayer time to highlight it
   const getNextPrayer = () => {
     if (!prayerTimes) return null;
     const now = new Date();
@@ -135,15 +127,11 @@ export default function NewsTicker() {
 
   return (
     <div className={`fixed bottom-0 left-0 w-full z-[9999] flex flex-col md:flex-row bg-tertiary text-on-tertiary shadow-[0_-4px_20px_rgba(0,0,0,0.15)] transition-transform duration-300 ${showTicker ? 'translate-y-0' : 'translate-y-full'}`}>
-      
-      {/* LEFT SIDE: Running Text News Ticker */}
       <div className="flex-1 flex items-center overflow-hidden border-b md:border-b-0 md:border-r border-surface/10 h-9 md:h-10">
         <div className="bg-secondary text-primary px-4 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
           <span className="material-symbols-outlined text-[18px] mr-1">campaign</span>
           Info
         </div>
-        
-        {/* The Marquee Container */}
         <div className="flex-1 overflow-hidden relative h-full flex items-center">
             {newsList.length > 0 ? (
                 <div className="animate-marquee hover:[animation-play-state:paused] whitespace-nowrap flex items-center gap-10 absolute left-0 pr-10">
@@ -153,7 +141,6 @@ export default function NewsTicker() {
                         {news.title}
                     </Link>
                     ))}
-                    {/* Duplicate for seamless looping marquee */}
                     {newsList.map((news, idx) => (
                     <Link key={`dup-${idx}`} href={`/berita/${news.slug}`} className="hover:text-secondary transition-colors flex items-center text-sm font-medium">
                         <span className="w-2 h-2 rounded-full bg-secondary mr-3 inline-block shadow-sm"></span>
@@ -166,10 +153,8 @@ export default function NewsTicker() {
             )}
         </div>
       </div>
-
-      {/* RIGHT SIDE: Prayer Times */}
       <div className="px-4 pt-2 pb-4 md:py-0 md:h-10 flex flex-row items-center justify-start gap-3 md:gap-5 w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
-        
+       
         <div className="flex items-center text-secondary shrink-0 opacity-90 pl-1">
           <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
           <span className="font-medium text-xs tracking-wide">{locationName}</span>

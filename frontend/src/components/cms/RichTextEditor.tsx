@@ -1,6 +1,4 @@
 'use client';
-// src/components/cms/RichTextEditor.tsx
-// Editor teks kaya WordPress-like menggunakan Tiptap v3
 import { useEditor, EditorContent } from '@tiptap/react';
 import { useRef, useState } from 'react';
 import StarterKit from '@tiptap/starter-kit';
@@ -17,8 +15,6 @@ interface Props {
   onChange: (html: string) => void;
   placeholder?: string;
 }
-
-// ─── Tombol Toolbar ───────────────────────────────────────────
 function ToolbarButton({
   onClick, active, disabled, title, children,
 }: {
@@ -64,8 +60,6 @@ function ToolbarButton({
 function Divider() {
   return <div style={{ width: 1, height: 22, background: '#E5E7EB', margin: '0 0.25rem' }} />;
 }
-
-// ─── Komponen Utama Editor ────────────────────────────────────
 export default function RichTextEditor({ content, onChange, placeholder }: Props) {
   const [bubblePos, setBubblePos] = useState<{ x: number; y: number } | null>(null);
   const [mediaModalOpen, setMediaModalOpen] = useState(false);
@@ -149,55 +143,38 @@ export default function RichTextEditor({ content, onChange, placeholder }: Props
 
   return (
     <div ref={editorWrapRef} style={{ border: '1.5px solid #E5E7EB', borderRadius: 12, overflow: 'hidden', background: '#fff', position: 'relative' }}>
-
-      {/* ─── TOOLBAR ─────────────────────────────────────── */}
       <div style={{
         display: 'flex', flexWrap: 'wrap', alignItems: 'center',
         gap: '0.15rem', padding: '0.5rem 0.75rem',
         background: '#F9FAFB', borderBottom: '1px solid #E5E7EB',
       }}>
-        {/* Heading */}
         <ToolbarButton title="Heading 1" active={editor.isActive('heading', { level: 1 })} onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}>H1</ToolbarButton>
         <ToolbarButton title="Heading 2" active={editor.isActive('heading', { level: 2 })} onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}>H2</ToolbarButton>
         <ToolbarButton title="Heading 3" active={editor.isActive('heading', { level: 3 })} onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}>H3</ToolbarButton>
         <Divider />
-
-        {/* Format teks */}
         <ToolbarButton title="Bold (Ctrl+B)" active={editor.isActive('bold')} onClick={() => editor.chain().focus().toggleBold().run()}><strong>B</strong></ToolbarButton>
         <ToolbarButton title="Italic (Ctrl+I)" active={editor.isActive('italic')} onClick={() => editor.chain().focus().toggleItalic().run()}><em>I</em></ToolbarButton>
         <ToolbarButton title="Underline (Ctrl+U)" active={editor.isActive('underline')} onClick={() => editor.chain().focus().toggleUnderline().run()}><span style={{ textDecoration: 'underline' }}>U</span></ToolbarButton>
         <ToolbarButton title="Strikethrough" active={editor.isActive('strike')} onClick={() => editor.chain().focus().toggleStrike().run()}><span style={{ textDecoration: 'line-through' }}>S</span></ToolbarButton>
         <ToolbarButton title="Kode Inline" active={editor.isActive('code')} onClick={() => editor.chain().focus().toggleCode().run()}><span className="material-symbols-outlined" style={{ fontSize: 15 }}>code</span></ToolbarButton>
         <Divider />
-
-        {/* List */}
         <ToolbarButton title="Bulleted List" active={editor.isActive('bulletList')} onClick={() => editor.chain().focus().toggleBulletList().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_list_bulleted</span></ToolbarButton>
         <ToolbarButton title="Numbered List" active={editor.isActive('orderedList')} onClick={() => editor.chain().focus().toggleOrderedList().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_list_numbered</span></ToolbarButton>
         <Divider />
-
-        {/* Alignment */}
         <ToolbarButton title="Rata Kiri" active={editor.isActive({ textAlign: 'left' })} onClick={() => editor.chain().focus().setTextAlign('left').run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_align_left</span></ToolbarButton>
         <ToolbarButton title="Rata Tengah" active={editor.isActive({ textAlign: 'center' })} onClick={() => editor.chain().focus().setTextAlign('center').run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_align_center</span></ToolbarButton>
         <ToolbarButton title="Rata Kanan" active={editor.isActive({ textAlign: 'right' })} onClick={() => editor.chain().focus().setTextAlign('right').run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_align_right</span></ToolbarButton>
         <Divider />
-
-        {/* Block elements */}
         <ToolbarButton title="Blockquote" active={editor.isActive('blockquote')} onClick={() => editor.chain().focus().toggleBlockquote().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>format_quote</span></ToolbarButton>
         <ToolbarButton title="Code Block" active={editor.isActive('codeBlock')} onClick={() => editor.chain().focus().toggleCodeBlock().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>integration_instructions</span></ToolbarButton>
         <ToolbarButton title="Garis Pemisah (HR)" onClick={() => editor.chain().focus().setHorizontalRule().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>horizontal_rule</span></ToolbarButton>
         <Divider />
-
-        {/* Link & Image */}
         <ToolbarButton title="Insert / Edit Link" active={editor.isActive('link')} onClick={handleSetLink}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>link</span></ToolbarButton>
         <ToolbarButton title="Insert Media" onClick={() => setMediaModalOpen(true)}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>image</span></ToolbarButton>
         <Divider />
-
-        {/* Undo / Redo */}
         <ToolbarButton title="Undo (Ctrl+Z)" disabled={!editor.can().undo()} onClick={() => editor.chain().focus().undo().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>undo</span></ToolbarButton>
         <ToolbarButton title="Redo (Ctrl+Y)" disabled={!editor.can().redo()} onClick={() => editor.chain().focus().redo().run()}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>redo</span></ToolbarButton>
       </div>
-
-      {/* ─── INLINE BUBBLE MENU ──────────────────────────── */}
       {bubblePos && (
         <div
           style={{
@@ -229,24 +206,16 @@ export default function RichTextEditor({ content, onChange, placeholder }: Props
           </button>
         </div>
       )}
-
-      {/* ─── EDITOR CONTENT ──────────────────────────────── */}
       <EditorContent editor={editor} />
-
-      {/* ─── WORD COUNT ──────────────────────────────────── */}
       <div style={{ borderTop: '1px solid #F3F4F6', padding: '0.4rem 1.25rem', fontSize: 12, color: '#9CA3AF', display: 'flex', justifyContent: 'space-between' }}>
         <span>{editor.getText().length} karakter</span>
         <span>{editor.getText().split(/\s+/).filter(Boolean).length} kata</span>
       </div>
-
-      {/* ─── MEDIA LIBRARY MODAL ─────────────────────────── */}
       <MediaLibraryModal
         open={mediaModalOpen}
         onClose={() => setMediaModalOpen(false)}
         onSelect={(url) => handleInsertImage(url)}
       />
-
-      {/* ─── CSS ─────────────────────────────────────────── */}
       <style>{`
         .tiptap-editor:focus { outline: none; }
         .tiptap-editor p { margin: 0 0 0.75em 0; }
@@ -279,7 +248,7 @@ export default function RichTextEditor({ content, onChange, placeholder }: Props
           float: left; height: 0; pointer-events: none;
         }
         .tiptap-editor hr { border: none; border-top: 2px solid #E5E7EB; margin: 1.5em 0; }
-        
+       
         /* ─── Resizable Image Styles ─────────────────────── */
         .resizable-image-node {
           display: block;

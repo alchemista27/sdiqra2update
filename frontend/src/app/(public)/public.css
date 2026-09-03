@@ -30,11 +30,11 @@
 
 /* From frontend/src/app/(public)/berita/[slug]/page.tsx */
 
-        
+       
 
-        
+       
 
-        
+       
 
         h1, h2, h3, h4, h5, h6 {
           font-family: 'Roboto', sans-serif;
@@ -125,7 +125,7 @@
           margin-bottom: var(--spacing-md);
           font-size: 1rem;
         }
-        
+       
         /* Drop Cap for the first paragraph */
         .article-body > p:first-of-type::first-letter {
           float: left;
@@ -144,7 +144,7 @@
           margin-bottom: var(--spacing-sm);
           font-family: 'Roboto', sans-serif;
         }
-        
+       
         /* Blockquote */
         .article-body blockquote {
           border-left: 4px solid var(--color-secondary);
@@ -183,7 +183,7 @@
           border-bottom: 2px solid var(--color-border);
           padding-bottom: var(--spacing-sm);
         }
-        
+       
         /* Search Box */
         .search-box {
           display: flex;
@@ -292,13 +292,13 @@
             height: 250px;
           }
         }
-      
+     
 
 /* From frontend/src/app/(public)/berita/page.tsx */
 
         /* Page Header */
-        
-        
+       
+       
         .breadcrumb { font-size: 14px; opacity: 0.9; font-weight: 500; color: var(--color-surface); }
 
         /* Container */
@@ -308,14 +308,14 @@
         .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); margin-bottom: calc(var(--spacing-lg) * 2); }
         .news-card { text-decoration: none; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; }
         .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); }
-        
+       
         .news-image-wrapper { position: relative; height: 200px; background: var(--color-neutral); border-bottom: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-primary); opacity: 0.8; }
         .news-image-wrapper .material-symbols-outlined { font-size: 64px; opacity: 0.3; }
         .news-badge { position: absolute; top: var(--spacing-md); left: var(--spacing-md); background: var(--color-tertiary); color: var(--color-on-tertiary); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: var(--radius-sm); }
-        
+       
         .news-content { padding: var(--spacing-lg); display: flex; flex-direction: column; flex: 1; }
         .news-title { font-size: 1.125rem; line-height: 1.4; margin-bottom: var(--spacing-md); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--color-primary); font-family: 'Roboto', sans-serif; font-weight: 700; }
-        
+       
         .news-meta { display: flex; align-items: center; justify-content: space-between; margin-top: auto; font-family: 'Inter', sans-serif; font-size: 12px; color: var(--color-primary); opacity: 0.7; padding-top: var(--spacing-md); border-top: 1px solid var(--color-border); }
         .meta-item { display: flex; align-items: center; gap: 4px; }
         .meta-item .material-symbols-outlined { font-size: 16px; }
@@ -328,7 +328,7 @@
         @media (max-width: 768px) {
           .news-grid { grid-template-columns: 1fr; }
         }
-      
+     
 
 /* From frontend/src/app/(public)/galeri/page.tsx */
 @keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.5} }
@@ -336,9 +336,9 @@
 /* From frontend/src/app/(public)/kontak/page.tsx */
 
         /* Page Header */
-        
+       
 
-        
+       
 
         /* Contact Grid */
         .contact-grid {
@@ -483,22 +483,22 @@
             grid-template-columns: 1fr;
             margin-top: var(--spacing-lg);
           }
-          
+         
           .main-contact {
             grid-template-columns: 1fr;
           }
         }
-      
+     
 
 /* From frontend/src/app/(public)/page.tsx */
 
-        
+       
 
-        
+       
 
-        
+       
 
-        
+       
 
         h1 {
           font-size: 3rem;
@@ -526,7 +526,7 @@
           margin-left: auto; margin-right: auto;
           padding: 0 var(--spacing-lg);
         }
-        
+       
         .icon {
           font-family: 'Material Icons';
           font-weight: normal;
@@ -625,7 +625,7 @@
 
         /* Highlight Boxes */
         .highlight-boxes {
-          
+         
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: var(--spacing-lg);
@@ -638,7 +638,7 @@
           box-shadow: 0 4px 6px rgba(0,0,0,0.05);
           background-color: var(--color-surface);
         }
-        
+       
         .highlight-icon {
           color: var(--color-secondary);
           font-size: 32px;
@@ -647,13 +647,13 @@
 
         /* About Section */
         .about {
-          
-          
-          
+         
+         
+         
           display: flex;
           align-items: center;
           gap: 40px;
-          
+         
           flex-wrap: wrap;
         }
 
@@ -681,10 +681,10 @@
 
         /* Programs Section */
         .programs {
-          
-          
-          
-          
+         
+         
+         
+         
           text-align: center;
           background-color: var(--color-surface);
           border-top: 1px solid var(--color-border);
@@ -697,24 +697,24 @@
           margin-top: var(--spacing-lg);
           text-align: left;
         }
-        
+       
         .program-grid .card {
           box-shadow: none;
         }
-        
+       
         .program-icon {
           color: var(--color-tertiary);
           font-size: 32px;
           margin-bottom: var(--spacing-sm);
         }
-      
+     
 
 /* From frontend/src/app/(public)/tentang-sekolah/page.tsx */
 
         /* Page Header */
-        
-        
-        
+       
+       
+       
         .breadcrumb {
             margin-top: var(--spacing-lg);
             font-size: 14px;
@@ -857,7 +857,7 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            
+           
             .grid-cards {
                 grid-template-columns: repeat(2, 1fr);
                 margin-top: -40px;
@@ -876,7 +876,7 @@
         }
 
         @media (max-width: 768px) {
-            
+           
             .grid-cards {
                 grid-template-columns: 1fr;
                 margin-top: var(--spacing-lg);
@@ -885,13 +885,13 @@
                 grid-template-columns: 1fr;
             }
         }
-      
+     
 
 /* From frontend/src/app/(public)/tentang-sekolah/sambutan/page.tsx */
 
         /* Page Header */
-        
-        
+       
+       
         .breadcrumb a {
           color: var(--color-surface);
           opacity: 0.8;
@@ -987,7 +987,7 @@
           border-radius: var(--rounded-md);
           padding: var(--spacing-xl);
         }
-        
+       
         .skoola-blockquote {
           border-left: 4px solid var(--color-tertiary);
           margin-bottom: var(--spacing-xl);
@@ -1112,34 +1112,30 @@
 
         @media (max-width: 768px) {
           .staff-layout { grid-template-columns: 1fr; }
-          
+         
           .content-article { padding: var(--spacing-lg); }
         }
-      
-
-/* ============================================================ */
 /* MOBILE RESPONSIVE LAYOUT (antislop-layoutmobile)           */
-/* ============================================================ */
 
 @media (max-width: 768px) {
   /* Fix Typography and Spacing */
   h1 { font-size: 2rem !important; }
   h2 { font-size: 1.5rem !important; }
   .hero { padding: 80px 0 !important; }
-  
-  
+ 
+ 
   /* Reset Grids to 1 Column */
-  .highlight-boxes, 
-  .program-grid, 
-  .grid-cards, 
-  .archive-grid, 
-  .post-grid, 
+  .highlight-boxes,
+  .program-grid,
+  .grid-cards,
+  .archive-grid,
+  .post-grid,
   .contact-grid {
     grid-template-columns: 1fr !important;
     padding: 0 16px !important;
     gap: var(--spacing-md) !important;
   }
-  
+ 
   .highlight-boxes, .grid-cards {
     /* margin-top handled by tailwind on page.tsx */ /* Only overlap for elements right below hero */
   }
@@ -1149,20 +1145,20 @@
   }
 
   /* Fix Flex Layouts (About, Single Post, etc) */
-  .about, 
-  .main-section, 
-  .sambutan-content, 
+  .about,
+  .main-section,
+  .sambutan-content,
   .single-post-content {
     flex-direction: column !important;
     gap: 20px !important;
-    
+   
   }
-  
+ 
   .about-text, .about-image, .sidebar, .article-main, .contact-info, .contact-form-container {
     width: 100% !important;
     min-width: 100% !important;
   }
-  
+ 
   /* Tap Targets for Touch */
   .btn-primary, .btn-secondary, a {
     min-height: 44px !important;
@@ -1170,12 +1166,12 @@
     align-items: center !important;
     justify-content: center !important;
   }
-  
+ 
   /* Prevent Horizontal Overflow */
   body, .container {
     overflow-x: hidden !important;
   }
-  
+ 
   img {
     max-width: 100% !important;
     height: auto !important;

@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/categories/page.tsx - Manajemen Kategori
 import { useEffect, useState } from 'react';
 import { categoriesApi } from '@/lib/api';
 import { getToken } from '@/lib/auth';
@@ -41,7 +40,6 @@ export default function AdminCategoriesPage() {
       <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '1.5rem' }}>Manajemen Kategori</h1>
 
       <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: '1.5rem', alignItems: 'start' }}>
-        {/* Form Tambah */}
         <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem' }}>
           <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: '1rem', color: '#111827' }}>Tambah Kategori Baru</h2>
           {error && <div style={{ background: '#FEF2F2', color: '#DC2626', borderRadius: 10, padding: '0.6rem 1rem', marginBottom: '1rem', fontSize: 13 }}><span className="material-symbols-outlined">warning</span> {error}</div>}
@@ -61,8 +59,6 @@ export default function AdminCategoriesPage() {
             </button>
           </form>
         </div>
-
-        {/* Daftar Kategori */}
         <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, overflow: 'hidden' }}>
           {loading ? <div style={{ padding: '3rem', textAlign: 'center', color: '#9CA3AF' }}>Memuat...</div> : categories.length === 0 ? (
             <div style={{ padding: '3rem', textAlign: 'center', color: '#9CA3AF' }}>Belum ada kategori.</div>

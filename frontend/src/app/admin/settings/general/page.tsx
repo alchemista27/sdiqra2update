@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/settings/general/page.tsx
 // Pengaturan Umum: Nama Sekolah, Logo, Favicon, Kontak, Sosial Media
 import { useEffect, useState, useRef } from 'react';
 import { settingsApi } from '@/lib/api';
@@ -50,7 +49,6 @@ function ImageUploadCard({ label, currentUrl, onUpload, hint }: {
     <div style={{ marginBottom: '1rem' }}>
       <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.5rem' }}>{label}</label>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-        {/* Preview */}
         <div style={{ width: 80, height: 80, border: '2px dashed #E5E7EB', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#F9FAFB', flexShrink: 0 }}>
           {currentUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -162,8 +160,6 @@ function FooterQuickLinksEditor({ value, onChange }: { value: string; onChange: 
           ))}
         </div>
       )}
-
-      {/* Add new form */}
       <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Label menu" style={{ flex: '1 1 120px', padding: '0.6rem 0.8rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13 }} />
         <input value={newUrl} onChange={e => setNewUrl(e.target.value)} placeholder="/path" style={{ flex: '1 1 100px', padding: '0.6rem 0.8rem', border: '1.5px solid #E5E7EB', borderRadius: 8, fontSize: 13 }} />
@@ -174,8 +170,6 @@ function FooterQuickLinksEditor({ value, onChange }: { value: string; onChange: 
           <span className="material-symbols-outlined" style={{ fontSize: 16 }}>add</span> Tambah
         </button>
       </div>
-
-      {/* Quick URL suggestions */}
       <div style={{ marginTop: '0.75rem' }}>
         <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: '0.3rem' }}>Pintasan URL:</div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
@@ -242,14 +236,11 @@ export default function AdminGeneralSettingsPage() {
 
   return (
     <div style={{ maxWidth: 760 }}>
-      {/* Toast */}
       {toast && (
         <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? '#111827' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 12, fontSize: 14, zIndex: 999, boxShadow: '0 8px 32px rgba(0,0,0,0.2)', animation: 'fadeIn 0.2s ease' }}>
           {toast.msg}
         </div>
       )}
-
-      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
           <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '0.25rem' }}>Pengaturan Umum</h1>
@@ -261,23 +252,15 @@ export default function AdminGeneralSettingsPage() {
           {saving ? 'Menyimpan...' : 'Simpan Semua'}
         </button>
       </div>
-
-      {/* ─── Identitas Sekolah ───────────────────────── */}
       <SectionCard title="Identitas Sekolah" icon="school">
         <InputField label="Nama Sekolah" value={s('site_name')} onChange={set('site_name')} placeholder="SD Islam Terpadu Iqra 2" />
       </SectionCard>
-
-      {/* ─── Footer ─────────────────────────────────────── */}
       <SectionCard title="Footer" icon="flag">
         <InputField label="Teks Copyright" value={s('footer_copyright')} onChange={set('footer_copyright')} placeholder="Hak cipta dilindungi" hint="Teks di paling bawah footer" />
       </SectionCard>
-
-      {/* ─── Menu Cepat Footer ────────────────────────── */}
       <SectionCard title="Menu Cepat Footer" icon="link">
         <FooterQuickLinksEditor value={s('footer_quick_links')} onChange={set('footer_quick_links')} />
       </SectionCard>
-
-      {/* ─── Logo & Favicon ──────────────────────────── */}
       <SectionCard title="Logo & Favicon" icon="image">
         <ImageUploadCard
           label="Logo Sekolah"
@@ -296,8 +279,6 @@ export default function AdminGeneralSettingsPage() {
           <strong>Info:</strong> Setelah upload logo baru, klik &quot;Simpan Semua&quot; untuk memastikan URL tersimpan ke database.
         </div>
       </SectionCard>
-
-      {/* ─── Informasi Kontak ────────────────────────── */}
       <SectionCard title="Informasi Kontak" icon="contact_phone">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
           <InputField label="Email" value={s('contact_email')} onChange={set('contact_email')} placeholder="info@sekolah.sch.id" type="email" />
@@ -308,8 +289,6 @@ export default function AdminGeneralSettingsPage() {
           placeholder="https://www.google.com/maps/embed?..."
           hint="Buka Google Maps → Share → Embed a map → salin URL dari src='...'" />
       </SectionCard>
-
-      {/* ─── Media Sosial ────────────────────────────── */}
       <SectionCard title="Media Sosial" icon="share">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
           <div>
@@ -321,8 +300,6 @@ export default function AdminGeneralSettingsPage() {
           </div>
         </div>
       </SectionCard>
-
-      {/* Save Button Bottom */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '0.5rem' }}>
         <button onClick={handleSave} disabled={saving}
           style={{ padding: '0.75rem 2rem', background: '#1B6B44', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 15 }}>

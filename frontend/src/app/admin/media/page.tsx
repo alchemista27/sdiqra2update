@@ -1,4 +1,3 @@
-// src/app/admin/media/page.tsx — Media Library (WordPress-style, Cloudinary)
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -71,7 +70,6 @@ export default function AdminMediaPage() {
     <div style={{ display: 'flex', gap: '1.5rem', height: 'calc(100vh - 130px)' }}>
       {/* Sidebar kiri — daftar media */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        {/* Toolbar */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: 12 }}>
           <div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: '#111827' }}>Media Library</h1>
@@ -80,7 +78,6 @@ export default function AdminMediaPage() {
             </p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            {/* View toggle */}
             <div style={{ display: 'flex', background: '#F3F4F6', borderRadius: 10, padding: 3, gap: 2 }}>
               {(['grid', 'list'] as ViewMode[]).map(v => (
                 <button key={v} onClick={() => setView(v)} style={{ padding: '0.4rem 0.65rem', borderRadius: 8, border: 'none', cursor: 'pointer', background: view === v ? '#fff' : 'transparent', color: view === v ? '#1B6B44' : '#6B7280', boxShadow: view === v ? '0 1px 4px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
@@ -88,8 +85,6 @@ export default function AdminMediaPage() {
                 </button>
               ))}
             </div>
-
-            {/* Upload button */}
             <button
               onClick={() => fileRef.current?.click()}
               disabled={uploading}
@@ -100,8 +95,6 @@ export default function AdminMediaPage() {
             <input ref={fileRef} type="file" multiple accept="image/*" onChange={e => e.target.files && handleUpload(e.target.files)} style={{ display: 'none' }} />
           </div>
         </div>
-
-        {/* Drop zone */}
         <div
           onDrop={e => { e.preventDefault(); if (e.dataTransfer.files) handleUpload(e.dataTransfer.files); }}
           onDragOver={e => e.preventDefault()}
@@ -162,8 +155,6 @@ export default function AdminMediaPage() {
               </table>
             </div>
           )}
-
-          {/* Pagination */}
           {totalPages > 1 && (
             <div style={{ textAlign: 'center', marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
               <button onClick={() => fetchMedia(page - 1)} disabled={page <= 1 || loading} style={{ padding: '0.5rem 1rem', background: '#F3F4F6', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: 13, cursor: page <= 1 ? 'not-allowed' : 'pointer', opacity: page <= 1 ? 0.4 : 1 }}>←</button>
@@ -173,8 +164,6 @@ export default function AdminMediaPage() {
           )}
         </div>
       </div>
-
-      {/* Detail panel kanan */}
       <div style={{ width: 280, flexShrink: 0, background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, padding: '1.5rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {!selected ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, textAlign: 'center', color: '#9CA3AF' }}>
@@ -192,8 +181,6 @@ export default function AdminMediaPage() {
               {selected.width && <p style={{ fontSize: 12, color: '#6B7280' }}>{selected.width} × {selected.height} px</p>}
               <p style={{ fontSize: 12, color: '#9CA3AF', marginTop: 4 }}>{new Date(selected.createdAt).toLocaleString('id-ID')}</p>
             </div>
-
-            {/* URL Field */}
             <div>
               <p style={{ fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 6 }}>URL Gambar</p>
               <div style={{ display: 'flex', gap: 8 }}>

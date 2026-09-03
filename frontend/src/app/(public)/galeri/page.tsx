@@ -1,5 +1,4 @@
 'use client';
-// src/app/(public)/galeri/page.tsx - Halaman Galeri Lengkap
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -29,7 +28,7 @@ export default function GaleriPage() {
               <div key={i} style={{ aspectRatio: '5/4', background: 'linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%)', borderRadius: 12, animation: 'shimmer 1.5s infinite' }} />
             ))}
           </div>
-          
+         
         </div>
       </div>
     );
@@ -38,7 +37,6 @@ export default function GaleriPage() {
   return (
     <div style={{ minHeight: '100vh', padding: '6rem 1.5rem 4rem', background: '#F9FAFB' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#E8F5EE', color: '#1B6B44', padding: '0.35rem 1rem', borderRadius: 30, fontSize: 13, fontWeight: 600, marginBottom: '0.75rem' }}>
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>photo_camera</span> Galeri Kami
@@ -87,7 +85,6 @@ export default function GaleriPage() {
                   style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
                   unoptimized={img.imageUrl.startsWith('https://res.cloudinary.com')}
                 />
-                {/* Hover overlay */}
                 <div className="gallery-overlay" style={{
                   position: 'absolute', inset: 0,
                   background: 'rgba(15,61,36,0.55)',
@@ -106,8 +103,6 @@ export default function GaleriPage() {
             ))}
           </div>
         )}
-
-        {/* Lightbox */}
         <Lightbox
           index={lightboxIndex}
           open={lightboxIndex >= 0}
@@ -116,8 +111,6 @@ export default function GaleriPage() {
           plugins={[Zoom]}
           controller={{ closeOnBackdropClick: true }}
         />
-
-        {/* CSS */}
         <style>{`
           .gallery-item:hover .gallery-overlay { opacity: 1 !important; }
           .gallery-item:hover img { transform: scale(1.05); }

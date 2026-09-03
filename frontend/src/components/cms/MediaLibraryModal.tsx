@@ -1,6 +1,4 @@
 'use client';
-// src/components/cms/MediaLibraryModal.tsx
-// Modal WordPress-style untuk memilih atau upload gambar dari Cloudinary
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { mediaApi, type CloudinaryMedia } from '@/lib/api';
 import { getToken } from '@/lib/auth';
@@ -84,7 +82,6 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
         boxShadow: '0 25px 80px rgba(0,0,0,0.25)', overflow: 'hidden',
         animation: 'slideUp 0.2s ease-out',
       }}>
-        {/* Header */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '1rem 1.5rem', borderBottom: '1px solid #E5E7EB', flexShrink: 0,
@@ -94,7 +91,6 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
               <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#1B6B44' }}>photo_library</span>
               Media Library
             </h2>
-            {/* Tabs */}
             <div style={{ display: 'flex', gap: 4, background: '#F3F4F6', borderRadius: 10, padding: 3 }}>
               {([['library', 'Galeri Media', 'photo_library'], ['upload', 'Upload Baru', 'cloud_upload']] as const).map(([key, label, icon]) => (
                 <button
@@ -123,12 +119,9 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
             <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
           </button>
         </div>
-
-        {/* Body */}
         <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
           {tab === 'library' ? (
             <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-              {/* Grid area */}
               <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem' }}>
                 {loading ? (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 10 }}>
@@ -172,8 +165,6 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
                   </div>
                 )}
               </div>
-
-              {/* Detail sidebar */}
               {selected && (
                 <div style={{
                   width: 220, flexShrink: 0, borderLeft: '1px solid #E5E7EB',
@@ -234,8 +225,6 @@ export default function MediaLibraryModal({ open, onClose, onSelect }: Props) {
             </div>
           )}
         </div>
-
-        {/* Footer */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '1rem 1.5rem', borderTop: '1px solid #E5E7EB', flexShrink: 0,

@@ -1,4 +1,3 @@
-// src/components/cms/BlockEditor.tsx
 'use client';
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
@@ -46,8 +45,8 @@ export default function BlockEditor({ initialContent, onChange }: BlockEditorPro
 
   return (
     <div className="border-[1.5px] border-gray-200 rounded-xl overflow-hidden min-h-[500px] shadow-sm bg-white">
-      <BlockNoteView 
-        editor={editor} 
+      <BlockNoteView
+        editor={editor}
         theme="light"
         onChange={async () => {
           // Whenever the editor changes, extract the robust HTML output

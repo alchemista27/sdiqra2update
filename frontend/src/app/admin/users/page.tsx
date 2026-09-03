@@ -1,5 +1,4 @@
 'use client';
-// src/app/admin/users/page.tsx - User Management (Super Admin Only)
 import { useEffect, useState } from 'react';
 import { usersApi, type UserItem } from '@/lib/api';
 import { getToken, getUserFromToken } from '@/lib/auth';
@@ -158,14 +157,11 @@ export default function AdminUsersPage() {
 
   return (
     <div>
-      {/* Toast */}
       {toast && (
         <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: toast.type === 'ok' ? '#111827' : '#DC2626', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 12, fontSize: 14, zIndex: 999 }}>
           {toast.msg}
         </div>
       )}
-
-      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
           <h1 style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: '0.25rem' }}>Kelola User</h1>
@@ -177,8 +173,6 @@ export default function AdminUsersPage() {
           Tambah User
         </button>
       </div>
-
-      {/* Table */}
       <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 16, overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
@@ -225,8 +219,6 @@ export default function AdminUsersPage() {
           </tbody>
         </table>
       </div>
-
-      {/* Form Modal */}
       {showForm && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
           <div style={{ background: '#fff', borderRadius: 16, padding: '1.5rem', width: '100%', maxWidth: 480 }}>

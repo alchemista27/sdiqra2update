@@ -1,7 +1,6 @@
 export default function KontakPage() {
   return (
     <>
-      {/* Page Header */}
       <header className="page-header">
         <h1>Kontak Kami</h1>
       </header>
@@ -30,11 +29,7 @@ export default function KontakPage() {
           <p>info@sdiqra2bengkulu.sch.id</p>
         </div>
       </section>
-
-      {/* Main Section */}
       <main className="main-contact">
-        
-        {/* Kiri: Deskripsi & Map */}
         <div className="main-left">
           <h2>Mari Terhubung Bersama Kami</h2>
           <p>
@@ -44,8 +39,6 @@ export default function KontakPage() {
             <span>Kotak Abu-abu Placeholder Google Maps</span>
           </div>
         </div>
-
-        {/* Kanan: Form Kontak */}
         <div className="main-right">
           <div className="form-card">
             <h3>Tinggalkan Pesan</h3>
@@ -72,7 +65,7 @@ export default function KontakPage() {
         </div>
       </main>
 
-      
+     
     </>
   );
 }

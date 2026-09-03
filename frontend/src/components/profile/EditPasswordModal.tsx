@@ -1,6 +1,4 @@
 'use client';
-// src/components/profile/EditPasswordModal.tsx
-// Modal form untuk mengubah password pengguna yang sedang login
 import { useState } from 'react';
 import { getToken, removeToken } from '@/lib/auth';
 import { authApi } from '@/lib/api';
@@ -109,7 +107,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
         }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
         <div style={{
           padding: '1.25rem 1.5rem', borderBottom: '1px solid #E5E7EB',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -128,8 +125,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
             <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#6B7280' }}>close</span>
           </button>
         </div>
-
-        {/* Body */}
         <form onSubmit={handleSubmit} style={{ padding: '1.5rem' }}>
           {error && (
             <div style={{
@@ -152,8 +147,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               {success}
             </div>
           )}
-
-          {/* Password Lama */}
           <div style={{ marginBottom: '1rem' }}>
             <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
               Password Lama
@@ -187,8 +180,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               </button>
             </div>
           </div>
-
-          {/* Password Baru */}
           <div style={{ marginBottom: '1rem' }}>
             <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
               Password Baru
@@ -222,8 +213,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               </button>
             </div>
           </div>
-
-          {/* Konfirmasi Password Baru */}
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
               Konfirmasi Password Baru
@@ -257,8 +246,6 @@ export default function EditPasswordModal({ open, onClose, customTokenKey }: Edi
               </button>
             </div>
           </div>
-
-          {/* Actions */}
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
             <button
               type="button"

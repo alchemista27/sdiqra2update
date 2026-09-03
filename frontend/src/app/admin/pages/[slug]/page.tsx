@@ -15,7 +15,7 @@ export default function EditPage() {
   const router = useRouter();
   const params = useParams();
   const slug = params.slug as string;
-  
+ 
   const [form, setForm] = useState({ title: '', content: '' });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);

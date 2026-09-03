@@ -7,7 +7,7 @@ export default function MenusAdminPage() {
   const [menus, setMenus] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  
+ 
   const [isEditing, setIsEditing] = useState<MenuItem | null>(null);
   const [formData, setFormData] = useState<Partial<MenuItem>>({ label: '', url: '', openInNewTab: false, parentId: null });
 
@@ -82,7 +82,7 @@ export default function MenusAdminPage() {
   return (
     <div>
       <h1 style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>Manajemen Menu Navigasi</h1>
-      
+     
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 20 }}>
         <div>
           {menus.length === 0 ? <p>Belum ada menu.</p> : renderMenuItems(menus)}
