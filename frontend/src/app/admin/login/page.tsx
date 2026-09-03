@@ -84,16 +84,16 @@ export default function AdminLoginPage() {
              <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.5rem', backgroundColor: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-tertiary)', fontWeight: 800 }}>I2</div>
           )}
           <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.025em', color: 'var(--color-surface)' }}>
-            SIM-Iqra2
+            CMS Panel
           </span>
         </div>
 
         <div style={{ margin: 'auto 0', position: 'relative', zIndex: 10 }}>
           <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 800, lineHeight: 1.2, color: 'var(--color-surface)', marginBottom: '1rem' }}>
-            Sistem Informasi Manajemen Terpadu
+            Content Management System
           </h1>
           <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.9)', maxWidth: '28rem', lineHeight: 1.5 }}>
-            Layanan pengelolaan pendidikan, pendaftaran calon siswa baru (PPDB), dan administrasi di lingkungan <strong>{siteName}</strong>.
+            Layanan pengelolaan konten website, berita, galeri, dan pengaturan profil sekolah untuk <strong>{siteName}</strong>.
           </p>
         </div>
 
@@ -111,11 +111,11 @@ export default function AdminLoginPage() {
           {/* Header untuk Mobile */}
           <div className="login-mobile-header" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
             {logoSrc && <img src={logoSrc} alt="Logo" style={{ height: '2rem', objectFit: 'contain' }} />}
-            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.25rem', color: 'var(--color-tertiary)' }}>SIM-Iqra2</span>
+            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.25rem', color: 'var(--color-tertiary)' }}>CMS Panel</span>
           </div>
 
           <div style={{ width: '100%', textAlign: 'center', marginBottom: '1.5rem' }}>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>Masuk ke SIM-Iqra2</h2>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>Masuk ke Dashboard CMS</h2>
             <p style={{ fontSize: '0.75rem', color: '#6B7280' }}>Masukkan email dan password akun Anda untuk melanjutkan.</p>
           </div>
 
