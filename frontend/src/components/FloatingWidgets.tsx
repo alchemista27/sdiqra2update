@@ -43,7 +43,7 @@ export function FloatingWidgets({ whatsappNumber }: { whatsappNumber?: string })
   };
 
   return (
-    <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', zIndex: 9999, alignItems: 'flex-end' }}>
+    <div style={{ position: 'fixed', bottom: '5.5rem', right: '2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', zIndex: 9999, alignItems: 'flex-end' }}>
       
       {/* Live Chat Popover */}
       <div 
