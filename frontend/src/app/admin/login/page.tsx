@@ -39,7 +39,7 @@ export default function AdminLoginPage() {
     setError('');
     try {
       const result = await authApi.login(email, password);
-      setToken(result.data.token);
+      setToken(result.data.token, result.data.user);
       const user = result.data.user as { role: string };
       if (!['SUPER_ADMIN', 'ADMIN_CMS', 'ADMIN_PPDB', 'KEPALA_SEKOLAH', 'KARYAWAN'].includes(user.role)) {
         setError('Akses ditolak. Akun ini tidak memiliki akses dashboard.');
