@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { formatUrl } from "@/lib/urlUtils";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { settingsApi, menuApi, MenuItem } from '@/lib/api';
@@ -39,13 +40,13 @@ export default function Navbar() {
       if (item.children && item.children.length > 0) {
         return (
           <li key={item.id} className="dropdown">
-            <Link href={item.url} target={item.openInNewTab ? '_blank' : undefined} className="dropdown-toggle" onClick={() => setOpen(false)}>
+            <Link href={formatUrl(item.url)} target={item.openInNewTab ? '_blank' : undefined} className="dropdown-toggle" onClick={() => setOpen(false)}>
               {item.label} <i className="icon dropdown-icon">arrow_drop_down</i>
             </Link>
             <ul className="dropdown-menu">
               {item.children.filter(i => i.isActive).map(child => (
                 <li key={child.id}>
-                  <Link href={child.url} target={child.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
+                  <Link href={formatUrl(child.url)} target={child.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
                     {child.label}
                   </Link>
                 </li>
@@ -56,7 +57,7 @@ export default function Navbar() {
       }
       return (
         <li key={item.id}>
-          <Link href={item.url} target={item.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
+          <Link href={formatUrl(item.url)} target={item.openInNewTab ? '_blank' : undefined} onClick={() => setOpen(false)}>
             {item.label}
           </Link>
         </li>

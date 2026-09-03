@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { formatUrl } from '@/lib/urlUtils';
 import { useSiteSettings } from '@/components/SiteLogo';
 
 export default function Footer() {
@@ -13,9 +14,9 @@ export default function Footer() {
           <h3>{siteName}</h3>
           <p>{settings.footer_copyright || 'Membentuk generasi terbaik masa depan dengan keseimbangan ilmu pengetahuan dan kekuatan iman.'}</p>
           <div className="footer-social">
-            {settings.social_facebook && <Link href={settings.social_facebook}><i className="icon">facebook</i></Link>}
-            {settings.social_instagram && <Link href={settings.social_instagram}><i className="icon">photo_camera</i></Link>}
-            {settings.social_youtube && <Link href={settings.social_youtube}><i className="icon">play_circle_filled</i></Link>}
+            {settings.social_facebook && <Link href={formatUrl(settings.social_facebook)}><i className="icon">facebook</i></Link>}
+            {settings.social_instagram && <Link href={formatUrl(settings.social_instagram)}><i className="icon">photo_camera</i></Link>}
+            {settings.social_youtube && <Link href={formatUrl(settings.social_youtube)}><i className="icon">play_circle_filled</i></Link>}
           </div>
         </div>
         <div className="footer-col">

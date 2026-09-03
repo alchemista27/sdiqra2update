@@ -70,8 +70,8 @@ export default async function HomePage() {
         <AnimatedSection className="container hero-content" animation="slide-up">
           <h1>{s['hero_title'] || 'SD Islam Terpadu Iqra 2'}</h1>
           <p>{s['hero_subtitle'] || 'Membentuk Generasi Qur\'ani, Cerdas, dan Berakhlak Mulia. Bergabunglah bersama kami untuk pendidikan terbaik.'}</p>
-          {s['hero_cta_primary_text'] && <Link href={s['hero_cta_primary_url'] || '#'} className="btn-primary">{s['hero_cta_primary_text']}</Link>}
-          {s['hero_cta_secondary_text'] && <Link href={s['hero_cta_secondary_url'] || '#'} className="btn-secondary" style={{ marginLeft: '10px' }}>{s['hero_cta_secondary_text']}</Link>}
+          {s['hero_cta_primary_text'] && <Link href={formatUrl(s['hero_cta_primary_url'])} className="btn-primary">{s['hero_cta_primary_text']}</Link>}
+          {s['hero_cta_secondary_text'] && <Link href={formatUrl(s['hero_cta_secondary_url'])} className="btn-secondary" style={{ marginLeft: '10px' }}>{s['hero_cta_secondary_text']}</Link>}
         </AnimatedSection>
       </header>
 
@@ -94,7 +94,7 @@ export default async function HomePage() {
           <h2>{s['about_title'] || 'Sekilas Tentang Kami'}</h2>
           <p>{s['about_desc1'] || 'SD Islam Terpadu Iqra 2 hadir untuk menjawab tantangan pendidikan modern yang tidak hanya fokus pada akademis, tetapi juga penanaman karakter Islami yang kuat sejak dini.'}</p>
           <p>{s['about_desc2'] || 'Dengan lingkungan yang asri dan kondusif, kami berkomitmen untuk melahirkan generasi penerus bangsa yang cerdas secara intelektual, emosional, dan spiritual.'}</p>
-          <Link href={s['about_button_url'] || '/tentang-sekolah'} className="btn-secondary">{s['about_button_text'] || 'Selengkapnya'}</Link>
+          <Link href={s['about_button_url'] ? formatUrl(s['about_button_url']) : '/tentang-sekolah'} className="btn-secondary">{s['about_button_text'] || 'Selengkapnya'}</Link>
         </AnimatedSection>
         <AnimatedSection className="about-image" animation="slide-left">
           <img src={aboutImage} alt="Tentang SDIT Iqra 2" />
