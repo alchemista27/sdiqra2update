@@ -153,7 +153,7 @@ export default function NewsTicker() {
             )}
         </div>
       </div>
-      <div className="px-4 pt-2 pb-4 md:py-0 md:h-10 flex flex-row items-center justify-start gap-3 md:gap-5 w-full max-w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
+      <div className="shrink-0 px-3 pt-2 pb-3 md:py-0 md:h-10 md:px-4 flex flex-row items-center justify-start gap-2 md:gap-4 w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap border-t md:border-t-0 border-surface/5">
        
         <div className="flex items-center text-secondary shrink-0 opacity-90 pl-1">
           <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
@@ -165,13 +165,13 @@ export default function NewsTicker() {
         {loadingPrayer ? (
           <span className="text-on-tertiary/50 italic px-2 text-xs">Memuat jadwal...</span>
         ) : prayerTimes ? (
-          <>
+          <div className="flex items-center gap-2 md:gap-4 pr-2">
             <PrayerTimeBlock name="Subuh" time={prayerTimes.Fajr} isNext={nextPrayer?.name === 'Subuh'} />
             <PrayerTimeBlock name="Dzuhur" time={prayerTimes.Dhuhr} isNext={nextPrayer?.name === 'Dzuhur'} />
             <PrayerTimeBlock name="Ashar" time={prayerTimes.Asr} isNext={nextPrayer?.name === 'Ashar'} />
             <PrayerTimeBlock name="Maghrib" time={prayerTimes.Maghrib} isNext={nextPrayer?.name === 'Maghrib'} />
             <PrayerTimeBlock name="Isya" time={prayerTimes.Isha} isNext={nextPrayer?.name === 'Isya'} />
-          </>
+          </div>
         ) : (
           <span className="text-red-300 text-xs">Gagal memuat jadwal</span>
         )}
