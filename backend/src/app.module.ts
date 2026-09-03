@@ -11,6 +11,16 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { MenusModule } from './cms/menus/menus.module.js';
 
 @Module({
+  imports: [
+    PrismaModule,
+    AuthModule,
+    UsersModule,
+    PostsModule,
+    SettingsModule,
+    CategoriesModule,
+    MediaModule,
+    MenusModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
