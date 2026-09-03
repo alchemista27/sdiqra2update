@@ -106,7 +106,7 @@ export default function Navbar() {
             </li>
           </ul>
          
-          <div className="desktop-only">
+          <div className="desktop-only" style={{ marginLeft: "24px" }}>
             <Link href="/ppdb" className="btn-primary">Daftar PPDB</Link>
           </div>
         </div>
