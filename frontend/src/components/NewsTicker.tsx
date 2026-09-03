@@ -179,7 +179,7 @@ export default function NewsTicker() {
         
         {/* Right: Prayer Times */}
         <div className="shrink-0 px-4 flex items-center justify-end gap-5">
-          <div className="flex items-center text-secondary shrink-0 opacity-90 pl-1">
+          <div className="flex items-center text-on-tertiary/90 shrink-0 pl-1">
             <span className="material-symbols-outlined text-[16px] mr-1">location_on</span>
             <span className="font-medium text-xs tracking-wide">{locationName}</span>
           </div>
@@ -203,7 +203,7 @@ export default function NewsTicker() {
       <div className="flex md:hidden h-10 w-full divide-x divide-surface/20 text-xs">
         {/* Left: News */}
         <div className="flex-1 flex items-center overflow-hidden relative px-3">
-          <span className="font-bold text-secondary mr-2 shrink-0 uppercase tracking-wider text-[10px]">Info</span>
+          <span className="font-bold text-[#FBBF24] mr-2 shrink-0 uppercase tracking-wider text-[10px]">Info</span>
           <div className="flex-1 relative h-full">
             {newsList.length > 0 ? (
               newsList.map((news, idx) => {
