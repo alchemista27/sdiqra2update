@@ -150,7 +150,7 @@ export default function NewsTicker() {
       <div className="hidden md:flex h-10 w-full">
         {/* Left: News Marquee */}
         <div className="flex-1 flex items-center overflow-hidden border-r border-surface/10 h-10">
-          <div className="bg-secondary text-primary pl-6 md:pl-10 lg:pl-12 pr-6 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
+          <div className="bg-secondary text-primary px-6 md:px-8 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
             <span className="material-symbols-outlined text-[18px] mr-1">campaign</span>
             Info
           </div>
@@ -195,7 +195,7 @@ export default function NewsTicker() {
             <span className="text-red-300 text-xs">Gagal memuat jadwal</span>
           )}
           {/* PHYSICAL SPACER TO GUARANTEE RIGHT PADDING */}
-          <div className="w-8 md:w-12 lg:w-16 shrink-0 h-full"></div>
+          <div className="w-4 md:w-6 lg:w-8 shrink-0 h-full"></div>
         </div>
       </div>
 
