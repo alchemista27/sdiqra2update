@@ -150,8 +150,8 @@ export default function NewsTicker() {
       <div className="hidden md:flex h-10 w-full">
         {/* Left: News Marquee */}
         <div className="flex-1 flex items-center overflow-hidden border-r border-surface/10 h-10">
-          <div className="bg-secondary text-primary px-6 md:px-8 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
-            <span className="material-symbols-outlined text-[18px] mr-1">campaign</span>
+          <div className="bg-secondary text-primary px-8 lg:px-12 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
+            <span className="material-symbols-outlined text-[20px] mr-2 lg:mr-3">campaign</span>
             Info
           </div>
           <div className="flex-1 overflow-hidden relative h-full flex items-center">
