@@ -77,9 +77,9 @@ export default function InstagramSettingsPage() {
         instagram_make_webhook_url: s('instagram_make_webhook_url') || '',
       };
       await settingsApi.updateMany(getToken()!, toSave);
-      showToast('✅ Pengaturan berhasil disimpan!');
+      showToast('Pengaturan berhasil disimpan!');
     } catch {
-      showToast('❌ Gagal menyimpan pengaturan.', 'err');
+      showToast('Gagal menyimpan pengaturan.', 'err');
     }
     setSaving(false);
   };
@@ -88,9 +88,9 @@ export default function InstagramSettingsPage() {
     setTesting(true);
     try {
       await instagramApi.testConnection(getToken()!);
-      showToast('✅ Koneksi berhasil! Coba cek Instagram.');
+      showToast('Koneksi berhasil! Coba cek Instagram.');
     } catch (err: any) {
-      showToast('❌ ' + (err.message || 'Koneksi gagal'), 'err');
+      showToast('' + (err.message || 'Koneksi gagal'), 'err');
     }
     setTesting(false);
   };

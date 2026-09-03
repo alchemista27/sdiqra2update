@@ -48,7 +48,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
         >
           <div style={{
             width: 32, height: 32, borderRadius: 10,
-            background: 'linear-gradient(135deg, #2D9164, #C9A84C)',
+            background: 'var(--color-primary)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontWeight: 800, fontSize: 12, color: '#fff',
           }}>
@@ -73,7 +73,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{
                   width: 40, height: 40, borderRadius: 12,
-                  background: 'linear-gradient(135deg, #2D9164, #C9A84C)',
+                  background: 'var(--color-primary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontWeight: 800, fontSize: 14, color: '#fff', flexShrink: 0,
                 }}>

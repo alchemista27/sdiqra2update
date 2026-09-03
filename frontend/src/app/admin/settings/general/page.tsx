@@ -207,9 +207,9 @@ export default function AdminGeneralSettingsPage() {
     setSaving(true);
     try {
       await settingsApi.updateMany(getToken()!, settings);
-      showToast('✅ Pengaturan berhasil disimpan!');
+      showToast('Pengaturan berhasil disimpan!');
     } catch {
-      showToast('❌ Gagal menyimpan pengaturan.', 'err');
+      showToast('Gagal menyimpan pengaturan.', 'err');
     }
     setSaving(false);
   };
@@ -217,15 +217,15 @@ export default function AdminGeneralSettingsPage() {
   const handleLogoUpload = async (file: File) => {
     try {
       const r = await settingsApi.uploadLogo(getToken()!, file);
-      if (r.data?.url) { set('site_logo')(r.data.url); showToast('✅ Logo berhasil diupload!'); }
-    } catch { showToast('❌ Gagal upload logo.', 'err'); }
+      if (r.data?.url) { set('site_logo')(r.data.url); showToast('Logo berhasil diupload!'); }
+    } catch { showToast('Gagal upload logo.', 'err'); }
   };
 
   const handleFaviconUpload = async (file: File) => {
     try {
       const r = await settingsApi.uploadFavicon(getToken()!, file);
-      if (r.data?.url) { set('site_favicon')(r.data.url); showToast('✅ Favicon berhasil diupload!'); }
-    } catch { showToast('❌ Gagal upload favicon.', 'err'); }
+      if (r.data?.url) { set('site_favicon')(r.data.url); showToast('Favicon berhasil diupload!'); }
+    } catch { showToast('Gagal upload favicon.', 'err'); }
   };
 
   if (loading) return (

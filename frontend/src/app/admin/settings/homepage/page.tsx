@@ -104,8 +104,8 @@ export default function AdminHomepageEditorPage() {
     setSaving(section);
     try {
       await settingsApi.updateMany(getToken()!, payload);
-      showToast('✅ Berhasil disimpan!');
-    } catch { showToast('❌ Gagal menyimpan.', 'err'); }
+      showToast('Berhasil disimpan!');
+    } catch { showToast('Gagal menyimpan.', 'err'); }
     setSaving(null);
   };
 
