@@ -151,10 +151,10 @@ export default function NewsTicker() {
         {/* Left: News Marquee */}
         <div className="flex-1 flex items-center overflow-hidden border-r border-surface/10 h-10">
           <div className="bg-secondary text-primary px-8 lg:px-12 py-2 h-full flex items-center justify-center font-bold text-xs whitespace-nowrap z-10 uppercase tracking-wider shadow-sm shrink-0">
-            <span className="material-symbols-outlined text-[20px] mr-2 lg:mr-3">campaign</span>
+            <span className="material-symbols-outlined text-[20px] mr-3 lg:mr-4">campaign</span>
             Info
           </div>
-          <div className="flex-1 overflow-hidden relative h-full flex items-center">
+          <div className="flex-1 overflow-hidden relative h-full flex items-center pl-6">
               {newsList.length > 0 ? (
                   <div className="animate-marquee hover:[animation-play-state:paused] whitespace-nowrap flex items-center gap-10 absolute left-0 pr-10">
                       {newsList.map((news, idx) => (
