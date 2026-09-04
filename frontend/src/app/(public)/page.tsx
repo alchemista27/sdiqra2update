@@ -3,7 +3,7 @@ import { formatUrl } from "@/lib/urlUtils";
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { settingsApi } from '@/lib/api';
 
-export const revalidate = 60; // Revalidate cache every 60s
+export const dynamic = 'force-dynamic'; // Revalidate cache every 60s
 
 export default async function HomePage() {
   let s: Record<string, string> = {};

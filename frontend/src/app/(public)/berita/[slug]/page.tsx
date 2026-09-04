@@ -4,7 +4,7 @@ import { postsApi } from '@/lib/api';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function SinglePostPage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;

@@ -13,6 +13,7 @@ export async function fetcher<T>(path: string, options?: RequestInit): Promise<T
   let res: Response;
   try {
     res = await fetch(`${API_URL}${path}`, {
+      signal: AbortSignal.timeout(3000),
       ...restOptions,
       headers: { 'Content-Type': 'application/json', ...(optHeaders as Record<string, string>) },
     });
