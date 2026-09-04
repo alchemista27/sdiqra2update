@@ -4,19 +4,17 @@ import { usersApi, type UserItem } from '@/lib/api';
 import { getToken, getUserFromToken } from '@/lib/auth';
 
 const ROLES = [
-  { value: 'SUPER_ADMIN', label: 'Super Admin', desc: 'Akses penuh ke semua fitur' },
-  { value: 'KEPALA_SEKOLAH', label: 'Kepala Sekolah', desc: 'Akses penuh dengan权限 lebih tinggi' },
-  { value: 'ADMIN_HUMAS', label: 'Admin humas', desc: 'Kelola konten CMS' },
-  { value: 'ADMIN_PERSONALIA', label: 'Admin Personalia', desc: 'Kelola absensi & cuti' },
-  { value: 'KARYAWAN', label: 'Karyawan/Guru', desc: 'Akses terbatas' },
+  { value: 'SUPER_ADMIN', label: 'Super Admin', desc: 'Akses penuh ke semua fitur dan pengaturan' },
+  { value: 'EDITOR', label: 'Editor', desc: 'Akses mengelola semua berita, artikel, dan kategori' },
+  { value: 'CONTRIBUTOR', label: 'Kontributor', desc: 'Akses menulis dan mengelola berita sendiri' },
+  { value: 'SUBSCRIBER', label: 'Subscriber', desc: 'Pengunjung terdaftar' },
 ];
 
 const ROLE_COLORS: Record<string, string> = {
   SUPER_ADMIN: '#7C3AED',
-  KEPALA_SEKOLAH: '#DC2626',
-  ADMIN_HUMAS: 'var(--color-tertiary)',
-  ADMIN_PERSONALIA: '#2563EB',
-  KARYAWAN: 'var(--color-primary)',
+  EDITOR: '#2563EB',
+  CONTRIBUTOR: '#D97706',
+  SUBSCRIBER: '#059669',
 };
 
 function formatDate(dateStr: string) {

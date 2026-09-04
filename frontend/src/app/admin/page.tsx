@@ -5,7 +5,7 @@ import { postsApi, pagesApi, categoriesApi } from '@/lib/api';
 import { getToken, getUserFromToken } from '@/lib/auth';
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState({ posts: 0, pages: 0, categories: 0 });
+  const [stats, setStats] = useState({ posts: 0, categories: 0 });
   const [recentPosts, setRecentPosts] = useState<any[]>([]);
   const [user, setUser] = useState<any>(null);
 
@@ -15,21 +15,21 @@ export default function AdminDashboard() {
 
     Promise.allSettled([
       postsApi.getAll({ limit: '5' }),
-      pagesApi.getAll(),
+      
       categoriesApi.getAll(),
     ]).then((results) => {
       const posts = results[0].status === 'fulfilled' ? results[0].value : { data: [], pagination: { total: 0 } };
-      const pages = results[1].status === 'fulfilled' ? results[1].value : { data: [] };
-      const cats = results[2].status === 'fulfilled' ? results[2].value : { data: [] };
       
-      setStats({ posts: posts.pagination?.total || 0, pages: pages.data?.length || 0, categories: cats.data?.length || 0 });
+      const cats = results[1].status === 'fulfilled' ? results[1].value : { data: [] };
+      
+      setStats({ posts: posts.pagination?.total || 0,  categories: cats.data?.length || 0 });
       setRecentPosts(posts.data ? posts.data.slice(0, 5) : []);
     });
   }, []);
 
   const statCards = [
     { label: 'Total Berita', value: stats.posts, icon: 'newspaper', href: '/admin/posts' },
-    { label: 'Halaman Statis', value: stats.pages, icon: 'description', href: '/admin/pages' },
+    
     { label: 'Kategori', value: stats.categories, icon: 'sell', href: '/admin/categories' },
   ];
 
