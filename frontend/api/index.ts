@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../backend/src/app.module.js';
+import { AppModule } from '../../backend/src/app.module.js';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
