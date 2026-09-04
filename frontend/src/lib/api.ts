@@ -1,4 +1,15 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+let BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+if (typeof window === 'undefined') {
+  // We are on the server
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    BASE_URL = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api`;
+  } else if (process.env.VERCEL_URL) {
+    BASE_URL = `https://${process.env.VERCEL_URL}/api`;
+  } else if (BASE_URL === '/api') {
+    BASE_URL = 'http://localhost:5000/api';
+  }
+}
+export const API_URL = BASE_URL;
 
 export class ApiError extends Error {
   status: number;

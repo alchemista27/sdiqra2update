@@ -3,7 +3,16 @@ import './globals.css';
 import { settingsApi } from '@/lib/api';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
+  let API_BASE = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || '';
+  if (!API_BASE) {
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+      API_BASE = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+    } else if (process.env.VERCEL_URL) {
+      API_BASE = `https://${process.env.VERCEL_URL}`;
+    } else {
+      API_BASE = 'http://localhost:5000';
+    }
+  }
   let siteName = 'SD Islam Terpadu Iqra 2 Kota Bengkulu';
   let description = 'Website resmi SD Islam Terpadu Iqra 2 Kota Bengkulu. Sekolah dasar Islam terpadu yang berkomitmen menghadirkan pendidikan berkualitas berbasis nilai-nilai Islam.';
   let faviconUrl = '';
