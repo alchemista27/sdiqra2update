@@ -127,8 +127,8 @@ export default function AdminAboutEditorPage() {
       )}
 
       <div style={{ marginBottom: '1.5rem' }}>
-        <h1 style={{ fontSize: 20, fontWeight: 800 }}>Editor Tentang & Sambutan</h1>
-        <p style={{ fontSize: 14, color: 'var(--color-primary)' }}>Ubah profil sekolah, visi misi, daftar guru, dan sambutan kepala sekolah.</p>
+        <h1 style={{ fontSize: 20, fontWeight: 800 }}>Editor Tentang Kami</h1>
+        <p style={{ fontSize: 14, color: 'var(--color-primary)' }}>Ubah profil sekolah, visi misi, daftar guru, </p>
       </div>
 
       <SectionCard title="1. Hero Section" icon="image">
@@ -155,24 +155,7 @@ export default function AdminAboutEditorPage() {
         {renderListEditor(team, setTeam, ['image', 'name', 'role'], 'team', 'about_team')}
       </SectionCard>
 
-      <SectionCard title="6. Halaman Sambutan Kepala Sekolah" icon="record_voice_over">
-        <ImageInput label="Gambar Latar Hero (Halaman Sambutan)" value={s('sambutan_hero_image')} onChange={set('sambutan_hero_image')} />
-        <ImageInput label="Foto Profil Kepala Sekolah" value={s('about_principal_image')} onChange={set('about_principal_image')} />
-        <TextInput label="Nama Kepala Sekolah & Gelar" value={s('about_principal_name')} onChange={set('about_principal_name')} />
-        <TextInput label="Pesan Sambutan" value={s('about_principal_message')} onChange={set('about_principal_message')} textarea rows={8} />
-        
-        <div style={{ borderTop: '1px solid var(--color-border)', margin: '1.5rem 0' }}></div>
-        <div style={{ marginBottom: '1rem', fontWeight: 600, color: 'var(--color-primary)' }}>Banner Ajakan (Call to Action) Bawah</div>
-        <ImageInput label="Gambar Latar Banner CTA" value={s('sambutan_cta_image')} onChange={set('sambutan_cta_image')} />
-        
-        <button onClick={() => saveSection('principal', { 
-          sambutan_hero_image: s('sambutan_hero_image'),
-          about_principal_image: s('about_principal_image'), 
-          about_principal_name: s('about_principal_name'), 
-          about_principal_message: s('about_principal_message'),
-          sambutan_cta_image: s('sambutan_cta_image')
-        })} style={{ padding: '0.65rem 1.5rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 700, cursor: 'pointer', fontSize: 14, width: '100%', marginTop: '1rem' }}>Simpan Sambutan & Banner</button>
-      </SectionCard>
+      
 
     </div>
   );
