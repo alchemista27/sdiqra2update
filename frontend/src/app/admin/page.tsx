@@ -13,15 +13,17 @@ export default function AdminDashboard() {
     const token = getToken();
     if (token) setUser(getUserFromToken(token));
 
-    Promise.all([
+    Promise.allSettled([
       postsApi.getAll({ limit: '5' }),
       pagesApi.getAll(),
       categoriesApi.getAll(),
-    ]).then(([posts, pages, cats]) => {
-      setStats({ posts: posts.pagination?.total || 0, pages: pages.data.length, categories: cats.data.length });
-      setRecentPosts(posts.data.slice(0, 5));
-    }).catch(() => {
-      console.warn("Info: Gagal mengambil data statistik dashboard.");
+    ]).then((results) => {
+      const posts = results[0].status === 'fulfilled' ? results[0].value : { data: [], pagination: { total: 0 } };
+      const pages = results[1].status === 'fulfilled' ? results[1].value : { data: [] };
+      const cats = results[2].status === 'fulfilled' ? results[2].value : { data: [] };
+      
+      setStats({ posts: posts.pagination?.total || 0, pages: pages.data?.length || 0, categories: cats.data?.length || 0 });
+      setRecentPosts(posts.data ? posts.data.slice(0, 5) : []);
     });
   }, []);
 

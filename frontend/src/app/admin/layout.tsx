@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     const token = getToken();
     if (!token) { router.replace('/admin/login'); return; }
     const userData = getUserFromToken(token);
-    if (!userData || !['SUPER_ADMIN', 'ADMIN_HUMAS', 'ADMIN_PERSONALIA', 'KEPALA_SEKOLAH'].includes(userData.role)) {
+    if (!userData || !['SUPER_ADMIN', 'EDITOR', 'CONTRIBUTOR'].includes(userData.role)) {
       router.replace('/admin/login'); return;
     }
     setUser(userData);
@@ -56,7 +56,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogout = () => { removeToken(); router.push('/admin/login'); };
   const role = user?.role;
-  const showCMS = role && ['SUPER_ADMIN', 'ADMIN_HUMAS'].includes(role);
+  const showCMS = role && ['SUPER_ADMIN', 'EDITOR', 'CONTRIBUTOR'].includes(role);
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--color-neutral)' }}>
