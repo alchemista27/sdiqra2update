@@ -13,8 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
     const settings: Record<string, string> = res?.data || {};
     if (settings.site_name) siteName = settings.site_name;
     if (settings.site_tagline) description = settings.site_tagline;
-    if (settings.site_favicon) {
-      faviconUrl = settings.site_favicon.startsWith('http') ? settings.site_favicon : `${API_BASE}${settings.site_favicon}`;
+    if (settings.site_favicon || settings.site_logo) {
+      const rawIcon = settings.site_favicon || settings.site_logo;
+      faviconUrl = rawIcon.startsWith('http') ? rawIcon : `${API_BASE}${rawIcon}`;
     }
   } catch (error) {
     // Silent fail - use default values
