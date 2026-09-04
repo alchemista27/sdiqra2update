@@ -33,28 +33,28 @@ export default async function KontakPage() {
 
       {/* Contact Grid (4 Cards) */}
       <section className="contact-grid">
-        <AnimatedSection animation="slide-up">
+        <AnimatedSection animation="slide-up" className="h-full">
           <div className="contact-card">
             <div className="contact-icon"><span className="material-symbols-outlined">location_on</span></div>
             <h3>Alamat Lokasi</h3>
             <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
           </div>
         </AnimatedSection>
-        <AnimatedSection animation="slide-up">
+        <AnimatedSection animation="slide-up" className="h-full">
           <div className="contact-card">
             <div className="contact-icon"><span className="material-symbols-outlined">call</span></div>
             <h3>Telepon & WA</h3>
             <p>{phone}<br />+{whatsappNumber} (WA)</p>
           </div>
         </AnimatedSection>
-        <AnimatedSection animation="slide-up">
+        <AnimatedSection animation="slide-up" className="h-full">
           <div className="contact-card">
             <div className="contact-icon"><span className="material-symbols-outlined">mail</span></div>
             <h3>Email Resmi</h3>
             <p>{email}</p>
           </div>
         </AnimatedSection>
-        <AnimatedSection animation="slide-up">
+        <AnimatedSection animation="slide-up" className="h-full">
           <div className="contact-card">
             <div className="contact-icon"><span className="material-symbols-outlined">schedule</span></div>
             <h3>Jam Kantor</h3>
@@ -66,7 +66,7 @@ export default async function KontakPage() {
       {/* Main Section: Text + Form & Image */}
       <section style={{ padding: '40px 0 20px 0' }}>
         <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <AnimatedSection animation="slide-up">
+          <AnimatedSection animation="slide-up" className="h-full">
             <span className="label-caps" style={{ color: 'var(--color-secondary)' }}>Hubungi Kami</span>
             <h2>Mari Terhubung Bersama Kami</h2>
             <p style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -130,9 +130,9 @@ export default async function KontakPage() {
         <AnimatedSection className="container" animation="slide-up">
           <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}>Ikuti Media Sosial Kami</h3>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            {s['social_facebook'] && <Link href={s['social_facebook']} target="_blank" className="btn-secondary" style={{ padding: '10px 16px', borderRadius: '50%' }}><i className="icon">facebook</i></Link>}
-            {s['social_instagram'] && <Link href={s['social_instagram']} target="_blank" className="btn-secondary" style={{ padding: '10px 16px', borderRadius: '50%' }}><i className="icon">photo_camera</i></Link>}
-            {s['social_youtube'] && <Link href={s['social_youtube']} target="_blank" className="btn-secondary" style={{ padding: '10px 16px', borderRadius: '50%' }}><i className="icon">play_circle_filled</i></Link>}
+            {s['social_facebook'] && <Link href={s['social_facebook']} target="_blank" className="btn-secondary" style={{ width: '48px', height: '48px', padding: 0, borderRadius: '50%' }}><i className="icon">facebook</i></Link>}
+            {s['social_instagram'] && <Link href={s['social_instagram']} target="_blank" className="btn-secondary" style={{ width: '48px', height: '48px', padding: 0, borderRadius: '50%' }}><i className="icon">photo_camera</i></Link>}
+            {s['social_youtube'] && <Link href={s['social_youtube']} target="_blank" className="btn-secondary" style={{ width: '48px', height: '48px', padding: 0, borderRadius: '50%' }}><i className="icon">play_circle_filled</i></Link>}
           </div>
         </AnimatedSection>
       </section>
