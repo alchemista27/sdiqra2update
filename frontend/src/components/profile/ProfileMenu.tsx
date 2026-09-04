@@ -39,7 +39,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
             display: 'flex', alignItems: 'center', gap: '0.5rem',
             background: isDark ? 'rgba(255,255,255,0.1)' : 'var(--color-neutral)',
             border: isDark ? '1px solid rgba(255,255,255,0.15)' : '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-md)', padding: '0.35rem 0.75rem 0.35rem 0.35rem',
+            borderRadius: '50%', padding: '0.35rem 0.75rem 0.35rem 0.35rem',
             cursor: 'pointer', transition: 'all 0.15s',
             color: isDark ? '#fff' : 'var(--color-primary)',
           }}
@@ -47,12 +47,12 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
           onMouseLeave={e => e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.1)' : 'var(--color-neutral)'}
         >
           <div style={{
-            width: 32, height: 32, borderRadius: 'var(--radius-sm)',
+            width: 32, height: 32, borderRadius: '50%',
             background: 'var(--color-primary)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontWeight: 800, fontSize: 12, color: '#fff',
           }}>
-            {initials}
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
           </div>
           <span style={{ fontSize: 13, fontWeight: 600, maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {user?.name || 'User'}
@@ -65,18 +65,18 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
         {open && (
           <div className="dropdown-animate-in" style={{
             position: 'absolute', right: 0, top: 'calc(100% + 8px)',
-            background: '#fff', borderRadius: 'var(--radius-md)', minWidth: 240,
+            background: '#fff', borderRadius: '50%', minWidth: 240,
             zIndex: 100, overflow: 'hidden',
           }}>
             <div style={{ padding: '1rem 1rem 0.75rem', borderBottom: '1px solid #F3F4F6' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{
-                  width: 40, height: 40, borderRadius: 'var(--radius-md)',
+                  width: 40, height: 40, borderRadius: '50%',
                   background: 'var(--color-primary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontWeight: 800, fontSize: 14, color: '#fff', flexShrink: 0,
                 }}>
-                  {initials}
+                  <span className="material-symbols-outlined" style={{ fontSize: 24 }}>person</span>
                 </div>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -88,7 +88,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                   {user?.role && (
                     <div style={{
                       display: 'inline-block', marginTop: 4,
-                      padding: '0.1rem 0.5rem', borderRadius: 'var(--radius-sm)',
+                      padding: '0.1rem 0.5rem', borderRadius: '50%',
                       background: '#D1FAE5', color: '#065F46',
                       fontSize: 10, fontWeight: 700,
                     }}>
@@ -103,7 +103,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                 onClick={() => { setOpen(false); setEditPwOpen(true); }}
                 style={{
                   width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem',
-                  padding: '0.6rem 0.75rem', borderRadius: 'var(--radius-sm)', border: 'none',
+                  padding: '0.6rem 0.75rem', borderRadius: '50%', border: 'none',
                   background: 'transparent', cursor: 'pointer', fontSize: 13,
                   color: 'var(--color-primary)', fontWeight: 500, transition: 'background 0.1s',
                 }}
@@ -120,7 +120,7 @@ export default function ProfileMenu({ user, onLogout, variant = 'light' }: Profi
                 onClick={() => { setOpen(false); onLogout(); }}
                 style={{
                   width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem',
-                  padding: '0.6rem 0.75rem', borderRadius: 'var(--radius-sm)', border: 'none',
+                  padding: '0.6rem 0.75rem', borderRadius: '50%', border: 'none',
                   background: 'transparent', cursor: 'pointer', fontSize: 13,
                   color: '#DC2626', fontWeight: 500, transition: 'background 0.1s',
                 }}
