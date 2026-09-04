@@ -18,6 +18,7 @@ const settingsItems = [
   { href: '/admin/settings/general', icon: 'tune', label: 'Pengaturan Umum' },
   { href: '/admin/settings/homepage', icon: 'web', label: 'Editor Homepage' },
   { href: '/admin/settings/about', icon: 'info', label: 'Editor Tentang Kami' },
+  { href: '/admin/settings/contact', icon: 'contact_page', label: 'Editor Kontak' },
   { href: '/admin/settings/sambutan', icon: 'record_voice_over', label: 'Editor Sambutan' },
   { href: '/admin/settings/menus', icon: 'menu', label: 'Menu Navigasi' },
   { href: '/admin/settings/instagram', icon: 'photo_camera', label: 'Instagram' },

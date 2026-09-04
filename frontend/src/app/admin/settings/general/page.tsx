@@ -285,28 +285,10 @@ export default function AdminGeneralSettingsPage() {
           <strong>Info:</strong> Setelah upload logo baru, klik &quot;Simpan Semua&quot; untuk memastikan URL tersimpan ke database.
         </div>
       </SectionCard>
-      <SectionCard title="Informasi Kontak" icon="contact_phone">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
-          <InputField label="Email" value={s('contact_email')} onChange={set('contact_email')} placeholder="info@sekolah.sch.id" type="email" />
-          <InputField label="No. Telepon" value={s('contact_phone')} onChange={set('contact_phone')} placeholder="(0736) 123456" />
-          <InputField label="Nomor WhatsApp CS" value={s('whatsapp_number')} onChange={set('whatsapp_number')} placeholder="628123456789" hint="Gunakan kode negara (62) tanpa spasi atau +." />
-        </div>
-        <InputField label="Alamat Lengkap" value={s('contact_address')} onChange={set('contact_address')} placeholder="Jl. Contoh No. 1, Kota Bengkulu" />
-        <InputField label="Embed Google Maps (URL iframe src)" value={s('contact_maps_embed')} onChange={set('contact_maps_embed')}
-          placeholder="https://www.google.com/maps/embed?..."
-          hint="Buka Google Maps → Share → Embed a map → salin URL dari src='...'" />
-      </SectionCard>
-      <SectionCard title="Media Sosial" icon="share">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1rem' }}>
-          <div>
-            <InputField label="Facebook" value={s('social_facebook')} onChange={set('social_facebook')} placeholder="https://facebook.com/SDITIqra2" />
-            <InputField label="Instagram" value={s('social_instagram')} onChange={set('social_instagram')} placeholder="https://instagram.com/sdit_iqra2" />
-          </div>
-          <div>
-            <InputField label="YouTube" value={s('social_youtube')} onChange={set('social_youtube')} placeholder="https://youtube.com/@SDITIqra2" />
-          </div>
-        </div>
-      </SectionCard>
+      <div style={{ padding: '1rem', background: '#FEF3C7', color: '#92400E', borderRadius: '12px', marginBottom: '1.25rem', fontSize: '14px', border: '1px solid #FDE68A' }}>
+        <strong>Pindah Lokasi:</strong> Pengaturan <strong>Kontak, Lokasi, dan Media Sosial</strong> telah dipindahkan ke menu <strong>Editor Kontak</strong>.
+      </div>
+      
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '0.5rem' }}>
         <button onClick={handleSave} disabled={saving}
           style={{ padding: '0.75rem 2rem', background: 'var(--color-tertiary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-md)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 15 }}>

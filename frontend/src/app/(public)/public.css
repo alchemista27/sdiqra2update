@@ -608,7 +608,7 @@ h3 { font-size: 1.5rem; margin-bottom: var(--spacing-sm); }
    ================================================ */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--spacing-lg);
   margin-bottom: calc(var(--spacing-lg) * 2);
 }
@@ -871,7 +871,7 @@ h3 { font-size: 1.5rem; margin-bottom: var(--spacing-sm); }
    ================================================ */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--spacing-lg);
   max-width: 1200px;
   margin: calc(var(--spacing-lg) * -3) auto var(--spacing-lg) auto;

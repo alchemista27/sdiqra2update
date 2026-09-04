@@ -1,71 +1,136 @@
-export default function KontakPage() {
+import { AnimatedSection } from '@/components/AnimatedSection';
+import { settingsApi } from '@/lib/api';
+import Link from 'next/link';
+
+export const revalidate = 60;
+
+export default async function KontakPage() {
+  let s: Record<string, string> = {};
+  try {
+    const res = await settingsApi.getAll();
+    s = res.data || {};
+  } catch (err) {
+    console.warn("Info: Backend offline, using default settings.");
+  }
+
+  const heroBg = s['contact_hero_image'] || 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920';
+  const whatsappNumber = s['whatsapp_number'] || '628123456789';
+  const email = s['contact_email'] || 'info@iqra2.sch.id';
+  const phone = s['contact_phone'] || '(0736) 123456';
+  const address = s['contact_address'] || 'Bengkulu';
+  const officeHours = s['contact_office_hours'] || 'Senin - Sabtu: 07.15 - 15.00 WIB';
+  const mapsEmbed = s['contact_maps_embed'] || '';
+
   return (
     <>
-      <header className="page-header">
-        <h1>Kontak Kami</h1>
+      <header className="page-header" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroBg}')` }}>
+        <AnimatedSection className="container" animation="slide-up">
+          <h1 style={{ color: 'white' }}>Kontak Kami</h1>
+          <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>Mari terhubung! Kami siap melayani pertanyaan Anda seputar SD Islam Terpadu Iqra 2.</p>
+        </AnimatedSection>
       </header>
 
-      {/* Contact Grid (3 Cards) */}
+      {/* Contact Grid (4 Cards) */}
       <section className="contact-grid">
-        <div className="contact-card">
-          <div className="contact-icon">
-            <span className="material-symbols-outlined">location_on</span>
+        <AnimatedSection animation="slide-up" >
+          <div className="contact-card">
+            <div className="contact-icon"><span className="material-symbols-outlined">location_on</span></div>
+            <h3>Alamat Lokasi</h3>
+            <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
           </div>
-          <h3>Alamat Lokasi</h3>
-          <p>Jl. Merdeka No. 123, Kelurahan Pagar Dewa,<br />Kecamatan Selebar, Kota Bengkulu</p>
-        </div>
-        <div className="contact-card">
-          <div className="contact-icon">
-            <span className="material-symbols-outlined">call</span>
+        </AnimatedSection>
+        <AnimatedSection animation="slide-up" >
+          <div className="contact-card">
+            <div className="contact-icon"><span className="material-symbols-outlined">call</span></div>
+            <h3>Telepon & WA</h3>
+            <p>{phone}<br />+{whatsappNumber} (WA)</p>
           </div>
-          <h3>Telepon</h3>
-          <p>(0736) 123456<br />+62 812-3456-7890 (WA)</p>
-        </div>
-        <div className="contact-card">
-          <div className="contact-icon">
-            <span className="material-symbols-outlined">mail</span>
+        </AnimatedSection>
+        <AnimatedSection animation="slide-up" >
+          <div className="contact-card">
+            <div className="contact-icon"><span className="material-symbols-outlined">mail</span></div>
+            <h3>Email Resmi</h3>
+            <p>{email}</p>
           </div>
-          <h3>Email</h3>
-          <p>info@sdiqra2bengkulu.sch.id</p>
-        </div>
+        </AnimatedSection>
+        <AnimatedSection animation="slide-up" >
+          <div className="contact-card">
+            <div className="contact-icon"><span className="material-symbols-outlined">schedule</span></div>
+            <h3>Jam Kantor</h3>
+            <p>{officeHours}</p>
+          </div>
+        </AnimatedSection>
       </section>
-      <main className="main-contact">
-        <div className="main-left">
-          <h2>Mari Terhubung Bersama Kami</h2>
-          <p>
-            Jika Anda memiliki pertanyaan seputar informasi pendaftaran, program unggulan sekolah, atau hal lainnya, silakan isi formulir di samping atau kunjungi lokasi kami. Kami akan merespons pertanyaan Anda sesegera mungkin.
+
+      <main className="main-contact container" style={{ paddingBottom: '80px' }}>
+        <AnimatedSection className="main-left" animation="slide-right">
+          <span className="label-caps" style={{ color: 'var(--color-secondary)' }}>Hubungi Kami</span>
+          <h2>Kirimkan Pesan Anda</h2>
+          <p style={{ marginBottom: '2rem' }}>
+            Jika Anda memiliki pertanyaan seputar informasi pendaftaran, program unggulan sekolah, atau hal lainnya, silakan isi formulir di samping. Anda akan langsung terhubung dengan admin kami melalui WhatsApp.
           </p>
-          <div className="map-placeholder">
-            <span>Kotak Abu-abu Placeholder Google Maps</span>
+          
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Media Sosial Kami</h3>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              {s['social_facebook'] && <Link href={s['social_facebook']} target="_blank" className="btn-secondary" style={{ padding: '8px 12px' }}><i className="icon">facebook</i></Link>}
+              {s['social_instagram'] && <Link href={s['social_instagram']} target="_blank" className="btn-secondary" style={{ padding: '8px 12px' }}><i className="icon">photo_camera</i></Link>}
+              {s['social_youtube'] && <Link href={s['social_youtube']} target="_blank" className="btn-secondary" style={{ padding: '8px 12px' }}><i className="icon">play_circle_filled</i></Link>}
+            </div>
           </div>
-        </div>
-        <div className="main-right">
-          <div className="form-card">
-            <h3>Tinggalkan Pesan</h3>
-            <form>
+
+          <div className="map-placeholder" style={{ borderRadius: '12px', overflow: 'hidden', height: '300px', border: 'none', background: 'var(--color-neutral)' }}>
+            {mapsEmbed ? (
+              <iframe src={mapsEmbed} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            ) : (
+              <span style={{ display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center', color: '#9CA3AF' }}>Peta belum diatur</span>
+            )}
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection className="main-right" animation="slide-left">
+          <div className="form-card" style={{ boxShadow: 'none', border: '1px solid var(--color-border)', borderRadius: '12px' }}>
+            <h3>Tinggalkan Pesan via WhatsApp</h3>
+            <form id="waForm">
               <div className="form-group">
                 <label htmlFor="nama">Nama Lengkap</label>
-                <input type="text" id="nama" className="input-field" placeholder="Masukkan nama lengkap Anda" />
+                <input type="text" id="nama" required className="input-field" placeholder="Masukkan nama lengkap Anda" />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email Opsional</label>
                 <input type="email" id="email" className="input-field" placeholder="Masukkan alamat email Anda" />
               </div>
               <div className="form-group">
                 <label htmlFor="subjek">Subjek</label>
-                <input type="text" id="subjek" className="input-field" placeholder="Subjek pesan" />
+                <input type="text" id="subjek" required className="input-field" placeholder="Topik pertanyaan" />
               </div>
               <div className="form-group">
                 <label htmlFor="pesan">Pesan</label>
-                <textarea id="pesan" className="input-field" rows={5} placeholder="Tulis pesan Anda di sini..."></textarea>
+                <textarea id="pesan" required className="input-field" rows={5} placeholder="Tulis pesan Anda di sini..."></textarea>
               </div>
-              <button type="button" className="btn-submit">Kirim Pesan</button>
+              <button type="submit" className="btn-primary" style={{ width: '100%', padding: '14px' }}>
+                <span className="material-symbols-outlined">send</span> Kirim Pesan ke WA
+              </button>
             </form>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  document.getElementById('waForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var nama = document.getElementById('nama').value;
+                    var email = document.getElementById('email').value;
+                    var subjek = document.getElementById('subjek').value;
+                    var pesan = document.getElementById('pesan').value;
+                    
+                    var text = "Halo Admin SDIT Iqra 2,\n\nSaya ingin bertanya mengenai: *" + subjek + "*\n\n" + pesan + "\n\nTerima kasih.\n-" + nama + (email ? " (" + email + ")" : "");
+                    window.open("https://wa.me/${whatsappNumber}?text=" + encodeURIComponent(text), "_blank");
+                  });
+                `
+              }}
+            />
           </div>
-        </div>
+        </AnimatedSection>
       </main>
-
-     
     </>
   );
 }
