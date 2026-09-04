@@ -1440,3 +1440,17 @@ textarea.input-field { resize: vertical; }
   color: var(--color-neutral);
   margin-bottom: var(--spacing-lg);
 }
+
+
+.single-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media (min-width: 992px) {
+  .single-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    align-items: start;
+  }
+}

@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 export class ApiError extends Error {
   status: number;
@@ -8,7 +8,7 @@ export class ApiError extends Error {
   }
 }
 
-async function fetcher<T>(path: string, options?: RequestInit): Promise<T> {
+export async function fetcher<T>(path: string, options?: RequestInit): Promise<T> {
   const { headers: optHeaders, ...restOptions } = options ?? {};
   let res: Response;
   try {

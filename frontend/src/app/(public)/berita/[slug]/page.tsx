@@ -1,113 +1,141 @@
-export default function SinglePostPage() {
+import { AnimatedSection } from '@/components/AnimatedSection';
+import CommentsSection from '@/components/CommentsSection';
+import { postsApi } from '@/lib/api';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+
+export const revalidate = 60;
+
+export default async function SinglePostPage({ params }: { params: { slug: string } }) {
+  let post: any = null;
+  let latestPosts: any[] = [];
+  try {
+    const res = await postsApi.getBySlug(params.slug);
+    post = res.data;
+    const latestRes = await postsApi.getAll({ limit: '5', sort: 'desc' });
+    latestPosts = latestRes.data || [];
+  } catch (err) {
+    console.warn("Backend offline or error fetching post.");
+  }
+
+  if (!post) {
+    notFound();
+  }
+
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
+  const getImageUrl = (url: string) => {
+    if (!url) return 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800';
+    return url.startsWith('http') ? url : `${API_BASE}${url}`;
+  };
+
+  const publishDate = new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date(post.publishedAt || post.createdAt));
+  let commentCount = 0;
+  try {
+    const cRes = await fetch(`${API_BASE}/api/public/comments/${post.id}`, { cache: 'no-store' });
+    const cData = await cRes.json();
+    const countComments = (list: any[]): number => list.reduce((acc, c) => acc + 1 + countComments(c.replies || []), 0);
+    commentCount = countComments(cData.data || []);
+  } catch (e) {}
+
+  const shareUrl = `http://localhost:3000/berita/${post.slug}`; // Ideally use real domain from env
+
   return (
     <>
-      <header className="page-header" style={{
-        background: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat",
-        padding: "calc(var(--spacing-lg) * 4) var(--spacing-lg)",
-        textAlign: "center",
-        color: "var(--color-surface)",
-        marginBottom: "var(--spacing-lg)"
-      }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "var(--spacing-sm)", color: "var(--color-surface)" }}>Detail Berita</h1>
-        <div className="breadcrumb" style={{ fontSize: "14px", opacity: 0.9, fontWeight: 500, color: "var(--color-surface)", margin: 0 }}>
-          <a href="#" style={{ color: "var(--color-surface)" }}>Beranda</a> &gt; <a href="#" style={{ color: "var(--color-surface)" }}>Berita</a> &gt; <span>Prestasi Siswa</span>
-        </div>
+      <header style={{ background: 'var(--color-surface)', padding: '60px 20px 40px', borderBottom: '1px solid var(--color-border)', textAlign: 'center' }}>
+        <AnimatedSection className="container" animation="slide-down">
+          {post.category && (
+            <span style={{ background: 'var(--color-primary)', color: '#fff', padding: '4px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600, display: 'inline-block', marginBottom: '1rem' }}>
+              {post.category.name}
+            </span>
+          )}
+          <h1 style={{ fontSize: "2.5rem", marginBottom: "1.5rem", color: "var(--color-primary)", maxWidth: '900px', margin: '0 auto 1.5rem auto', lineHeight: 1.3 }}>
+            {post.title}
+          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', color: '#6B7280', fontSize: '0.95rem' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>person</span> Oleh {post.author?.name || 'Admin'}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>calendar_today</span> {publishDate}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>forum</span> <a href="#comment-form" style={{ color: 'inherit', textDecoration: 'none' }}>{commentCount} Komentar</a>
+            </span>
+          </div>
+        </AnimatedSection>
       </header>
-      <main className="container">
-        <div className="grid-container">
-          <article className="article-main">
-            <div className="article-cover">
-              <span className="material-symbols-outlined" style={{ fontSize: "64px", color: "#ccc" }}>image</span>
-            </div>
-           
-            <div className="article-meta">
-              <span className="meta-badge">Prestasi</span>
-              <div className="meta-item">
-                <span className="material-symbols-outlined">person</span>
-                <span>Oleh Admin</span>
+
+      <main className="container" style={{ padding: '60px 20px 80px' }}>
+        <div className="single-layout">
+          
+          {/* Main Article Content */}
+          <article>
+            <AnimatedSection animation="slide-up">
+              <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '2rem' }}>
+                <img src={getImageUrl(post.coverImage)} alt={post.title} style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', display: 'block' }} />
               </div>
-              <div className="meta-item">
-                <span className="material-symbols-outlined">calendar_today</span>
-                <span>20 Agustus 2026</span>
+
+              <div className="article-body" dangerouslySetInnerHTML={{ __html: post.content }} style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#374151' }} />
+              
+              {/* Share Buttons */}
+              <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <strong style={{ color: 'var(--color-primary)' }}>Bagikan:</strong>
+                <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '8px 12px', borderRadius: '50%' }}><i className="icon">facebook</i></a>
+                <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '8px 12px', borderRadius: '50%' }}>𝕏</a>
+                <a href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + shareUrl)}`} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '8px 12px', borderRadius: '50%' }}><i className="icon">chat</i></a>
               </div>
-            </div>
 
-            <h1 className="article-title">Prestasi Siswa SD IT Iqra 2 di Ajang Olimpiade Nasional</h1>
-           
-            <div className="article-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies odio ut urna euismod, eget ullamcorper justo bibendum. Nulla facilisi. Sed non mi cursus, tempor magna vel, pretium elit. Nullam lacinia eros ut ante convallis, vel interdum nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-             
-              <p>Curabitur venenatis tellus at quam bibendum, at tristique ipsum vehicula. Sed elementum risus quis nisi dictum, vitae tincidunt metus eleifend. Morbi eget erat tincidunt, tincidunt elit ac, fermentum mauris.</p>
+              {/* Author Box */}
+              <div style={{ marginTop: '3rem', background: '#F3F4F6', padding: '2rem', borderRadius: '12px', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--color-primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 'bold' }}>
+                  {(post.author?.name || 'A').charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--color-primary)' }}>{post.author?.name || 'Administrator'}</h4>
+                  <p style={{ color: '#6B7280', margin: 0 }}>Tim redaksi SD Islam Terpadu Iqra 2 Bengkulu. Berkomitmen menyajikan informasi teraktual dan terpercaya.</p>
+                </div>
+              </div>
 
-              <h2>Persiapan yang Matang</h2>
-              <p>Phasellus auctor accumsan massa, ut lobortis nisi hendrerit id. Proin scelerisque urna at ex euismod, a venenatis nisl scelerisque. Aliquam id ex eget velit laoreet finibus vel in libero.</p>
-
-              <blockquote>
-                &quot;Keberhasilan ini adalah buah dari kerja keras, disiplin, serta dukungan penuh dari para guru dan orang tua murid. Kami sangat bangga atas pencapaian ini.&quot; - Kepala Sekolah SD IT Iqra 2.
-              </blockquote>
-
-              <h3>Faktor-faktor Pendukung</h3>
-              <p>Beberapa hal yang menjadi kunci kesuksesan siswa-siswi kita antara lain:</p>
-              <ul>
-                <li>Program bimbingan belajar khusus olimpiade yang intensif.</li>
-                <li>Dukungan dan doa dari seluruh civitas akademika dan orang tua.</li>
-                <li>Kesehatan fisik dan mental yang terjaga selama masa persiapan.</li>
-                <li>Fasilitas belajar yang memadai di lingkungan sekolah.</li>
-              </ul>
-
-              <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam interdum, lorem id consequat auctor, velit felis convallis nibh, eget hendrerit enim justo sed tellus. Quisque congue ligula non accumsan pellentesque.</p>
-            </div>
+              {/* Comments Section */}
+              <CommentsSection postId={post.id} />
+            </AnimatedSection>
           </article>
-          <aside className="sidebar">
-            <div className="sidebar-widget">
-              <h3 className="widget-title">Pencarian</h3>
-              <div className="search-box">
-                <input type="text" placeholder="Cari berita..." className="search-input" />
-                <button className="search-btn"><span className="material-symbols-outlined">search</span></button>
-              </div>
-            </div>
-            <div className="sidebar-widget">
-              <h3 className="widget-title">Kategori</h3>
-              <ul className="category-list">
-                <li className="category-item"><a href="#">Akademik</a> <span className="category-count">12</span></li>
-                <li className="category-item"><a href="#">Prestasi</a> <span className="category-count">8</span></li>
-                <li className="category-item"><a href="#">Pengumuman</a> <span className="category-count">15</span></li>
-                <li className="category-item"><a href="#">Kegiatan Siswa</a> <span className="category-count">20</span></li>
-              </ul>
-            </div>
-            <div className="sidebar-widget">
-              <h3 className="widget-title">Berita Terkait</h3>
-              <div className="related-news-list">
-                <div className="related-news-item">
-                  <div className="related-thumb"><span className="material-symbols-outlined" style={{ color: "#ccc" }}>image</span></div>
-                  <div className="related-content">
-                    <a href="#" className="related-title">Kegiatan Ekstrakurikuler Memanah SD IT Iqra 2</a>
-                    <span className="related-date">18 Agustus 2026</span>
-                  </div>
-                </div>
-                <div className="related-news-item">
-                  <div className="related-thumb"><span className="material-symbols-outlined" style={{ color: "#ccc" }}>image</span></div>
-                  <div className="related-content">
-                    <a href="#" className="related-title">Kunjungan Edukatif ke Museum Negeri Bengkulu</a>
-                    <span className="related-date">15 Agustus 2026</span>
-                  </div>
-                </div>
-                <div className="related-news-item">
-                  <div className="related-thumb"><span className="material-symbols-outlined" style={{ color: "#ccc" }}>image</span></div>
-                  <div className="related-content">
-                    <a href="#" className="related-title">Penerimaan Peserta Didik Baru (PPDB) Tahun 2027/2028</a>
-                    <span className="related-date">10 Agustus 2026</span>
-                  </div>
-                </div>
-              </div>
-            </div>
 
+          {/* Sidebar */}
+          <aside>
+            <div style={{ position: 'sticky', top: '20px' }}>
+            <AnimatedSection animation="slide-left">
+              <div className="sidebar-widget" style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--color-border)', marginBottom: '2rem' }}>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--color-primary)', borderBottom: '2px solid var(--color-tertiary)', paddingBottom: '0.5rem', display: 'inline-block' }}>Pencarian</h3>
+                <form action="/berita" method="GET" style={{ display: 'flex', gap: '0.5rem' }}>
+                  <input type="text" name="q" placeholder="Cari berita..." className="input-field" style={{ flex: 1, padding: '10px' }} />
+                  <button type="submit" className="btn-primary" style={{ padding: '10px 14px' }}><span className="material-symbols-outlined">search</span></button>
+                </form>
+              </div>
+
+              <div className="sidebar-widget" style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: 'var(--color-primary)', borderBottom: '2px solid var(--color-tertiary)', paddingBottom: '0.5rem', display: 'inline-block' }}>Berita Terbaru</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  {latestPosts.slice(0, 5).map(lp => (
+                    <Link href={`/berita/${lp.slug}`} key={lp.id} style={{ display: 'flex', gap: '1rem', textDecoration: 'none', color: 'inherit', alignItems: 'center' }}>
+                      <div style={{ width: '80px', height: '60px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0 }}>
+                        <img src={getImageUrl(lp.coverImage)} alt={lp.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      </div>
+                      <div>
+                        <h4 style={{ fontSize: '0.95rem', margin: '0 0 4px 0', lineHeight: 1.4, fontWeight: 600, color: 'var(--color-primary)' }}>{lp.title}</h4>
+                        <span style={{ fontSize: '0.8rem', color: '#6B7280' }}>
+                          {new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(lp.publishedAt || lp.createdAt))}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+            </div>
           </aside>
-
         </div>
       </main>
-
-     
     </>
   );
 }
