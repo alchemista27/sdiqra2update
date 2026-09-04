@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'res.cloudinary.com' },
     ],
   },
+  async rewrites() {
+    return process.env.NODE_ENV === 'development' ? [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:5000/api/:path*',
+      },
+    ] : [];
+  },
   async redirects() {
     return [
       {

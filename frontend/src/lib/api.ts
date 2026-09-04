@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 export class ApiError extends Error {
   status: number;
@@ -250,7 +250,7 @@ export const leaveApi = {
   approve: (token: string, id: string, note?: string) => fetcher(`/leaves/${id}/approve`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ approverNote: note }) }),
   reject: (token: string, id: string, note?: string) => fetcher(`/leaves/${id}/reject`, { method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify({ approverNote: note }) }),
 };
-const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
 export const reportApi = {
   getSummary: (token: string, month: number, year: number) =>
     fetcher<{ data: any }>(`/reports/attendance/summary?month=${month}&year=${year}`, { headers: { Authorization: `Bearer ${token}` } }),
