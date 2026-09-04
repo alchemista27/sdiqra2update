@@ -6,7 +6,8 @@ import { notFound } from 'next/navigation';
 
 export const revalidate = 60;
 
-export default async function SinglePostPage({ params }: { params: { slug: string } }) {
+export default async function SinglePostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   let post: any = null;
   let latestPosts: any[] = [];
   try {
