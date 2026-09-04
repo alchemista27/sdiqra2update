@@ -88,8 +88,8 @@ export default async function SinglePostPage(props: { params: Promise<{ slug: st
 
               {/* Author Box */}
               <div style={{ marginTop: '3rem', background: '#F3F4F6', padding: '2rem', borderRadius: '12px', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--color-primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 'bold' }}>
-                  {(post.author?.name || 'A').charAt(0).toUpperCase()}
+                <div style={{ width: '80px', height: '80px', flexShrink: 0, borderRadius: '50%', background: 'var(--color-primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '3rem' }}>person</span>
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--color-primary)' }}>{post.author?.name || 'Administrator'}</h4>

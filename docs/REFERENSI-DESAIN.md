@@ -1,4 +1,4 @@
-homepage: https://theme.creativemox.com/skoola/
+homepage: https://theme.creativemox.com/skoola/template-kit/homepage/
 About us: https://theme.creativemox.com/skoola/template-kit/about-us/
 Contact: https://theme.creativemox.com/skoola/template-kit/contact-us/
 Berita: https://theme.creativemox.com/skoola/?elementor_library=skoola-archive-blog

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { MenusService } from './menus.service.js';
-import { JwtAuthGuard } from '../../auth/jwt-auth.guard.js';
+import { SessionAuthGuard } from '../../auth/session-auth.guard.js';
 import { RolesGuard } from '../../auth/roles.guard.js';
 import { Roles } from '../../auth/roles.decorator.js';
 
@@ -14,7 +14,7 @@ export class MenusController {
     return { data };
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(SessionAuthGuard, RolesGuard)
   @Roles('SUPER_ADMIN')
   @Post()
   async create(@Body() body: any) {
@@ -22,7 +22,7 @@ export class MenusController {
     return { data };
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(SessionAuthGuard, RolesGuard)
   @Roles('SUPER_ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: any) {
@@ -30,7 +30,7 @@ export class MenusController {
     return { data };
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(SessionAuthGuard, RolesGuard)
   @Roles('SUPER_ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {

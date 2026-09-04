@@ -54,7 +54,7 @@ export default function CommentsSection({ postId }: { postId: string }) {
       marginLeft: isReply ? '1rem' : '0'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-        <div style={{ width: '40px', height: '40px', background: 'var(--color-primary)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+        <div style={{ width: '40px', height: '40px', flexShrink: 0, background: 'var(--color-primary)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
           {c.authorName.charAt(0).toUpperCase()}
         </div>
         <div>

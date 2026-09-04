@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { SettingsService } from './settings.service.js';
-import { JwtAuthGuard } from '../../auth/jwt-auth.guard.js';
+import { SessionAuthGuard } from '../../auth/session-auth.guard.js';
 import { RolesGuard } from '../../auth/roles.guard.js';
 import { Roles } from '../../auth/roles.decorator.js';
 
@@ -20,7 +20,7 @@ export class SettingsController {
     return { data };
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(SessionAuthGuard, RolesGuard)
   @Roles('SUPER_ADMIN')
   @Post()
   async updateMultiple(@Body() body: Record<string, string>) {
