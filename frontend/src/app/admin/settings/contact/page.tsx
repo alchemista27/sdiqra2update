@@ -62,6 +62,7 @@ export default function AdminContactEditorPage() {
     try {
       await settingsApi.updateMany(getToken()!, {
         contact_hero_image: s('contact_hero_image'),
+        contact_side_image: s('contact_side_image'),
         contact_email: s('contact_email'),
         contact_phone: s('contact_phone'),
         whatsapp_number: s('whatsapp_number'),
@@ -100,6 +101,7 @@ export default function AdminContactEditorPage() {
 
       <SectionCard title="Gambar Latar Halaman Kontak" icon="image">
         <ImageInput label="Hero Image (Bagian Atas)" value={s('contact_hero_image')} onChange={set('contact_hero_image')} />
+        <ImageInput label="Gambar Samping Form" value={s('contact_side_image')} onChange={set('contact_side_image')} />
       </SectionCard>
 
       <SectionCard title="Informasi Kontak & Jam Kerja" icon="contact_phone">
