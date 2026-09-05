@@ -1,0 +1,11 @@
+.turbo
+.next
+apps/frontend/.next
+apps/backend/dist
+node_modules
+apps/*/node_modules
+coverage
+*.log
+.DS_Store
+.agents
+sistem-data
