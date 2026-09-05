@@ -7,9 +7,15 @@
     "pnpm": ">=9"
   },
   "scripts": {
-    "postinstall": "cd backend && npx prisma generate",
-    "dev": "pnpm --parallel --recursive run dev",
-    "build": "pnpm --recursive run build",
-    "start": "pnpm --parallel --recursive run start"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "postinstall": "pnpm --filter backend exec prisma generate"
+  },
+  "packageManager": "pnpm@11.24.0",
+  "devDependencies": {
+    "turbo": "latest"
   }
 }
