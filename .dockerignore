@@ -1,0 +1,9 @@
+node_modules
+.git
+.next
+dist
+.turbo
+*.log
+.hermes
+.env
+.env.local

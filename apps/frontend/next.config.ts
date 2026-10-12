@@ -8,12 +8,12 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    return process.env.NODE_ENV === 'development' ? [
+    return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*',
+        destination: process.env.INTERNAL_API_URL || 'http://127.0.0.1:5000/api/:path*',
       },
-    ] : [];
+    ];
   },
   async redirects() {
     return [
