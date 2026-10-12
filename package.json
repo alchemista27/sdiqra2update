@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "start:backend": "pnpm --filter backend start:prod",
+    "start:frontend": "pnpm --filter frontend start",
     "lint": "turbo lint",
     "test": "turbo test",
     "typecheck": "turbo typecheck",

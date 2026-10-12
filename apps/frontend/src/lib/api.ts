@@ -1,8 +1,8 @@
 let BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 if (typeof window === 'undefined') {
-  // We are on the server
   if (process.env.INTERNAL_API_URL) {
-    BASE_URL = process.env.INTERNAL_API_URL;
+    const raw = process.env.INTERNAL_API_URL.replace(/\/+$/, '');
+    BASE_URL = raw.endsWith('/api') ? raw : `${raw}/api`;
   } else if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     BASE_URL = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api`;
   } else if (process.env.VERCEL_URL) {

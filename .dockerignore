@@ -1,9 +1,10 @@
 node_modules
-.git
 .next
 dist
 .turbo
+.git
+.gitignore
 *.log
-.hermes
 .env
 .env.local
+.hermes

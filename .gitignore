@@ -10,3 +10,4 @@ coverage/
 sistem-data/
 .vercel
 .turbo/
+.hermes/
