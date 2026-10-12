@@ -1,5 +1,5 @@
 FROM node:22-alpine AS base
-RUN apk add --no-cache libc6-compat \
+RUN apk add --no-cache libc6-compat openssl \
   && corepack enable pnpm \
   && corepack prepare pnpm@11.24.0 --activate
 ENV NEXT_TELEMETRY_DISABLED=1 \
@@ -43,10 +43,9 @@ COPY --from=builder --chown=nextjs:nodejs /app ./
 
 COPY <<-'SCRIPT' /app/start.sh
 #!/bin/sh
-set -e
 
-echo "==> Syncing database schema with Prisma..."
-cd /app/apps/backend && npx prisma db push --skip-generate
+echo "==> Syncing database schema with Prisma (non-blocking)..."
+(cd /app/apps/backend && npx prisma db push --skip-generate) || echo "Warning: prisma db push failed or skipped"
 
 echo "==> Starting NestJS Backend on port 5000..."
 node /app/apps/backend/dist/main.js &
